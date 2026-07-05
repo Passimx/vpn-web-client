@@ -1,0 +1,49 @@
+name: CI/CD Pipeline
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  version:
+    uses: Passimx/ci-cd-workflows/.github/workflows/version.yml@main
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    permissions:
+      packages: write
+      contents: write
+
+  build:
+    uses: Passimx/ci-cd-workflows/.github/workflows/build.yml@main
+    needs: version
+    with:
+      ORGANIZATION_NAME: ${{ vars.ORGANIZATION_NAME }}
+      IMAGE_NAME: ${{ vars.IMAGE_NAME }}
+      VITE_API_URL: ${{ vars.VITE_API_URL }}
+      VERSION: ${{ needs.version.outputs.release_version }}
+    secrets:
+      DOCKER_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+      GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
+    permissions:
+      contents: write
+      packages: write
+
+#  deploy:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Install SSH Client and sshpass
+#        run: |
+#          sudo apt-get update
+#          sudo apt-get install -y openssh-client sshpass
+#
+#      - name: Deploy via SSH with password
+#        run: |
+#          sshpass -p '${{ secrets.SSH_PASSWORD }}' \
+#            ssh -o StrictHostKeyChecking=no \
+#            ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} \
+#            "${{ vars.DEPLOY_SCRIPT }}"
