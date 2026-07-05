@@ -50,8 +50,9 @@ export const Wallet: FC = () => {
         const result = checkBalance();
         if (!result) return;
 
+        const payload = WalletHelper.convert(amount, t('t4'), 'ton');
         setStateApp({
-            foreground: <InvoicePage request={createTonInvoice(userId, { amount, currency: 'ton', app })} />,
+            foreground: <InvoicePage request={createTonInvoice(userId, { amount: payload, currency: 'ton', app })} />,
         });
     };
 
@@ -59,14 +60,18 @@ export const Wallet: FC = () => {
         const result = checkBalance();
         if (!result) return;
 
-        setStateApp({ foreground: <InvoicePage request={createWechatInvoice(userId, { amount })} /> });
+        const payload = WalletHelper.convert(amount, t('t4'), 'cny');
+        setStateApp({
+            foreground: <InvoicePage request={createWechatInvoice(userId, { amount: payload })} />,
+        });
     };
 
     const onSber = () => {
         const result = checkBalance();
         if (!result) return;
 
-        setStateApp({ foreground: <InvoicePage request={createSberInvoice(userId, { amount })} /> });
+        const payload = WalletHelper.convert(amount, t('t4'), 'rub');
+        setStateApp({ foreground: <InvoicePage request={createSberInvoice(userId, { amount: payload })} /> });
     };
 
     return (
