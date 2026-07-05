@@ -10,6 +10,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;
+    transition: all .3s ease;
 }
 
 *::-webkit-scrollbar {
@@ -27,7 +28,6 @@ body,
 #root {
     height: 100%;
     width: 100%;
-    background-color: var(--menu-color);
     position: fixed;
     background-position: top right;
     background-size: 510px auto;
@@ -40,10 +40,14 @@ body,
     overscroll-behavior: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
     /* for dev checking */
     /*--safe-area-inset-bottom: 32px;*/
     --safe-area-inset-bottom: env(safe-area-inset-bottom, 32px);
+
+    @media(width < 600px) {
+        -webkit-user-select: none;
+        user-select: none;
+    }
 }
 
 /* класс для всего текста, что может быть изменен при выборе другого языка */

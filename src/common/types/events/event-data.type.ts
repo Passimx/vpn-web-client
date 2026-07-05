@@ -1,3 +1,3 @@
-export type EventsType = {
-    test: string;
-};
+import { LocalEvents } from './local-events.type.ts';
+
+export type EventsType = LocalEvents;

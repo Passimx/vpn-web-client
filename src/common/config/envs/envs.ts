@@ -1,5 +1,4 @@
 import json from '../../../../package.json';
-import type { SettingsType } from '../../store/app/types/state.type.ts';
 
 export enum EnvironmentEnum {
     STAGING = 'staging',
@@ -9,7 +8,6 @@ export enum EnvironmentEnum {
 type EnvsType = {
     apiUrl: string;
     environment: EnvironmentEnum;
-    settings?: Partial<SettingsType>;
     version: string;
 };
 

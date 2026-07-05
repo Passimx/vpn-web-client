@@ -1,16 +1,12 @@
-import AR from './languages/ar/translation.json';
 import CH from './languages/zh/translation.json';
 import EN from './languages/en/translation.json';
-import ES from './languages/es/translation.json';
 import RU from './languages/ru/translation.json';
 
 const symbolMap = new Map<string, string>();
 const langMaps = new Map<string, Set<string>>();
 
 const languages = [
-    ['es-ES', ES],
     ['en-US', EN],
-    ['ar-AR', AR],
     ['ru-RU', RU],
     ['zh-CN', CH],
 ] as unknown as [[string, Record<string, string>]];

@@ -13,6 +13,7 @@ export default defineConfig({
         nodePolyfills(),
     ],
     server: {
+        allowedHosts: true,
         port: 3006,
     },
     build: {

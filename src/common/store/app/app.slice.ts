@@ -1,14 +1,10 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { SettingsType, type StateType } from './types/state.type.ts';
+import { type AppStateType } from './types/app-state.type.ts';
 import type { EventsType } from '../../types/events/event-data.type.ts';
-import { Envs } from '../../config/envs/envs.ts';
 
 const channel = new BroadcastChannel('ws-channel');
 
-const initialState: StateType = {
-    isOnline: navigator.onLine,
-    isStandalone: window.matchMedia('(display-mode: standalone)').matches,
-};
+const initialState: AppStateType = {};
 
 const AppSlice = createSlice({
     name: 'app',
@@ -18,16 +14,13 @@ const AppSlice = createSlice({
             channel.postMessage(payload);
         },
 
-        setStateApp(state, { payload }: PayloadAction<Partial<StateType>>) {
-            for (const [key, value] of Object.entries(payload) as [keyof StateType, StateType[keyof StateType]][]) {
+        setStateApp(state, { payload }: PayloadAction<Partial<AppStateType>>) {
+            for (const [key, value] of Object.entries(payload) as [
+                keyof AppStateType,
+                AppStateType[keyof AppStateType],
+            ][]) {
                 state[key] = value as never;
             }
-        },
-
-        changeSettings(state, { payload }: PayloadAction<Partial<SettingsType>>) {
-            Envs.settings = { ...Envs.settings, ...state.settings, ...payload };
-            localStorage.setItem('settings', JSON.stringify(Envs.settings));
-            state.settings = Envs.settings as SettingsType;
         },
     },
 });
