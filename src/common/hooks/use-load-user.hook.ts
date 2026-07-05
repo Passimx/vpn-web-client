@@ -3,7 +3,7 @@ import { ClientSdk } from '../@passsimx/client-sdk';
 import { useAppAction } from '../store';
 import { PayloadInterface } from '../@passsimx/client-sdk/interfaces/payload.interface.ts';
 import { getCurrencyPrice } from '../api/currency-price.ts';
-import { WalletHelper } from '../pages/wallet/helper.ts';
+import { WalletHelper } from '../pages/put-money-wallet/helper.ts';
 import { getUser } from '../api/users.ts';
 
 export const useLoadUser = () => {

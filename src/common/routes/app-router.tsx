@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import { App } from '../components/app';
 import { MainPage } from '../pages/main';
 import { MyKeys } from '../pages/my-keys';
+import { PutMoneyWallet } from '../pages/put-money-wallet';
 import { Wallet } from '../pages/wallet';
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: 'my-keys',
                 element: <MyKeys />,
+            },
+            {
+                path: 'put-money-wallet',
+                element: <PutMoneyWallet />,
             },
             {
                 path: 'wallet',

@@ -4,8 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { IoIosAdd, IoIosArrowBack } from 'react-icons/io';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../store';
-import { WalletHelper } from '../../pages/wallet/helper.ts';
-import { BalanceAccount } from '../../store/app/types/app-state.type.ts';
+import { WalletHelper } from '../../pages/put-money-wallet/helper.ts';
 
 export const Header: FC = () => {
     const { t } = useTranslation();
@@ -28,16 +27,12 @@ export const Header: FC = () => {
             </div>
             <div className={styles.div3}>
                 {user && (
-                    <div className={styles.div4}>
-                        <div>
-                            {WalletHelper.formatPrice(
-                                WalletHelper.getTotalBalance(user.balance, t('t4') as keyof BalanceAccount),
-                            )}
-                        </div>
+                    <div className={styles.div4} onClick={() => navigate('/wallet')}>
+                        <div>{WalletHelper.formatPrice(WalletHelper.getTotalBalance(user.balance, t('t4')))}</div>
                         <div>{t('t3')}</div>
                     </div>
                 )}
-                <div className={styles.div5} onClick={() => navigate('/wallet')}>
+                <div className={styles.div5} onClick={() => navigate('/put-money-wallet')}>
                     <IoIosAdd className={styles.div6} />
                 </div>
             </div>

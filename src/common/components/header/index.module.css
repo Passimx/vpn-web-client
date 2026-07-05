@@ -1,5 +1,4 @@
 .div1{
-    /*height: 30px;*/
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
@@ -43,6 +42,11 @@
             padding: 8px;
             gap: 8px;
             border-radius: 20px;
+
+            &:active{
+                opacity: 0.7;
+            }
+
         }
 
         .div5{
@@ -53,6 +57,10 @@
             aspect-ratio: 1/1;
             border-radius: 20px;
             cursor: pointer;
+
+            &:active{
+                opacity: 0.7;
+            }
 
             .div6{
                 font-size: 28px;
