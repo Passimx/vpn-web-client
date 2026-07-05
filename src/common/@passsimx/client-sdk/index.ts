@@ -58,5 +58,6 @@ const sendMessage = <T>(event: EventsEnum, data?: unknown): Promise<T | null> =>
         }, 5000);
 
         window.addEventListener('message', handleResponse);
+        console.log('send Message to parent');
         window.parent.postMessage({ event, data, queryId }, parentOrigin);
     });
