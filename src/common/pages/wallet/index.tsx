@@ -16,6 +16,7 @@ import { useAppAction, useAppSelector } from '../../store';
 import { InvoicePage } from '../../components/invoice-page';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { createSberInvoice, createTonInvoice, createWechatInvoice } from '../../api/invoices.ts';
+import { Image } from '../../components/image';
 
 export const Wallet: FC = () => {
     const id = 'id';
@@ -80,7 +81,7 @@ export const Wallet: FC = () => {
                 <Card onClick={onWechat}>
                     <div className={styles.div1}>
                         <div className={styles.div2}>
-                            <img src={wechat} className={styles.div3} alt={'icon'} />
+                            <Image src={wechat} className={styles.div3} />
                         </div>
                         <div className={styles.div6}>
                             <div className={styles.div7}>WeChat</div>
@@ -93,7 +94,7 @@ export const Wallet: FC = () => {
                 <Card onClick={onSber}>
                     <div className={styles.div1}>
                         <div className={styles.div2}>
-                            <img src={sber} className={styles.div3} alt={'icon'} />
+                            <Image src={sber} className={styles.div3} />
                         </div>
                         <div className={styles.div6}>
                             <div className={styles.div7}>{t('t6')}</div>
@@ -106,7 +107,7 @@ export const Wallet: FC = () => {
                 <Card>
                     <div className={styles.div1_1}>
                         <div className={styles.div4}>
-                            <img src={ton} className={styles.div5} alt={'icon'} />
+                            <Image src={ton} className={styles.div5} />
                         </div>
                         <div className={styles.div6}>
                             <div className={styles.div7}>TON</div>
@@ -115,24 +116,17 @@ export const Wallet: FC = () => {
                             </div>
                         </div>
                         <div className={styles.div1_2}>
-                            <img
+                            <Image
                                 src={tonkeeper}
                                 className={styles.div3}
-                                alt={'icon'}
                                 onClick={() => onTon(AppWalletEnum.TON_KEEPER)}
                             />
-                            <img
+                            <Image
                                 src={mytonwallet}
                                 className={styles.div3}
-                                alt={'icon'}
                                 onClick={() => onTon(AppWalletEnum.MY_TON_WALLET)}
                             />
-                            <img
-                                src={tonhub}
-                                className={styles.div3}
-                                alt={'icon'}
-                                onClick={() => onTon(AppWalletEnum.TON_HUB)}
-                            />
+                            <Image src={tonhub} className={styles.div3} onClick={() => onTon(AppWalletEnum.TON_HUB)} />
                         </div>
                     </div>
                 </Card>
