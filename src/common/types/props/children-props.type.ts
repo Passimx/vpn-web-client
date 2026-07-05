@@ -1,1 +1,1 @@
-export type ChildrenPropsType = { children: any; onClick?: React.MouseEventHandler };
+export type ChildrenPropsType = { children: any; onClick?: React.MouseEventHandler; className?: string };

@@ -11,5 +11,22 @@
   "t10": "Copied",
   "t11": "rubles",
   "t12": "Top up balance",
-  "t13": "yuan"
+  "t13": "yuan",
+  "t14": "Install one of the apps.",
+  "t15": "Top up your balance using any of the available methods (₽, $, ¥).",
+  "t16": "Choose a suitable plan and purchase a subscription.",
+  "t17": "Copy your subscription link and paste it into the installed app.",
+  "t18": "What to do if the app is unavailable in the App Store.",
+  "t19": "App Store unavailability may be due to regional restrictions.<br/>Below are instructions on how to change your region.<br/>On your device, go to:",
+  "t20": "Settings → Apple ID",
+  "t21": "Media & Purchases",
+  "t22": "Country/Region",
+  "t23": "Change Country or Region",
+  "t24": "Select the desired country and save the changes (e.g., Kazakhstan)",
+  "t25": "If prompted for a payment method, select \"None\".",
+  "t26": "Enter any name, address, and phone number. This data is a formality and is not verified.",
+  "t27": "Example:",
+  "t28": "Payment method",
+  "t29": "Nur-Sultan",
+  "t30": "Pavlodar"
 }

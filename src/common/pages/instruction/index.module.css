@@ -1,0 +1,29 @@
+.div1{
+    display: grid;
+    color: white;
+    gap: 8px;
+
+    .div5{
+        font-size: 20px;
+    }
+
+    .div2{
+        display: grid;
+        gap: 8px;
+
+        .div3{
+            display: grid;
+            align-items: center;
+            grid-template-columns:1fr auto;
+            text-transform: uppercase;
+        }
+
+    }
+
+    .div4{
+        gap: 4px;
+        display: grid;
+        align-items: center;
+        grid-template-columns:1fr auto;
+    }
+}

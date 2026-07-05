@@ -1,0 +1,10 @@
+.div1{
+    color: white;
+    display: grid;
+    gap: 8px;
+
+    .div2{
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+}

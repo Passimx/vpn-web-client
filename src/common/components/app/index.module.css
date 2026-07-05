@@ -13,6 +13,7 @@
 
     .div2{
         padding: 8px;
+        overflow-y: auto;
     }
 }
 

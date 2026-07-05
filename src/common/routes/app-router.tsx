@@ -5,6 +5,9 @@ import { MainPage } from '../pages/main';
 import { MyKeys } from '../pages/my-keys';
 import { PutMoneyWallet } from '../pages/put-money-wallet';
 import { Wallet } from '../pages/wallet';
+import { Instruction } from '../pages/instruction';
+import { Tariffs } from '../pages/tariffs';
+import { AppStore } from '../pages/app-store';
 
 const router = createBrowserRouter([
     {
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
             {
                 path: 'wallet',
                 element: <Wallet />,
+            },
+            {
+                path: 'instruction',
+                element: <Instruction />,
+            },
+            {
+                path: 'tariffs',
+                element: <Tariffs />,
+            },
+            {
+                path: 'app-store',
+                element: <AppStore />,
             },
         ],
     },

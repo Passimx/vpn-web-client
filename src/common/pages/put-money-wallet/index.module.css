@@ -3,6 +3,7 @@
     gap: 24px;
     --image-size: 50px;
     --border-radius: 20px;
+    color: white;
 
     .div30{
         gap: 8px;
@@ -46,7 +47,6 @@
 
             .div6{
                 display: grid;
-                color: white;
                 height: 100%;
                 grid-template-rows: auto 1fr;
 
