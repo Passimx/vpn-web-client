@@ -12,7 +12,7 @@ import wechat from '../../../../public/assets/images/wechat.png';
 
 import { Card } from '../../components/card';
 import { WalletHelper } from './helper.ts';
-import { useAppAction } from '../../store';
+import { useAppAction, useAppSelector } from '../../store';
 import { InvoicePage } from '../../components/invoice-page';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { createSberInvoice, createTonInvoice, createWechatInvoice } from '../../api/invoices.ts';
@@ -22,6 +22,7 @@ export const Wallet: FC = () => {
     const { t } = useTranslation();
     const [amount, setAmount] = useState<number>(0);
     const { postMessageToBroadCastChannel, setStateApp } = useAppAction();
+    const userId = useAppSelector((state) => state.app.user?.id);
 
     useEffect(() => {
         const element = document.getElementById(id);
@@ -49,7 +50,7 @@ export const Wallet: FC = () => {
         if (!result) return;
 
         setStateApp({
-            foreground: <InvoicePage request={createTonInvoice({ amount, currency: 'ton', app })} />,
+            foreground: <InvoicePage request={createTonInvoice(userId, { amount, currency: 'ton', app })} />,
         });
     };
 
@@ -57,14 +58,14 @@ export const Wallet: FC = () => {
         const result = checkBalance();
         if (!result) return;
 
-        setStateApp({ foreground: <InvoicePage request={createWechatInvoice({ amount })} /> });
+        setStateApp({ foreground: <InvoicePage request={createWechatInvoice(userId, { amount })} /> });
     };
 
     const onSber = () => {
         const result = checkBalance();
         if (!result) return;
 
-        setStateApp({ foreground: <InvoicePage request={createSberInvoice({ amount })} /> });
+        setStateApp({ foreground: <InvoicePage request={createSberInvoice(userId, { amount })} /> });
     };
 
     return (
