@@ -1,9 +1,10 @@
 import { BalanceAccount } from '../../store/app/types/app-state.type.ts';
+import { CurrencyPriceType } from './types/currency-price.type.ts';
 
-let currencyPrice: Record<keyof BalanceAccount, BalanceAccount> | undefined;
+let currencyPrice: CurrencyPriceType | undefined;
 
 export class WalletHelper {
-    public static setCurrencyPrice(payload: Record<keyof BalanceAccount, BalanceAccount>) {
+    public static setCurrencyPrice(payload: CurrencyPriceType) {
         currencyPrice = payload;
     }
 
@@ -31,11 +32,9 @@ export class WalletHelper {
         return Math.floor(result * 100) / 100;
     }
 
-    public static getTotalBalance(balanceAccount: BalanceAccount, from: string) {
+    public static getTotalBalance(balanceAccount: BalanceAccount, currency: string) {
         if (!currencyPrice) return 0;
         let sum = 0;
-
-        const currency = from as keyof BalanceAccount;
 
         for (const [key, value] of Object.entries(balanceAccount)) {
             const isValid = Object.keys(currencyPrice).includes(key);

@@ -1,0 +1,25 @@
+.div1{
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    color: white;
+
+    .div2{
+        display: grid;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+
+        .div3{
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            gap: 4px;
+
+            .div4{
+                font-size: 20px;
+            }
+        }
+    }
+}

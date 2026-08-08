@@ -8,6 +8,7 @@
         height: 100%;
         display: grid;
         grid-template-columns: auto 1fr;
+        min-height: 30px;
 
         #div33{
             cursor: pointer;

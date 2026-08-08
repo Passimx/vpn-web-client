@@ -31,7 +31,7 @@ function setupHiDPICanvas(canvas: HTMLCanvasElement, width: number, height: numb
 export const QrCode: FC<PropsType> = memo(({ url, text }) => {
     const textAreaHeight = 20;
     const { t } = useTranslation();
-    const { postMessageToBroadCastChannel } = useAppAction();
+    const { postMessage } = useAppAction();
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const size = Math.min(window.innerWidth, window.innerHeight, 400) - 8;
 
@@ -101,7 +101,7 @@ export const QrCode: FC<PropsType> = memo(({ url, text }) => {
                     className={`${styles.button} ${styles.copy_button}`}
                     onClick={() => {
                         if (url?.length) navigator.clipboard.writeText(url);
-                        postMessageToBroadCastChannel({ event: EventsEnum.SHOW_TEXT, data: 't10' });
+                        postMessage({ event: EventsEnum.SHOW_TEXT, data: 't10' });
                     }}
                 >
                     <div className={'text_translate'}>{t('t9')}</div>

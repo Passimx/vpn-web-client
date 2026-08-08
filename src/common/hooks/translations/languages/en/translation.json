@@ -1,5 +1,6 @@
 {
-  "t1": "My keys",
+  "t0": "Error",
+  "t1": "My subscriptions",
   "t2": "How to connect",
   "t3": "$",
   "t4": "usd",
@@ -28,5 +29,10 @@
   "t27": "Example:",
   "t28": "Payment method",
   "t29": "Nur-Sultan",
-  "t30": "Pavlodar"
+  "t30": "Pavlodar",
+  "t31": "Language",
+  "t32": "English",
+  "t33": "🇺🇲",
+  "t34": "Create account",
+  "t35": "Login by link"
 }

@@ -14,9 +14,9 @@ export const InvoicePage: FC<PropsType> = ({ request }) => {
     useEffect(() => {
         const getResponse = async () => {
             const result = await request;
-            if (!result.success) return;
+            if (!result?.length) return;
 
-            setUrl(result.data);
+            setUrl(result);
         };
 
         getResponse();

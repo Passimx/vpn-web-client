@@ -1,0 +1,17 @@
+.div1{
+    display: grid;
+    gap: 4px;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    .div0{
+        display: grid;
+
+        .div2{
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 8px;
+        }
+    }
+
+}

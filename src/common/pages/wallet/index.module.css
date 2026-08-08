@@ -1,79 +1,88 @@
 .background{
-    --width-icon: 40px;
+    height: 100%;
     display: grid;
-    color: white;
-    gap: 8px;
-
-    .div01{
-        display: grid;
-        align-items: center;
-        justify-items: center;
-        font-size: 28px;
-        font-weight: 700;
-        padding: 20px;
-    }
+    align-items: start;
+    justify-items: center;
 
     .div0{
+        --width-icon: 40px;
         display: grid;
+        color: white;
+        gap: 8px;
         width: 100%;
-        gap: 16px !important;
+        max-width: 400px;
 
-        .div1{
+        .div01{
             display: grid;
-            grid-template-columns: var(--width-icon) 1fr;
             align-items: center;
-            gap: 8px;
+            justify-items: center;
+            font-size: 28px;
+            font-weight: 700;
+            padding: 20px;
+        }
 
-            .div2{
-                border-radius: var(--width-icon);
-                width: var(--width-icon);
-                height: var(--width-icon);
+        .div0{
+            display: grid;
+            width: 100%;
+            gap: 16px !important;
+
+            .div1{
                 display: grid;
-                justify-items: center;
+                grid-template-columns: var(--width-icon) 1fr;
                 align-items: center;
+                gap: 8px;
 
-                .div3{
-                    font-size: 20px;
-                    width: 20px;
-                }
-            }
-
-            .div4{
-                display: grid;
-
-                .div5{
+                .div2{
+                    border-radius: var(--width-icon);
+                    width: var(--width-icon);
+                    height: var(--width-icon);
                     display: grid;
-                    grid-template-columns: auto 1fr;
-                    gap: 0 !important;
+                    justify-items: center;
+                    align-items: center;
 
-                    .div6{
-                        font-weight: 700;
-                        text-transform: uppercase;
-                        font-size: 16px;
-                    }
-
-                    .div7{
-                        font-weight: 500;
-                        font-size: 14px;
-                        opacity: 0.7;
-                    }
-
-                    .div8{
-                        display: grid;
-                        justify-content: right;
+                    .div3{
+                        font-size: 20px;
+                        width: 20px;
                     }
                 }
 
+                .div4{
+                    display: grid;
+
+                    .div5{
+                        display: grid;
+                        grid-template-columns: auto 1fr;
+                        gap: 0 !important;
+
+                        .div6{
+                            font-weight: 700;
+                            text-transform: uppercase;
+                            font-size: 16px;
+                        }
+
+                        .div7{
+                            font-weight: 500;
+                            font-size: 14px;
+                            opacity: 0.7;
+                        }
+
+                        .div8{
+                            display: grid;
+                            justify-content: right;
+                        }
+                    }
+
+                }
             }
         }
-    }
 
-    .div20{
-        font-weight: 700;
-        font-size: 16px;
-        cursor: pointer;
-        display: grid;
-        justify-items: center;
-        align-items: center;
+        .div20{
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            display: grid;
+            justify-items: center;
+            align-items: center;
+        }
     }
 }

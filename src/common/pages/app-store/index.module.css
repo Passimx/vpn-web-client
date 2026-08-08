@@ -7,4 +7,9 @@
         white-space: pre-wrap;
         word-break: break-word;
     }
+
+    .div3{
+        display: grid;
+        grid-template-columns:1fr auto;
+    }
 }

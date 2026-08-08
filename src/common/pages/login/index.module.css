@@ -1,0 +1,17 @@
+.div1{
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    .div2{
+        display: grid;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+
+        .div3{
+            color: white;
+        }
+    }
+}

@@ -7,9 +7,15 @@ export type BalanceAccount = {
     usd: number;
 };
 
+export type KeyEntity = {
+    id: string;
+};
+
 export type UserType = {
     id: string;
     balance: BalanceAccount;
+    languageCode: string;
+    keys: KeyEntity[];
 };
 export type AppStateType = Partial<{
     isIos: boolean;
@@ -17,6 +23,5 @@ export type AppStateType = Partial<{
     foreground: JSX.Element;
 
     lang: string;
-    connectionId: string;
     user: UserType;
 }>;

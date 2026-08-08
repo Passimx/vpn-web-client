@@ -1,34 +1,58 @@
 import { useEffect } from 'react';
-import { ClientSdk } from '../@passsimx/client-sdk';
-import { useAppAction } from '../store';
-import { PayloadInterface } from '../@passsimx/client-sdk/interfaces/payload.interface.ts';
-import { getCurrencyPrice } from '../api/currency-price.ts';
+import { useAppAction, useAppSelector } from '../store';
+import { callAction, px } from '../api/ws.ts';
 import { WalletHelper } from '../pages/put-money-wallet/helper.ts';
-import { getUser } from '../api/users.ts';
+import { Envs } from '../config/envs/envs.ts';
+import { EventsEnum } from '../types/events/events.enum.ts';
+import { CurrencyPriceType } from '../pages/put-money-wallet/types/currency-price.type.ts';
+import { useNavigate } from 'react-router-dom';
+import type { UserType } from '../store/app/types/app-state.type.ts';
 
 export const useLoadUser = () => {
     const { setStateApp } = useAppAction();
-
-    const getData = async (payload: PayloadInterface) => {
-        const [resultCurrency, resultUser] = await Promise.all([getCurrencyPrice(), getUser(payload.user.id)]);
-
-        if (resultCurrency.success) WalletHelper.setCurrencyPrice(resultCurrency.data);
-        if (resultUser.success) {
-            setStateApp({ user: resultUser.data });
-        }
-
-        setStateApp({ lang: payload.lang, connectionId: payload.connectionId });
-        return null;
-    };
+    const navigate = useNavigate();
+    const user = useAppSelector((state) => state.app.user);
 
     useEffect(() => {
-        const init = () => {
-            ClientSdk.init((payload) => {
-                getData(payload);
-            });
+        let handler: NodeJS.Timeout | undefined;
+
+        const updateInfo = async (userId: string) => {
+            const [currencyResponse, userResponse] = await Promise.all([
+                callAction<CurrencyPriceType>(EventsEnum.GET_CURRENCY),
+                callAction<UserType>(EventsEnum.GET_USER_INF, userId),
+            ]);
+
+            if (currencyResponse) WalletHelper.setCurrencyPrice(currencyResponse);
+            if (userResponse) setStateApp({ user: userResponse, lang: userResponse.languageCode });
+
+            handler = setTimeout(() => updateInfo(userId), 10 * 1000);
         };
 
-        init();
-        return () => ClientSdk.deInit();
+        if (user) updateInfo(user.id);
+
+        return () => clearTimeout(handler);
+    }, [user?.id]);
+
+    useEffect(() => {
+        px.on('connect', async () => {
+            px.join(Envs.pxChannelId);
+
+            const stateString = localStorage.getItem('user');
+
+            if (!stateString?.length) {
+                setStateApp({ lang: navigator.language.slice(0, 2) });
+                navigate('/login');
+                return;
+            }
+
+            const user = JSON.parse(stateString) as UserType;
+            if (user.id) setStateApp({ user, lang: user.languageCode });
+        });
+
+        px.connect();
+
+        return () => {
+            void px.disconnect();
+        };
     }, []);
 };

@@ -12,6 +12,7 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "@passimx/px.connect": "^1.2.0",
         "i18next": "^26.0.6",
         "moment": "^2.30.1",
         "qrcode": "^1.5.4",

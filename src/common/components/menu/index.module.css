@@ -6,12 +6,14 @@
 
     .div2{
         display: grid;
-        align-items: center;
-        text-align: center;
         gap: 16px;
+        color: white;
 
         .div3{
-            color: white;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 8px;
         }
     }
 }

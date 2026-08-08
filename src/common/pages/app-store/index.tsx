@@ -2,9 +2,17 @@ import { FC } from 'react';
 import styles from './index.module.css';
 import { Card } from '../../components/card';
 import { Trans, useTranslation } from 'react-i18next';
+import { useAppAction } from '../../store';
+import { LuExternalLink } from 'react-icons/lu';
+import { VideoAppStore } from '../../components/video-app-store';
 
 export const AppStore: FC = () => {
     const { t } = useTranslation();
+    const { setStateApp } = useAppAction();
+
+    const showVideo = () => {
+        setStateApp({ foreground: <VideoAppStore /> });
+    };
 
     return (
         <div className={styles.div1}>
@@ -15,6 +23,11 @@ export const AppStore: FC = () => {
             <Card className={styles.div2}>
                 • {t('t20')} <br /> <br />• {t('t21')} <br /> <br />• {t('t22')} <br /> <br />• {t('t23')} <br /> <br />
                 • {t('t24')} <br /> <br />• {t('t25')} <br /> <br />• {t('t26')}
+            </Card>
+
+            <Card className={styles.div3} onClick={showVideo}>
+                <div>{t('t39')}</div>
+                <LuExternalLink className={'icon'} />
             </Card>
 
             <Card className={styles.div2}>

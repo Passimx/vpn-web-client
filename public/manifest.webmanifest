@@ -1,10 +1,10 @@
 {
-    "name": "PassimX",
-    "short_name": "PassimX",
+    "name": "PX vpn",
+    "short_name": "PX vpn",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#062846",
-    "lang": "ru-RU",
+    "lang": "en-US",
     "scope": "/",
     "theme_color": "#062846",
     "icons": [
@@ -18,7 +18,7 @@
         { "src": "/assets/images/mobile.png", "type": "image/png", "sizes": "852x1474", "form_factor": "narrow" }
     ],
     "orientation": "any",
-    "description": "passimx",
+    "description": "Passimx vpn client",
     "edge_side_panel": {
         "preferred_width": 480
     },

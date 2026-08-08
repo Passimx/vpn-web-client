@@ -3,12 +3,13 @@ import { PropsType } from './types/props.type.ts';
 import styles from './index.module.css';
 import { MdOutlineCancel } from 'react-icons/md';
 
-const Input: FC<Partial<PropsType>> = ({ placeholder, id, type, value = '' }) => {
+const Input: FC<Partial<PropsType>> = ({ placeholder, id, type, value = '', onChangeValue }) => {
     const [ownValue, setOwnValue] = useState<string>(value);
     const isTexted = ownValue.length > 0;
 
     const cancel = () => {
         setOwnValue('');
+        if (onChangeValue) onChangeValue('');
     };
 
     return (
@@ -20,18 +21,27 @@ const Input: FC<Partial<PropsType>> = ({ placeholder, id, type, value = '' }) =>
                 value={ownValue}
                 type={type}
                 onChange={(e) => {
-                    const value = e.target.value;
-                    if (type !== 'number') return setOwnValue(value);
+                    const val = e.target.value;
+
+                    if (type !== 'number') {
+                        setOwnValue(val);
+                        if (onChangeValue) onChangeValue(val);
+                        return;
+                    }
 
                     try {
-                        const number = Number(value);
-
-                        if (number < 0) return setOwnValue('');
-                        if (String(number) != value) return setOwnValue('');
-                        return setOwnValue(value);
-                    } catch (e) {
-                        console.log(e);
+                        const number = Number(val);
+                        if (number < 0 || String(number) !== val) {
+                            setOwnValue('');
+                            if (onChangeValue) onChangeValue('');
+                            return;
+                        }
+                        setOwnValue(val);
+                        if (onChangeValue) onChangeValue(val);
+                    } catch (error) {
+                        console.log(error);
                         setOwnValue('');
+                        if (onChangeValue) onChangeValue('');
                     }
                 }}
             />

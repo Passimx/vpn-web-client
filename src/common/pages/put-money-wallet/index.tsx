@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import styles from './index.module.css';
 import { useTranslation } from 'react-i18next';
 import Input from '../../components/input';
@@ -15,30 +15,22 @@ import { WalletHelper } from './helper.ts';
 import { useAppAction, useAppSelector } from '../../store';
 import { InvoicePage } from '../../components/invoice-page';
 import { EventsEnum } from '../../types/events/events.enum.ts';
-import { createSberInvoice, createTonInvoice, createWechatInvoice } from '../../api/invoices.ts';
 import { Image } from '../../components/image';
+import { callAction } from '../../api/ws.ts';
 
 export const PutMoneyWallet: FC = () => {
     const id = 'id';
     const { t } = useTranslation();
+    const { setStateApp, postMessage } = useAppAction();
     const [amount, setAmount] = useState<number>(0);
-    const { postMessageToBroadCastChannel, setStateApp } = useAppAction();
     const userId = useAppSelector((state) => state.app.user?.id);
 
-    useEffect(() => {
-        const element = document.getElementById(id);
-        if (!element) return;
-
-        const onInput = (e: any) => setAmount(Number(e.target.value));
-        element.addEventListener('input', onInput);
-
-        return () => element.removeEventListener('input', onInput);
-    }, []);
+    const onChangeValue = (value: string) => setAmount(Number(value));
 
     const checkBalance = () => {
         if (amount && amount > 0) return true;
 
-        postMessageToBroadCastChannel({ event: EventsEnum.SHOW_TEXT, data: t('t7') });
+        postMessage({ event: EventsEnum.SHOW_TEXT, data: t('t7') });
 
         const element = document.getElementById(id);
         element?.focus();
@@ -50,9 +42,16 @@ export const PutMoneyWallet: FC = () => {
         const result = checkBalance();
         if (!result) return;
 
-        const payload = WalletHelper.convert(amount, t('t4'), 'ton');
+        const amountPrice = WalletHelper.convert(amount, t('t4'), 'ton');
+        const request = callAction<string>(EventsEnum.CREATE_TON_INVOICE, {
+            userId,
+            amount: amountPrice,
+            app,
+            currency: 'ton',
+        });
+
         setStateApp({
-            foreground: <InvoicePage request={createTonInvoice(userId, { amount: payload, currency: 'ton', app })} />,
+            foreground: <InvoicePage request={request} />,
         });
     };
 
@@ -60,9 +59,11 @@ export const PutMoneyWallet: FC = () => {
         const result = checkBalance();
         if (!result) return;
 
-        const payload = WalletHelper.convert(amount, t('t4'), 'cny');
+        const amountPrice = WalletHelper.convert(amount, t('t4'), 'cny');
+        const request = callAction<string>(EventsEnum.CREATE_WECHAT_INVOICE, { userId, amount: amountPrice });
+
         setStateApp({
-            foreground: <InvoicePage request={createWechatInvoice(userId, { amount: payload })} />,
+            foreground: <InvoicePage request={request} />,
         });
     };
 
@@ -70,71 +71,79 @@ export const PutMoneyWallet: FC = () => {
         const result = checkBalance();
         if (!result) return;
 
-        const payload = WalletHelper.convert(amount, t('t4'), 'rub');
-        setStateApp({ foreground: <InvoicePage request={createSberInvoice(userId, { amount: payload })} /> });
+        const amountPrice = WalletHelper.convert(amount, t('t4'), 'rub');
+        const request = callAction<string>(EventsEnum.CREATE_SBER_INVOICE, { userId, amount: amountPrice });
+
+        setStateApp({ foreground: <InvoicePage request={request} /> });
     };
 
     return (
         <div className={styles.div1}>
-            <div>
-                <div className={styles.div11}>
-                    <Input id={id} placeholder={t('t5')} type={'number'} />
-                    <div className={styles.div12}>{t('t3')}</div>
+            <div className={styles.div0}>
+                <div>
+                    <div className={styles.div11}>
+                        <Input id={id} placeholder={t('t5')} type={'number'} onChangeValue={onChangeValue} />
+                        <div className={styles.div12}>{t('t3')}</div>
+                    </div>
                 </div>
-            </div>
-            <div className={styles.div30}>
-                <Card onClick={onWechat}>
-                    <div className={styles.div1}>
-                        <div className={styles.div2}>
-                            <Image src={wechat} className={styles.div3} />
-                        </div>
-                        <div className={styles.div6}>
-                            <div className={styles.div7}>WeChat</div>
-                            <div className={styles.div8}>
-                                {WalletHelper.formatPrice(WalletHelper.convert(amount, t('t4'), 'cny'))}&#160;¥
+                <div className={styles.div30}>
+                    <Card onClick={onWechat}>
+                        <div className={styles.div1_0}>
+                            <div className={styles.div2}>
+                                <Image src={wechat} className={styles.div3} />
+                            </div>
+                            <div className={styles.div6}>
+                                <div className={styles.div7}>WeChat</div>
+                                <div className={styles.div8}>
+                                    {WalletHelper.formatPrice(WalletHelper.convert(amount, t('t4'), 'cny'))}&#160;¥
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Card>
-                <Card onClick={onSber}>
-                    <div className={styles.div1}>
-                        <div className={styles.div2}>
-                            <Image src={sber} className={styles.div3} />
-                        </div>
-                        <div className={styles.div6}>
-                            <div className={styles.div7}>{t('t6')}</div>
-                            <div className={styles.div8}>
-                                {WalletHelper.formatPrice(WalletHelper.convert(amount, t('t4'), 'rub'))}&#160;₽
+                    </Card>
+                    <Card onClick={onSber}>
+                        <div className={styles.div1_0}>
+                            <div className={styles.div2}>
+                                <Image src={sber} className={styles.div3} />
+                            </div>
+                            <div className={styles.div6}>
+                                <div className={styles.div7}>{t('t6')}</div>
+                                <div className={styles.div8}>
+                                    {WalletHelper.formatPrice(WalletHelper.convert(amount, t('t4'), 'rub'))}&#160;₽
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Card>
-                <Card>
-                    <div className={styles.div1_1}>
-                        <div className={styles.div4}>
-                            <Image src={ton} className={styles.div5} />
-                        </div>
-                        <div className={styles.div6}>
-                            <div className={styles.div7}>TON</div>
-                            <div className={styles.div8}>
-                                {WalletHelper.formatPrice(WalletHelper.convert(amount, t('t4'), 'ton'))}&#160;TON
+                    </Card>
+                    <Card>
+                        <div className={styles.div1_1}>
+                            <div className={styles.div4}>
+                                <Image src={ton} className={styles.div5} />
+                            </div>
+                            <div className={styles.div6}>
+                                <div className={styles.div7}>TON</div>
+                                <div className={styles.div8}>
+                                    {WalletHelper.formatPrice(WalletHelper.convert(amount, t('t4'), 'ton'))}&#160;TON
+                                </div>
+                            </div>
+                            <div className={styles.div1_2}>
+                                <Image
+                                    src={tonkeeper}
+                                    className={styles.div3}
+                                    onClick={() => onTon(AppWalletEnum.TON_KEEPER)}
+                                />
+                                <Image
+                                    src={mytonwallet}
+                                    className={styles.div3}
+                                    onClick={() => onTon(AppWalletEnum.MY_TON_WALLET)}
+                                />
+                                <Image
+                                    src={tonhub}
+                                    className={styles.div3}
+                                    onClick={() => onTon(AppWalletEnum.TON_HUB)}
+                                />
                             </div>
                         </div>
-                        <div className={styles.div1_2}>
-                            <Image
-                                src={tonkeeper}
-                                className={styles.div3}
-                                onClick={() => onTon(AppWalletEnum.TON_KEEPER)}
-                            />
-                            <Image
-                                src={mytonwallet}
-                                className={styles.div3}
-                                onClick={() => onTon(AppWalletEnum.MY_TON_WALLET)}
-                            />
-                            <Image src={tonhub} className={styles.div3} onClick={() => onTon(AppWalletEnum.TON_HUB)} />
-                        </div>
-                    </div>
-                </Card>
+                    </Card>
+                </div>
             </div>
         </div>
     );

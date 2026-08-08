@@ -3,4 +3,5 @@ export type PropsType = {
     id?: string;
     placeholder?: string;
     type?: string;
+    onChangeValue?: (value: string) => void;
 };

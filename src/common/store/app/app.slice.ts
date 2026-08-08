@@ -2,16 +2,14 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { type AppStateType } from './types/app-state.type.ts';
 import type { EventsType } from '../../types/events/event-data.type.ts';
 
-const channel = new BroadcastChannel('ws-channel');
-
 const initialState: AppStateType = {};
 
 const AppSlice = createSlice({
     name: 'app',
     initialState,
     reducers: {
-        postMessageToBroadCastChannel(_state, { payload }: PayloadAction<EventsType>) {
-            channel.postMessage(payload);
+        postMessage(_state, { payload }: PayloadAction<EventsType>) {
+            window.postMessage(payload, window.origin);
         },
 
         setStateApp(state, { payload }: PayloadAction<Partial<AppStateType>>) {
@@ -21,6 +19,8 @@ const AppSlice = createSlice({
             ][]) {
                 state[key] = value as never;
             }
+
+            if (state.user !== undefined) localStorage.setItem('user', JSON.stringify(state.user));
         },
     },
 });

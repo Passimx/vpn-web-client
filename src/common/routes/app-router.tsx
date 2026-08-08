@@ -2,12 +2,15 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import type { FC } from 'react';
 import { App } from '../components/app';
 import { MainPage } from '../pages/main';
-import { MyKeys } from '../pages/my-keys';
+import { MySubscriptions } from '../pages/my-subscriptions';
 import { PutMoneyWallet } from '../pages/put-money-wallet';
 import { Wallet } from '../pages/wallet';
 import { Instruction } from '../pages/instruction';
 import { Tariffs } from '../pages/tariffs';
 import { AppStore } from '../pages/app-store';
+import { Languages } from '../pages/languages';
+import { Login } from '../pages/login';
+import { LoginByLink } from '../pages/login-by-link';
 
 const router = createBrowserRouter([
     {
@@ -22,8 +25,12 @@ const router = createBrowserRouter([
                 element: <MainPage />,
             },
             {
-                path: 'my-keys',
-                element: <MyKeys />,
+                path: 'my-subscriptions',
+                element: <MySubscriptions />,
+            },
+            {
+                path: 'tariffs',
+                element: <Tariffs />,
             },
             {
                 path: 'put-money-wallet',
@@ -38,12 +45,20 @@ const router = createBrowserRouter([
                 element: <Instruction />,
             },
             {
-                path: 'tariffs',
-                element: <Tariffs />,
-            },
-            {
                 path: 'app-store',
                 element: <AppStore />,
+            },
+            {
+                path: 'language',
+                element: <Languages />,
+            },
+            {
+                path: 'login',
+                element: <Login />,
+            },
+            {
+                path: 'login-by-link',
+                element: <LoginByLink />,
             },
         ],
     },

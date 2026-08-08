@@ -9,10 +9,12 @@ type EnvsType = {
     apiUrl: string;
     environment: EnvironmentEnum;
     version: string;
+    pxChannelId: string;
 };
 
 export const Envs: EnvsType = {
     apiUrl: import.meta.env.VITE_API_URL,
     environment: import.meta.env.VITE_ENVIRONMENT,
     version: import.meta.env.VITE_APP_VERSION ?? json.version,
+    pxChannelId: import.meta.env.VITE_APP_CHANNEL_ID,
 };

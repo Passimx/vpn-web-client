@@ -5,4 +5,9 @@ type ShowText = {
     readonly data: string;
 };
 
-export type LocalEvents = ShowText;
+type SetStateApp = {
+    readonly event: EventsEnum.SET_STATE_APP;
+    readonly data: string;
+};
+
+export type LocalEvents = ShowText | SetStateApp;

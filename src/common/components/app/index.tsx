@@ -7,19 +7,34 @@ import { useLoadUser } from '../../hooks/use-load-user.hook.ts';
 import styles from './index.module.css';
 import { Header } from '../header';
 import { TopElements } from '../top-elements';
+import { RotateLoading } from '../rotate-loading';
+import { useRegisterServiceWorkerWorker } from '../../hooks/use-register-service-worker.hook.ts';
+import { useChangeLocation } from '../../hooks/use-change-location.hook.ts';
 
 export const App: FC<PropsType> = ({ children }) => {
     useIsIos();
     useIsPhone();
     useLoadUser();
+    useChangeLocation();
+    useRegisterServiceWorkerWorker();
     const loaded = useTranslation();
 
-    if (loaded)
-        return (
-            <div className={styles.div1}>
-                <TopElements />
-                <Header />
-                <div className={styles.div2}>{children}</div>
-            </div>
-        );
+    return (
+        <div className={styles.div1}>
+            <TopElements />
+            {loaded ? (
+                <>
+                    <Header />
+                    <div id={'root2'} className={styles.div2}>
+                        {children}
+                    </div>
+                </>
+            ) : (
+                <>
+                    <div></div>
+                    <RotateLoading />
+                </>
+            )}
+        </div>
+    );
 };

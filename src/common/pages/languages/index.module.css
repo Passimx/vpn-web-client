@@ -1,0 +1,18 @@
+.div1{
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    color: white;
+
+    .div2{
+        display: grid;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+    }
+}
+
+.active{
+    background-color: rgba(255, 255, 255, 0.5);
+}

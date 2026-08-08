@@ -15,7 +15,7 @@ export const Header: FC = () => {
     useEffect(() => {
         const element = document.getElementById(styles.div33);
         if (!element) return;
-        element.style.transform = `scale(${location.pathname === '/' ? 0 : 1})`;
+        element.style.transform = `scale(${['/', '/login'].includes(location.pathname) ? 0 : 1})`;
     }, [location.pathname]);
 
     return (
@@ -25,17 +25,19 @@ export const Header: FC = () => {
                     <IoIosArrowBack className={styles.div4} />
                 </div>
             </div>
-            <div className={styles.div3}>
-                {user && (
-                    <div className={styles.div4} onClick={() => navigate('/wallet')}>
-                        <div>{WalletHelper.formatPrice(WalletHelper.getTotalBalance(user.balance, t('t4')))}</div>
-                        <div>{t('t3')}</div>
+            {user && (
+                <>
+                    <div className={styles.div3}>
+                        <div className={styles.div4} onClick={() => navigate('/wallet')}>
+                            <div>{WalletHelper.formatPrice(WalletHelper.getTotalBalance(user.balance, t('t4')))}</div>
+                            <div>{t('t3')}</div>
+                        </div>
+                        <div className={styles.div5} onClick={() => navigate('/put-money-wallet')}>
+                            <IoIosAdd className={styles.div6} />
+                        </div>
                     </div>
-                )}
-                <div className={styles.div5} onClick={() => navigate('/put-money-wallet')}>
-                    <IoIosAdd className={styles.div6} />
-                </div>
-            </div>
+                </>
+            )}
         </div>
     );
 };

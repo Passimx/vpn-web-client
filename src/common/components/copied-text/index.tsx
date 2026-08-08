@@ -11,10 +11,9 @@ export const CopiedText: FC = memo(() => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        let scrollTimeout: any;
-        const channel = new BroadcastChannel('ws-channel');
+        let scrollTimeout: NodeJS.Timeout | undefined;
 
-        channel.onmessage = ({ data }: MessageEvent<EventsType>) => {
+        const func = ({ data }: MessageEvent<EventsType>) => {
             if (data.event === EventsEnum.SHOW_TEXT) {
                 clearTimeout(scrollTimeout);
                 setVisible(true);
@@ -23,7 +22,8 @@ export const CopiedText: FC = memo(() => {
             }
         };
 
-        return () => channel.close();
+        window.addEventListener('message', func);
+        return () => window.removeEventListener('message', func);
     }, []);
 
     return (

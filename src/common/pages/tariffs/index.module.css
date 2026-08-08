@@ -1,1 +1,44 @@
-.div1{}
+.div1{
+    height: 100%;
+    display: grid;
+    overflow-x: hidden;
+    align-items: center;
+    justify-items: center;
+    color: white;
+
+    .div0{
+        display: grid;
+        gap: 16px;
+        width: 100%;
+        max-width: 400px;
+
+        .div2{
+            display: grid;
+            gap: 8px;
+
+            .div3{
+                display: grid;
+                gap: 8px;
+            }
+
+            .div4{
+                background: linear-gradient(135deg, rgba(255, 0, 128, 0.5), rgba(0, 204, 255, 0.5), rgba(128, 0, 255, 0.5));
+                background-size: 300% 300%;
+                animation: gradientShift 10s ease infinite;
+
+            }
+        }
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
