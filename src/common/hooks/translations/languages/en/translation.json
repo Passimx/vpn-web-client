@@ -34,5 +34,17 @@
   "t32": "English",
   "t33": "🇺🇲",
   "t34": "Create account",
-  "t35": "Login by link"
+  "t35": "Login by link",
+  "t36": "Paste from clipboard",
+  "t37": "Invalid subscription link",
+  "t38": "Copy your VPN subscription link and click the button below",
+  "t39": "Watch video",
+  "t40": "Purchase new subscription",
+  "t41": "Price",
+  "t42": "Validity period (days)",
+  "t43": "Data limit",
+  "t44": "Top up your balance. Insufficient funds in your account",
+  "t45": "You currently have no subscriptions",
+  "t46": "Basic plan. Suitable for most cases",
+  "t47": "Premium plan. Designed to bypass Roskomnadzor blocks in Russia"
 }
