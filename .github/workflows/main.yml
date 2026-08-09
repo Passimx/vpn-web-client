@@ -23,7 +23,7 @@ jobs:
     with:
       ORGANIZATION_NAME: ${{ vars.ORGANIZATION_NAME }}
       IMAGE_NAME: ${{ vars.IMAGE_NAME }}
-      VITE_API_URL: ${{ vars.VITE_API_URL }}
+      VITE_APP_CHANNEL_ID: ${{ vars.VITE_APP_CHANNEL_ID }}
       VERSION: ${{ needs.version.outputs.release_version }}
     secrets:
       DOCKER_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
