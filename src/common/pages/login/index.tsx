@@ -18,7 +18,7 @@ export const Login: FC = () => {
         const response = await callAction<IUserInfo>(EventsEnum.CREATE_ACCOUNT, { languageCode: lang });
         if (!response) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't0' });
 
-        setStateApp({ user: response.user, lang: response.user.languageCode });
+        setStateApp({ user: response.user });
         navigate('/');
     };
 

@@ -14,7 +14,6 @@ export type KeyEntity = {
 export type UserType = {
     id: string;
     balance: BalanceAccount;
-    languageCode: string;
     keys: KeyEntity[];
 };
 export type AppStateType = Partial<{

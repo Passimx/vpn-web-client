@@ -4,21 +4,15 @@ import { useTranslation } from 'react-i18next';
 import { resources } from '../../hooks/translations/use-translation.ts';
 import { useAppAction, useAppSelector } from '../../store';
 import styles from './index.module.css';
-import { callAction } from '../../api/px.connect.ts';
-import { EventsEnum } from '../../types/events/events.enum.ts';
-import { UserType } from '../../store/app/types/app-state.type.ts';
 
 export const Languages: FC = () => {
     const { t } = useTranslation();
     const languages = Object.keys(resources);
-    const { setStateApp, postMessage } = useAppAction();
+    const { setStateApp } = useAppAction();
     const lang = useAppSelector((state) => state.app.lang);
-    const userId = useAppSelector((state) => state.app.user?.id);
 
     const onChangeLang = async (lang: string) => {
-        const user = await callAction<UserType>(EventsEnum.UPDATE_USER_INF, { id: userId, languageCode: lang });
-        if (!user) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't0' });
-        setStateApp({ user, lang: user.languageCode });
+        setStateApp({ lang });
     };
 
     return (

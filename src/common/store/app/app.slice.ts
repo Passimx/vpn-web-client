@@ -1,4 +1,4 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction, current } from '@reduxjs/toolkit';
 import { type AppStateType } from './types/app-state.type.ts';
 import type { EventsType } from '../../types/events/event-data.type.ts';
 
@@ -20,7 +20,9 @@ const AppSlice = createSlice({
                 state[key] = value as never;
             }
 
-            if (state.user !== undefined) localStorage.setItem('user', JSON.stringify(state.user));
+            const actualString = localStorage.getItem('state');
+            const actual = JSON.parse(actualString ?? '{}');
+            localStorage.setItem('state', JSON.stringify({ ...actual, ...current(state) }));
         },
     },
 });

@@ -6,7 +6,7 @@ import { Envs } from '../config/envs/envs.ts';
 import { EventsEnum } from '../types/events/events.enum.ts';
 import { CurrencyPriceType } from '../pages/put-money-wallet/types/currency-price.type.ts';
 import { useNavigate } from 'react-router-dom';
-import type { UserType } from '../store/app/types/app-state.type.ts';
+import type { AppStateType, UserType } from '../store/app/types/app-state.type.ts';
 
 export const useLoadUser = () => {
     const { setStateApp } = useAppAction();
@@ -23,7 +23,7 @@ export const useLoadUser = () => {
             ]);
 
             if (currencyResponse) WalletHelper.setCurrencyPrice(currencyResponse);
-            if (userResponse) setStateApp({ user: userResponse, lang: userResponse.languageCode });
+            if (userResponse) setStateApp({ user: userResponse });
 
             handler = setTimeout(() => updateInfo(userId), 10 * 1000);
         };
@@ -37,7 +37,7 @@ export const useLoadUser = () => {
         px.on('connect', async () => {
             px.join(Envs.pxChannelId);
 
-            const stateString = localStorage.getItem('user');
+            const stateString = localStorage.getItem('state');
 
             if (!stateString?.length) {
                 setStateApp({ lang: navigator.language.slice(0, 2) });
@@ -45,8 +45,10 @@ export const useLoadUser = () => {
                 return;
             }
 
-            const user = JSON.parse(stateString) as UserType;
-            if (user.id) setStateApp({ user, lang: user.languageCode });
+            const state = JSON.parse(stateString) as AppStateType;
+            if (!state.lang) setStateApp({ lang: navigator.language.slice(0, 2) });
+
+            setStateApp(state);
         });
 
         px.connect();
