@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppAction, useAppSelector } from '../store';
-import { callAction, px } from '../api/ws.ts';
+import { callAction, px } from '../api/px.connect.ts';
 import { WalletHelper } from '../pages/put-money-wallet/helper.ts';
 import { Envs } from '../config/envs/envs.ts';
 import { EventsEnum } from '../types/events/events.enum.ts';

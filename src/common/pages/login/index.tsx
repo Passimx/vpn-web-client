@@ -3,7 +3,7 @@ import styles from '../../components/menu/index.module.css';
 import { Card } from '../../components/card';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { callAction } from '../../api/ws.ts';
+import { callAction } from '../../api/px.connect.ts';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { useAppAction, useAppSelector } from '../../store';
 import { IUserInfo } from '../../types/api/user/user-info.interface.ts';

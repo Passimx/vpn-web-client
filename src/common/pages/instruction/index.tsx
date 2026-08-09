@@ -7,7 +7,7 @@ import { RotateLoading } from '../../components/rotate-loading';
 import { useAppSelector } from '../../store';
 import { DownloadLinksItem, DownloadLinksType } from '../../types/api/apps.ts';
 import { LuExternalLink } from 'react-icons/lu';
-import { callAction } from '../../api/ws.ts';
+import { callAction } from '../../api/px.connect.ts';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 
 export const Instruction: FC = () => {

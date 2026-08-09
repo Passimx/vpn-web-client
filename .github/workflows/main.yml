@@ -23,6 +23,7 @@ jobs:
     with:
       ORGANIZATION_NAME: ${{ vars.ORGANIZATION_NAME }}
       IMAGE_NAME: ${{ vars.IMAGE_NAME }}
+      VITE_PX_CONNECT_URL: ${{ vars.VITE_PX_CONNECT_URL }}
       VITE_APP_CHANNEL_ID: ${{ vars.VITE_APP_CHANNEL_ID }}
       VERSION: ${{ needs.version.outputs.release_version }}
     secrets:

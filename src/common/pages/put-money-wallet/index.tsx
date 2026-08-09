@@ -16,7 +16,7 @@ import { useAppAction, useAppSelector } from '../../store';
 import { InvoicePage } from '../../components/invoice-page';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { Image } from '../../components/image';
-import { callAction } from '../../api/ws.ts';
+import { callAction } from '../../api/px.connect.ts';
 
 export const PutMoneyWallet: FC = () => {
     const id = 'id';

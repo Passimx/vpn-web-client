@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import styles from './index.module.css';
-import { callAction } from '../../api/ws.ts';
+import { callAction } from '../../api/px.connect.ts';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { ITariffs } from '../../types/api/tariffs.interface.ts';
 import { useAppAction } from '../../store';

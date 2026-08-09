@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useAppAction } from '../../store';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { MdUploadFile } from 'react-icons/md';
-import { callAction } from '../../api/ws.ts';
+import { callAction } from '../../api/px.connect.ts';
 import { useNavigate } from 'react-router-dom';
 import { IUserInfo } from '../../types/api/user/user-info.interface.ts';
 
