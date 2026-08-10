@@ -7,14 +7,20 @@ export type BalanceAccount = {
     usd: number;
 };
 
-export type KeyEntity = {
+export type KeyType = {
     id: string;
+    status: 'active' | 'expired';
+    autoRenewEnabled: boolean;
+    countTrafficLimit: number;
+    countTrafficUsed: number;
+    createdAt: Date;
+    expiresAt: Date;
 };
 
 export type UserType = {
     id: string;
     balance: BalanceAccount;
-    keys: KeyEntity[];
+    keys: KeyType[];
 };
 export type AppStateType = Partial<{
     isIos: boolean;

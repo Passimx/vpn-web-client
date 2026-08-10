@@ -20,7 +20,7 @@ export const Tariff: FC<{ tariff: ITariff }> = ({ tariff }) => {
     };
 
     return (
-        <Card key={tariff.id} className={styles.div1} onClick={onClick}>
+        <Card className={styles.div1} onClick={onClick}>
             <div className={styles.div0}>
                 <div className={styles.div2}>
                     <div>{t('t41')}:</div>

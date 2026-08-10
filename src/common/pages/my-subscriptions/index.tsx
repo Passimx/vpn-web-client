@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 import { LuExternalLink, LuSearchX } from 'react-icons/lu';
 import { useAppSelector } from '../../store';
+import { shortText } from '../../hooks/short-text.ts';
 
 export const MySubscriptions: FC = () => {
     const { t } = useTranslation();
@@ -15,11 +16,24 @@ export const MySubscriptions: FC = () => {
     return (
         <div className={styles.div1}>
             <div className={styles.div2}>
-                {!keys?.length && (
+                {!keys?.length ? (
                     <Card className={styles.div3}>
                         <LuSearchX className={'icon'} />
                         <div>{t('t45')}</div>
                     </Card>
+                ) : (
+                    <>
+                        {keys.map((key) => (
+                            <Card
+                                key={key.id}
+                                className={styles.div4}
+                                onClick={() => navigate(`/my-subscriptions/${key.id}`)}
+                            >
+                                <div>{shortText(key.id)}</div>
+                                <LuExternalLink className={'icon'} />
+                            </Card>
+                        ))}
+                    </>
                 )}
 
                 <Card className={styles.div3} onClick={() => navigate('/tariffs')}>

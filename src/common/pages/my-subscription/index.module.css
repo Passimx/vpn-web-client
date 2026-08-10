@@ -1,0 +1,32 @@
+.div1{
+    height: 100%;
+    display: grid;
+    color: white;
+    align-items: center;
+    justify-items: center;
+
+    .div2{
+        display: grid;
+        gap: 18px;
+
+        .div3{
+            display: grid;
+            gap: 8px;
+
+            .div4{
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 8px;
+            }
+
+            .div5{
+                display: grid;
+                grid-template-columns: 1fr auto;
+
+                .div6{
+                    color: #cc0000
+                }
+            }
+        }
+    }
+}

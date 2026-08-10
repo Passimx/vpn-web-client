@@ -1,4 +1,6 @@
 {
+  "active": "Active",
+  "expired": "Expired",
   "t0": "Error",
   "t1": "My subscriptions",
   "t2": "How to connect",
@@ -46,5 +48,11 @@
   "t44": "Top up your balance. Insufficient funds in your account",
   "t45": "You currently have no subscriptions",
   "t46": "Basic plan. Suitable for most cases",
-  "t47": "Premium plan. Designed to bypass Roskomnadzor blocks in Russia"
+  "t47": "Premium plan. Designed to bypass Roskomnadzor blocks in Russia",
+  "t48": "Data balance",
+  "t49": "Status",
+  "t50": "Active until",
+  "t51": "Creation date",
+  "t52": "Extend subscription",
+  "t53": "Remove"
 }

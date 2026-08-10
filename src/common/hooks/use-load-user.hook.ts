@@ -37,18 +37,13 @@ export const useLoadUser = () => {
         px.on('connect', async () => {
             px.join(Envs.pxChannelId);
 
-            const stateString = localStorage.getItem('state');
-
-            if (!stateString?.length) {
-                setStateApp({ lang: navigator.language.slice(0, 2) });
-                navigate('/login');
-                return;
-            }
-
+            const stateString = localStorage.getItem('state') || '{}';
             const state = JSON.parse(stateString) as AppStateType;
-            if (!state.lang) setStateApp({ lang: navigator.language.slice(0, 2) });
+            if (!state?.lang) state.lang = navigator.language.slice(0, 2);
 
             setStateApp(state);
+
+            if (!state?.user) navigate('/login');
         });
 
         px.connect();

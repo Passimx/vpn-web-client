@@ -1,6 +1,6 @@
 {
-    "name": "PX vpn",
-    "short_name": "PX vpn",
+    "name": "PX Vpn",
+    "short_name": "PX Vpn",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#062846",

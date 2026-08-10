@@ -11,6 +11,7 @@ import { AppStore } from '../pages/app-store';
 import { Languages } from '../pages/languages';
 import { Login } from '../pages/login';
 import { LoginByLink } from '../pages/login-by-link';
+import { MySubscription } from '../pages/my-subscription';
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path: 'my-subscriptions',
                 element: <MySubscriptions />,
+            },
+            {
+                path: 'my-subscriptions/:id',
+                element: <MySubscription />,
             },
             {
                 path: 'tariffs',
