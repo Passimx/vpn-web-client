@@ -1,7 +1,6 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import type { FC } from 'react';
 import { App } from '../components/app';
-import { MainPage } from '../pages/main';
 import { MySubscriptions } from '../pages/my-subscriptions';
 import { PutMoneyWallet } from '../pages/put-money-wallet';
 import { Wallet } from '../pages/wallet';
@@ -12,6 +11,7 @@ import { Languages } from '../pages/languages';
 import { Login } from '../pages/login';
 import { LoginByLink } from '../pages/login-by-link';
 import { MySubscription } from '../pages/my-subscription';
+import { Menu } from '../components/menu';
 
 const router = createBrowserRouter([
     {
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '*',
-                element: <MainPage />,
+                element: <Menu />,
             },
             {
                 path: 'my-subscriptions',
