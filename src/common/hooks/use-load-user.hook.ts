@@ -39,11 +39,11 @@ export const useLoadUser = () => {
 
             const stateString = localStorage.getItem('state') || '{}';
             const state = JSON.parse(stateString) as AppStateType;
-            if (!state?.lang) state.lang = navigator.language.slice(0, 2);
+
+            if (!state.user) navigate('/login');
+            if (!state.lang) state.lang = navigator.language.slice(0, 2);
 
             setStateApp(state);
-
-            if (!state?.user) navigate('/login');
         });
 
         px.connect();
