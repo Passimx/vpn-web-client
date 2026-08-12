@@ -12,6 +12,7 @@ import { Login } from '../pages/login';
 import { LoginByLink } from '../pages/login-by-link';
 import { MySubscription } from '../pages/my-subscription';
 import { Menu } from '../components/menu';
+import { ExtendKey } from '../pages/extend-key';
 
 const router = createBrowserRouter([
     {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
             {
                 path: 'login-by-link',
                 element: <LoginByLink />,
+            },
+            {
+                path: 'extend-key/:keyId',
+                element: <ExtendKey />,
             },
         ],
     },

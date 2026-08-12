@@ -33,7 +33,7 @@ export const Tariffs: FC = () => {
                             <div>{t('t46')}</div>
                             {tariffs?.base.map((tariff) => <Tariff key={tariff.id} tariff={tariff} />)}
                         </Card>
-                        <Card className={`${styles.div3} ${styles.div4}`}>
+                        <Card className={`${styles.div3} animation_1`}>
                             <div>{t('t47')}</div>
                             {tariffs?.cdn.map((tariff) => <Tariff key={tariff.id} tariff={tariff} />)}
                         </Card>

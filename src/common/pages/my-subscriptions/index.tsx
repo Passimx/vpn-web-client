@@ -23,13 +23,16 @@ export const MySubscriptions: FC = () => {
                     </Card>
                 ) : (
                     <>
-                        {keys.map((key) => (
+                        {keys.map((key, index) => (
                             <Card
                                 key={key.id}
                                 className={styles.div4}
                                 onClick={() => navigate(`/my-subscriptions/${key.id}`)}
                             >
-                                <div>{shortText(key.id)}</div>
+                                <div>
+                                    {index + 1})&#160;
+                                    {shortText(key.id)}
+                                </div>
                                 <LuExternalLink className={'icon'} />
                             </Card>
                         ))}

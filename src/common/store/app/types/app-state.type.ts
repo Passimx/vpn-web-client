@@ -10,6 +10,7 @@ export type BalanceAccount = {
 export type KeyType = {
     id: string;
     status: 'active' | 'expired';
+    cascadeToServerId: string | null;
     autoRenewEnabled: boolean;
     countTrafficLimit: number;
     countTrafficUsed: number;

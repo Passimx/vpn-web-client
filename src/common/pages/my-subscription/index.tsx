@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import styles from './index.module.css';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAppAction, useAppSelector } from '../../store';
 import { RotateLoading } from '../../components/rotate-loading';
 import { Card } from '../../components/card';
@@ -11,18 +11,33 @@ import { WalletHelper } from '../put-money-wallet/helper.ts';
 import { IoCopyOutline } from 'react-icons/io5';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { MdDeleteOutline } from 'react-icons/md';
+import { callAction } from '../../api/px.connect.ts';
+import { UserType } from '../../store/app/types/app-state.type.ts';
 
 export const MySubscription: FC = () => {
     const { t } = useTranslation();
     const { id } = useParams();
-    const keys = useAppSelector((state) => state.app.user?.keys);
-    const key = id ? keys?.find((k) => k.id === id) : undefined;
-    const { postMessage } = useAppAction();
+    const navigate = useNavigate();
+    const { postMessage, setStateApp } = useAppAction();
+    const user = useAppSelector((state) => state.app.user);
+    const key = id ? user?.keys?.find((k) => k.id === id) : undefined;
 
     const copy = (text: string) => {
         window.navigator.clipboard.writeText(text);
         postMessage({ event: EventsEnum.SHOW_TEXT, data: 't10' });
     };
+
+    const remove = async () => {
+        const result = await callAction<UserType>(EventsEnum.REMOVE_KEY, id);
+        if (!result) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't0' });
+
+        setStateApp({ user: result });
+        navigate('/my-subscriptions');
+    };
+
+    useEffect(() => {
+        if (!key) navigate('/my-subscriptions');
+    }, [key]);
 
     return (
         <div className={styles.div1}>
@@ -62,14 +77,16 @@ export const MySubscription: FC = () => {
                             <div>{t('t9')}</div>
                             <IoCopyOutline className={'icon'} />
                         </Card>
-                        <Card className={styles.div5}>
+                        <Card className={styles.div5} onClick={() => navigate(`/extend-key/${key.id}`)}>
                             <div>{t('t52')}</div>
                             <LuExternalLink className={'icon'} />
                         </Card>
-                        <Card className={styles.div5}>
-                            <div>{t('t53')}</div>
-                            <MdDeleteOutline className={`icon ${styles.div6}`} />
-                        </Card>
+                        {key.status === 'expired' && (
+                            <Card className={styles.div5} onClick={remove}>
+                                <div>{t('t53')}</div>
+                                <MdDeleteOutline className={`icon ${styles.div6}`} />
+                            </Card>
+                        )}
                     </Card>
                 ) : (
                     <RotateLoading />

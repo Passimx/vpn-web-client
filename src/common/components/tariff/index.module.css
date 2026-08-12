@@ -11,6 +11,12 @@
             display: grid;
             grid-template-columns: auto 1fr;
             gap: 8px;
+
+            .div3{
+                display: grid;
+                align-items: start;
+                justify-items: left;
+            }
         }
     }
 

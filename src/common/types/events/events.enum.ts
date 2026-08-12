@@ -5,6 +5,9 @@ export enum EventsEnum {
 
     // api
     GET_APPS = 'get_apps',
+    CREATE_KEY = 'create_key',
+    REMOVE_KEY = 'remove_key',
+    EXTEND_KEY = 'extend_key',
     GET_TARIFFS = 'get_tariffs',
     GET_CURRENCY = 'get_currency',
     GET_USER_INF = 'get_user_inf',

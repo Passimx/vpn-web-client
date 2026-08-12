@@ -1,25 +1,19 @@
 .div1{
     height: 100%;
     display: grid;
-    overflow-x: hidden;
     align-items: center;
     justify-items: center;
     color: white;
 
-    .div0{
+    .div2{
         display: grid;
+        align-items: center;
+        text-align: center;
         gap: 16px;
-        width: 100%;
-        max-width: 400px;
 
-        .div2{
+        .div3{
             display: grid;
             gap: 8px;
-
-            .div3{
-                display: grid;
-                gap: 8px;
-            }
         }
     }
 }
