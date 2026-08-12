@@ -56,8 +56,8 @@ export const ExtendKey: FC = () => {
             const tariffs = await callAction<ITariffs>(EventsEnum.GET_TARIFFS);
             if (!tariffs) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't0' });
 
-            if (key?.cascadeToServerId) setTariffs(tariffs.cdn);
-            else setTariffs(tariffs.base);
+            if (key?.kind === 'cdn') setTariffs(tariffs.cdn);
+            else if (key?.kind === 'base') setTariffs(tariffs.base);
         };
 
         getTariffs();
@@ -67,8 +67,8 @@ export const ExtendKey: FC = () => {
         <div className={styles.div1}>
             <div className={styles.div2}>
                 {tariffs?.length ? (
-                    <Card className={`${styles.div3} ${key?.cascadeToServerId && 'animation_1'}`}>
-                        <div>{t(key?.cascadeToServerId ? 't47' : 't46')}</div>
+                    <Card className={`${styles.div3} ${key?.kind === 'cdn' && 'animation_1'}`}>
+                        <div>{t(key?.kind === 'cdn' ? 't47' : 't46')}</div>
                         {tariffs?.map((tariff) => (
                             <div onClick={() => extend(tariff)}>
                                 <Tariff key={tariff.id} tariff={tariff} />

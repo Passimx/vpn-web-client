@@ -7,10 +7,12 @@ export type BalanceAccount = {
     usd: number;
 };
 
+export type TariffKind = 'base' | 'cascade' | 'cdn';
+
 export type KeyType = {
     id: string;
     status: 'active' | 'expired';
-    cascadeToServerId: string | null;
+    kind: TariffKind;
     autoRenewEnabled: boolean;
     countTrafficLimit: number;
     countTrafficUsed: number;
