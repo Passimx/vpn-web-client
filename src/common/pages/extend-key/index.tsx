@@ -41,7 +41,7 @@ export const ExtendKey: FC = () => {
                         }).then((result) => {
                             if (result) {
                                 setStateApp({ user: result });
-                                navigate('/my-subscriptions');
+                                navigate(`/my-subscriptions/${keyId}`);
                             }
                             return result;
                         })
