@@ -7,8 +7,8 @@ import { EventsEnum } from '../../types/events/events.enum.ts';
 import { MdUploadFile } from 'react-icons/md';
 import { callAction } from '../../api/px.connect.ts';
 import { useNavigate } from 'react-router-dom';
-import { IUserInfo } from '../../types/api/user/user-info.interface.ts';
 import { RotateLoading } from '../../components/rotate-loading';
+import { UserType } from '../../store/app/types/app-state.type.ts';
 
 export const LoginByLink: FC = () => {
     const { t } = useTranslation();
@@ -22,11 +22,11 @@ export const LoginByLink: FC = () => {
         if (!link.length || !isValid) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't37' });
 
         setIsLoading(true);
-        const response = await callAction<IUserInfo>(EventsEnum.LOGIN_BY_URL, link);
+        const response = await callAction<UserType>(EventsEnum.LOGIN_BY_URL, link);
         setIsLoading(false);
         if (!response) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't37' });
 
-        setStateApp({ user: response.user });
+        setStateApp({ user: response });
         navigate('/');
     };
 

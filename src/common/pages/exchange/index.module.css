@@ -1,0 +1,12 @@
+.div1{
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    color: white;
+
+    .div5{
+        display: grid;
+        gap: 8px;
+    }
+}

@@ -10,6 +10,7 @@ import { WalletHelper } from '../put-money-wallet/helper.ts';
 import { useNavigate } from 'react-router-dom';
 import { BiDollar } from 'react-icons/bi';
 import { Image } from '../../components/image';
+import { RiArrowDownLongLine, RiArrowUpDownLine } from 'react-icons/ri';
 
 export const Wallet: FC = () => {
     const { t } = useTranslation();
@@ -23,6 +24,20 @@ export const Wallet: FC = () => {
             <div className={styles.div0}>
                 <div className={styles.div01}>
                     {WalletHelper.formatPrice(WalletHelper.getTotalBalance(balanceAccount, t('t4')))}&#160;{t('t3')}
+                </div>
+                <div className={styles.div011}>
+                    <div className={styles.div012} onClick={() => navigate('/put-money-wallet')}>
+                        <Card className={styles.div013}>
+                            <RiArrowDownLongLine className={styles.div014} />
+                        </Card>
+                        <div>{t('t12')}</div>
+                    </div>
+                    <div className={styles.div012} onClick={() => navigate('/exchange')}>
+                        <Card className={styles.div013}>
+                            <RiArrowUpDownLine className={styles.div014} />
+                        </Card>
+                        <div>{t('t62')}</div>
+                    </div>
                 </div>
                 <Card>
                     <div className={styles.div0}>
@@ -128,9 +143,6 @@ export const Wallet: FC = () => {
                             </div>
                         </div>
                     </div>
-                </Card>
-                <Card onClick={() => navigate('/put-money-wallet')}>
-                    <div className={styles.div20}>{t('t12')}</div>
                 </Card>
             </div>
         </div>

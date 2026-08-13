@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import { callAction } from '../../api/px.connect.ts';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { useAppAction, useAppSelector } from '../../store';
-import { IUserInfo } from '../../types/api/user/user-info.interface.ts';
 import { IoLanguageOutline } from 'react-icons/io5';
 import { LuExternalLink } from 'react-icons/lu';
 import { GoLink } from 'react-icons/go';
 import { IoIosAddCircleOutline } from 'react-icons/io';
+import { UserType } from '../../store/app/types/app-state.type.ts';
 
 export const Login: FC = () => {
     const { t } = useTranslation();
@@ -19,10 +19,10 @@ export const Login: FC = () => {
     const lang = useAppSelector((state) => state.app.lang);
 
     const createAccount = async () => {
-        const response = await callAction<IUserInfo>(EventsEnum.CREATE_ACCOUNT, { languageCode: lang });
+        const response = await callAction<UserType>(EventsEnum.CREATE_ACCOUNT, { languageCode: lang });
         if (!response) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't0' });
 
-        setStateApp({ user: response.user });
+        setStateApp({ user: response });
         navigate('/menu');
     };
 

@@ -12,11 +12,39 @@
         width: 100%;
         max-width: 400px;
 
+        .div011{
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            grid-template-columns: auto auto;
+
+            .div012{
+                display: grid;
+                align-items: center;
+                justify-items: center;
+                gap: 4px;
+
+                .div013{
+                    aspect-ratio: 1/1;
+                    display: grid;
+                    width: 30px;
+                    border-radius: 30px;
+                    align-items: center;
+                    justify-items: center;
+                    padding: 4px;
+
+                    .div014{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+
         .div01{
             display: grid;
             align-items: center;
             justify-items: center;
-            font-size: 28px;
+            font-size: 36px;
             font-weight: 700;
             padding: 20px;
         }
