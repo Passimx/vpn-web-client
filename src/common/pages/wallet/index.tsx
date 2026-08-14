@@ -2,15 +2,11 @@ import { FC } from 'react';
 import styles from './index.module.css';
 import { Card } from '../../components/card';
 import { useAppSelector } from '../../store';
-import { FaRubleSign } from 'react-icons/fa';
-import ton from '../../../../public/assets/images/ton.svg';
-import cny from '../../../../public/assets/images/cny.svg';
 import { useTranslation } from 'react-i18next';
 import { WalletHelper } from '../put-money-wallet/helper.ts';
 import { useNavigate } from 'react-router-dom';
-import { BiDollar } from 'react-icons/bi';
-import { Image } from '../../components/image';
 import { RiArrowDownLongLine, RiArrowUpDownLine } from 'react-icons/ri';
+import { CurrencyIcon } from '../../components/currency-icon';
 
 export const Wallet: FC = () => {
     const { t } = useTranslation();
@@ -42,9 +38,7 @@ export const Wallet: FC = () => {
                 <Card>
                     <div className={styles.div0}>
                         <div className={styles.div1}>
-                            <div className={styles.div2} style={{ backgroundColor: '#800000' }}>
-                                <FaRubleSign className={styles.div3} />
-                            </div>
+                            <CurrencyIcon currency={'rub'} className={styles.div2} />
                             <div className={styles.div4}>
                                 <div className={styles.div5}>
                                     <div className={styles.div6}>{t('t11')}</div>
@@ -67,9 +61,7 @@ export const Wallet: FC = () => {
                             </div>
                         </div>
                         <div className={styles.div1}>
-                            <div className={styles.div2} style={{ backgroundColor: 'red' }}>
-                                <Image src={cny} className={styles.div3} />
-                            </div>
+                            <CurrencyIcon currency={'cny'} className={styles.div2} />
                             <div className={styles.div4}>
                                 <div className={styles.div5}>
                                     <div className={styles.div6}>{t('t13')}</div>
@@ -93,9 +85,7 @@ export const Wallet: FC = () => {
                             </div>
                         </div>
                         <div className={styles.div1}>
-                            <div className={styles.div2} style={{ backgroundColor: '#0098ea' }}>
-                                <Image src={ton} className={styles.div3} />
-                            </div>
+                            <CurrencyIcon currency={'ton'} className={styles.div2} />
                             <div className={styles.div4}>
                                 <div className={styles.div5}>
                                     <div className={styles.div6}>TON</div>
@@ -118,9 +108,7 @@ export const Wallet: FC = () => {
                             </div>
                         </div>
                         <div className={styles.div1}>
-                            <div className={styles.div2} style={{ backgroundColor: '#00b386' }}>
-                                <BiDollar className={styles.div3} />
-                            </div>
+                            <CurrencyIcon currency={'usd'} className={styles.div2} />
                             <div className={styles.div4}>
                                 <div className={styles.div5}>
                                     <div className={styles.div6}>USD</div>

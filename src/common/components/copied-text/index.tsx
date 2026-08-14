@@ -1,11 +1,11 @@
-import { FC, memo, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './index.module.css';
 import { useTranslation } from 'react-i18next';
 import setVisibilityCss from '../../hooks/set-visibility-css.ts';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { EventsType } from '../../types/events/event-data.type.ts';
 
-export const CopiedText: FC = memo(() => {
+export const CopiedText: FC = () => {
     const [data, setData] = useState<string>('');
     const [visible, setVisible] = useState<boolean>();
     const { t } = useTranslation();
@@ -31,4 +31,4 @@ export const CopiedText: FC = memo(() => {
             <div>{t(data)}</div>
         </div>
     );
-});
+};

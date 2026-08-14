@@ -1,0 +1,42 @@
+.cny1, .rub1, .ton1, .usd1{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    border-radius: 300px;
+}
+
+.cny1{
+    background-color: red;
+
+    .cny2{
+        width: 70%;
+        height: 70%;
+    }
+}
+
+.rub1{
+    background-color: #800000;
+
+    .rub2{
+        width: 50%;
+        height: 50%;
+    }
+}
+
+.ton1{
+    background-color: #0098ea;
+
+    .ton2{
+        width: 70%;
+        height: 70%;
+    }
+}
+
+.usd1{
+    background-color: #00b386;
+
+    .usd2{
+        width: 60%;
+        height: 60%;
+    }
+}

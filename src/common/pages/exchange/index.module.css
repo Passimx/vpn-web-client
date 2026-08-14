@@ -5,8 +5,138 @@
     justify-items: center;
     color: white;
 
-    .div5{
+    .div2{
         display: grid;
+        width: 100%;
+        max-width: 400px;
         gap: 8px;
+
+        .div3{
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            font-size: x-large;
+            font-weight: 700;
+            padding: 8px;
+        }
+
+        .div4{
+            display: grid;
+            gap: 4px;
+
+            &:focus-within{
+                border: 1px solid #439fef;
+            }
+
+            .div5{
+                display: grid;
+                grid-template-columns: 1fr auto auto;
+                gap: 16px;
+
+                .div6{
+                    font-weight: bold;
+                    color: #439fef;
+                }
+
+                .div7{
+                    color: red;
+                    text-align: right;
+                }
+            }
+
+            .div51, .div512{
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+
+                .div52{
+                    background: none !important;
+                    color: white;
+
+                    border: none;
+                    outline: none;
+                    -webkit-box-shadow: none;
+                    -moz-box-shadow: none;
+                    padding: 4px;
+                    font-size: 22px;
+                    cursor: pointer;
+                    min-width: 10px;
+                    box-sizing: border-box;
+
+                    &::-webkit-outer-spin-button,
+                    &::-webkit-inner-spin-button {
+                        appearance: none;
+                        margin: 0;
+                    }
+                }
+                .div52[type=number] {
+                    -moz-appearance: textfield;
+                }
+
+                .div521{
+                    border-radius: 50px;
+                    display: grid;
+                    align-items: center;
+                    justify-items: center;
+                    grid-template-columns: auto 1fr;
+                    gap: 8px;
+
+                    .div522{
+                        width: 30px;
+                        height: 30px;
+                    }
+
+                    .div523{
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            .div512{
+                grid-template-columns: auto 1fr auto;
+
+                .div513{
+                    font-size: 22px;
+                }
+            }
+        }
+
+        .div40{
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            height: 0;
+
+            .div41{
+                border-radius: 50px;
+                background-color: black;
+                z-index: 100;
+                margin-top: -23px;
+                width: 30px;
+                display: grid;
+                align-items: center;
+                justify-items: center;
+                aspect-ratio: 1/1;
+
+                .div42{
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .div33{
+            display: grid;
+            justify-items: center;
+            background-color: white;
+            color: black;
+            font-size: large;
+        }
+        .noActive{
+            opacity: 0.5;
+            -webkit-user-select: none;
+            user-select: none;
+        }
     }
 }
