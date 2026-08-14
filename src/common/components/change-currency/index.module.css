@@ -21,8 +21,18 @@
         }
 
         .div4{
-            text-transform: uppercase;
             min-width: 150px;
+            display: grid;
+            gap: 4px;
+
+            .div5{
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+
+            .div6{
+                opacity: 0.8;
+            }
         }
 
         &:active{

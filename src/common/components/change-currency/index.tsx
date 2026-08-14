@@ -7,10 +7,13 @@ import { useTranslation } from 'react-i18next';
 import { Card } from '../card';
 import { FaCheck } from 'react-icons/fa';
 import { PropsType } from './types/props.type.ts';
+import { useAppSelector } from '../../store';
+import { WalletHelper } from '../../pages/put-money-wallet/helper.ts';
 
 export const ChangeCurrency: FC<PropsType> = ({ currency, onChange }) => {
     const { t } = useTranslation();
     const [localCurrency, setLocalCurrency] = useState<keyof BalanceAccount>(currency);
+    const balance = useAppSelector((state) => state.app.user?.balance);
 
     const onClick = (value: string) => {
         onChange(value as keyof BalanceAccount);
@@ -22,7 +25,15 @@ export const ChangeCurrency: FC<PropsType> = ({ currency, onChange }) => {
             {Object.entries(currencyWord).map(([key, name]) => (
                 <div key={key} className={styles.div2} onClick={() => onClick(key)}>
                     <CurrencyIcon className={styles.div3} currency={key as keyof BalanceAccount} />
-                    <div className={styles.div4}>{t(name)}</div>
+                    <div className={styles.div4}>
+                        <div className={styles.div5}>{t(name)}</div>
+                        <div className={styles.div6}>
+                            {WalletHelper.formatPrice(
+                                WalletHelper.convert(balance![key as keyof BalanceAccount], key, t('t4')),
+                            )}
+                            &#160;{t('t3')}
+                        </div>
+                    </div>
                     {localCurrency === key && <FaCheck />}
                 </div>
             ))}

@@ -1,8 +1,8 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { FC, useState } from 'react';
 import styles from './index.module.css';
 import { useTranslation } from 'react-i18next';
 import { Card } from '../../components/card';
-import { BalanceAccount } from '../../store/app/types/app-state.type.ts';
+import { BalanceAccount, UserType } from '../../store/app/types/app-state.type.ts';
 import { useAppAction, useAppSelector } from '../../store';
 import { CurrencyIcon } from '../../components/currency-icon';
 import { currencyWord } from './consts/currency-word.ts';
@@ -10,13 +10,18 @@ import { RiArrowUpDownLine } from 'react-icons/ri';
 import { LuEqualApproximately } from 'react-icons/lu';
 import { ChangeCurrency } from '../../components/change-currency';
 import { WalletHelper } from '../put-money-wallet/helper.ts';
+import { Agreement } from '../../components/agreement';
+import { callAction } from '../../api/px.connect.ts';
+import { EventsEnum } from '../../types/events/events.enum.ts';
+import { useNavigate } from 'react-router-dom';
 
 export const Exchange: FC = () => {
     const { t } = useTranslation();
     const inputSetBalanceId = 'inputSetBalanceId';
     const inputGetBalanceKeyId = 'inputGetBalanceKeyId';
-    const user = useAppSelector((state) => state.app.user);
     const { setStateApp } = useAppAction();
+    const navigate = useNavigate();
+    const user = useAppSelector((state) => state.app.user);
 
     const allKeys = Object.keys(user!.balance) as (keyof BalanceAccount)[];
     const otherKey = allKeys.find((key) => key !== t('t4'))!;
@@ -43,10 +48,9 @@ export const Exchange: FC = () => {
         getSetBalanceAmount(value);
     };
 
-    const onChangeInput = (event: ChangeEvent<HTMLInputElement>, from: string) => {
+    const onChangeInput = (value: string, from: string) => {
         let getAmount: number | undefined;
         let setAmount: number | undefined;
-        const value = event.target.value;
 
         if (value.length) {
             const number = Number(value);
@@ -64,6 +68,22 @@ export const Exchange: FC = () => {
     const onChangeSetBalanceKey = () => {
         const onChange = (currency: keyof BalanceAccount) => {
             setSetBalanceKey(currency);
+
+            const getAmount = WalletHelper.convert(Number(setBalanceAmount), currency, getBalanceKey);
+            getBalanceAmountFunc(getAmount);
+
+            // let getAmount: number | undefined;
+            // let setAmount: number | undefined;
+            //
+            // if (value.length) {
+            //     const number = Number(value);
+            //
+            //     if (number > 0) {
+            //         setAmount = WalletHelper.convert(Number(value), from, setBalanceKey);
+            //         getAmount = WalletHelper.convert(Number(value), from, getBalanceKey);
+            //     }
+            // }
+            //
         };
 
         setStateApp({ foreground: <ChangeCurrency currency={setBalanceKey} onChange={onChange} /> });
@@ -72,6 +92,8 @@ export const Exchange: FC = () => {
     const onChangeGetBalanceKey = () => {
         const onChange = (currency: keyof BalanceAccount) => {
             getSetBalanceKey(currency);
+            const setAmount = WalletHelper.convert(Number(getBalanceAmount), currency, setBalanceKey);
+            setBalanceAmountFunc(setAmount);
         };
 
         setStateApp({ foreground: <ChangeCurrency currency={getBalanceKey} onChange={onChange} /> });
@@ -80,6 +102,7 @@ export const Exchange: FC = () => {
     const setBalanceKeyMax = () => {
         const amount = WalletHelper.formatPrice(user!.balance[setBalanceKey]).replace(',', '.');
         setBalanceAmountFunc(Number(amount));
+        onChangeInput(amount, setBalanceKey);
     };
 
     const onRevert = () => {
@@ -94,6 +117,27 @@ export const Exchange: FC = () => {
 
     const onSubmit = () => {
         if (isNoActive) return;
+        setStateApp({
+            foreground: (
+                <Agreement
+                    func={() =>
+                        callAction<UserType>(EventsEnum.EXCHANGE, {
+                            userId: user?.id,
+                            amountFrom: setBalanceAmount,
+                            from: setBalanceKey,
+                            to: getBalanceKey,
+                        }).then((result) => {
+                            if (result) {
+                                setStateApp({ user: result });
+                                navigate('/wallet');
+                            }
+                            return result;
+                        })
+                    }
+                    text={''}
+                />
+            ),
+        });
     };
 
     return (
@@ -120,7 +164,7 @@ export const Exchange: FC = () => {
                             className={styles.div52}
                             type={'number'}
                             placeholder={'0'}
-                            onChange={(event) => onChangeInput(event, setBalanceKey)}
+                            onChange={(event) => onChangeInput(event.target.value, setBalanceKey)}
                         />
                         <Card className={styles.div521} onClick={onChangeSetBalanceKey}>
                             <CurrencyIcon currency={setBalanceKey} className={styles.div522} />
@@ -144,7 +188,7 @@ export const Exchange: FC = () => {
                             className={styles.div52}
                             type={'number'}
                             placeholder={'0'}
-                            onChange={(event) => onChangeInput(event, getBalanceKey)}
+                            onChange={(event) => onChangeInput(event.target.value, getBalanceKey)}
                         />
                         <Card className={styles.div521} onClick={onChangeGetBalanceKey}>
                             <CurrencyIcon currency={getBalanceKey} className={styles.div522} />
