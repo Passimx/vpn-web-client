@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAppAction, useAppSelector } from '../../store';
 import { RotateLoading } from '../../components/rotate-loading';
 import { Card } from '../../components/card';
-import moment from 'moment/min/moment-with-locales';
+import moment from 'moment';
 import { LuExternalLink } from 'react-icons/lu';
 import { WalletHelper } from '../put-money-wallet/helper.ts';
 import { IoCopyOutline } from 'react-icons/io5';

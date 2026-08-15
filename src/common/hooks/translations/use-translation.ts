@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import moment from 'moment/min/moment-with-locales';
-
+import moment from 'moment';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import CH from './languages/zh/translation.json';
