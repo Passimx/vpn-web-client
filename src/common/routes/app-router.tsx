@@ -5,10 +5,10 @@ import { Menu } from '../components/menu';
 import Lazy from '../pages/lazy';
 import { Wallet } from '../pages/wallet';
 import { PutMoneyWallet } from '../pages/put-money-wallet';
+import { Tariffs } from '../pages/tariffs';
+import { MySubscription } from '../pages/my-subscription';
+import { MySubscriptions } from '../pages/my-subscriptions';
 
-const MySubscriptions = lazy(() => import('../pages/my-subscriptions').then((m) => ({ default: m.MySubscriptions })));
-const MySubscription = lazy(() => import('../pages/my-subscription').then((m) => ({ default: m.MySubscription })));
-const Tariffs = lazy(() => import('../pages/tariffs').then((m) => ({ default: m.Tariffs })));
 const Instruction = lazy(() => import('../pages/instruction').then((m) => ({ default: m.Instruction })));
 const AppStore = lazy(() => import('../pages/app-store').then((m) => ({ default: m.AppStore })));
 const Languages = lazy(() => import('../pages/languages').then((m) => ({ default: m.Languages })));
@@ -31,27 +31,15 @@ const router = createBrowserRouter([
             },
             {
                 path: 'my-subscriptions',
-                element: (
-                    <Lazy>
-                        <MySubscriptions />
-                    </Lazy>
-                ),
+                element: <MySubscriptions />,
             },
             {
                 path: 'my-subscriptions/:id',
-                element: (
-                    <Lazy>
-                        <MySubscription />
-                    </Lazy>
-                ),
+                element: <MySubscription />,
             },
             {
                 path: 'tariffs',
-                element: (
-                    <Lazy>
-                        <Tariffs />
-                    </Lazy>
-                ),
+                element: <Tariffs />,
             },
             {
                 path: 'put-money-wallet',
