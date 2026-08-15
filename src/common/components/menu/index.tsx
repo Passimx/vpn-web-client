@@ -15,19 +15,14 @@ export const Menu: FC = () => {
     const { setStateApp } = useAppAction();
     const navigate = useNavigate();
 
+    const func = () => {
+        setStateApp({ user: undefined });
+        navigate('/login');
+        return true;
+    };
+
     const logout = () => {
-        setStateApp({
-            foreground: (
-                <Agreement
-                    text={t('t61')}
-                    func={() => {
-                        setStateApp({ user: undefined });
-                        navigate('/login');
-                        return true;
-                    }}
-                />
-            ),
-        });
+        setStateApp({ foreground: <Agreement text={t('t61')} func={func} /> });
     };
 
     return (

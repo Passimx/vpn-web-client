@@ -68,22 +68,8 @@ export const Exchange: FC = () => {
     const onChangeSetBalanceKey = () => {
         const onChange = (currency: keyof BalanceAccount) => {
             setSetBalanceKey(currency);
-
             const getAmount = WalletHelper.convert(Number(setBalanceAmount), currency, getBalanceKey);
             getBalanceAmountFunc(getAmount);
-
-            // let getAmount: number | undefined;
-            // let setAmount: number | undefined;
-            //
-            // if (value.length) {
-            //     const number = Number(value);
-            //
-            //     if (number > 0) {
-            //         setAmount = WalletHelper.convert(Number(value), from, setBalanceKey);
-            //         getAmount = WalletHelper.convert(Number(value), from, getBalanceKey);
-            //     }
-            // }
-            //
         };
 
         setStateApp({ foreground: <ChangeCurrency currency={setBalanceKey} onChange={onChange} /> });
@@ -92,8 +78,8 @@ export const Exchange: FC = () => {
     const onChangeGetBalanceKey = () => {
         const onChange = (currency: keyof BalanceAccount) => {
             getSetBalanceKey(currency);
-            const setAmount = WalletHelper.convert(Number(getBalanceAmount), currency, setBalanceKey);
-            setBalanceAmountFunc(setAmount);
+            const getAmount = WalletHelper.convert(Number(setBalanceAmount), setBalanceKey, currency);
+            getBalanceAmountFunc(getAmount);
         };
 
         setStateApp({ foreground: <ChangeCurrency currency={getBalanceKey} onChange={onChange} /> });
@@ -117,27 +103,23 @@ export const Exchange: FC = () => {
 
     const onSubmit = () => {
         if (isNoActive) return;
-        setStateApp({
-            foreground: (
-                <Agreement
-                    func={() =>
-                        callAction<UserType>(EventsEnum.EXCHANGE, {
-                            userId: user?.id,
-                            amountFrom: setBalanceAmount,
-                            from: setBalanceKey,
-                            to: getBalanceKey,
-                        }).then((result) => {
-                            if (result) {
-                                setStateApp({ user: result });
-                                navigate('/wallet');
-                            }
-                            return result;
-                        })
-                    }
-                    text={''}
-                />
-            ),
-        });
+
+        const func = async () => {
+            const result = await callAction<UserType>(EventsEnum.EXCHANGE, {
+                userId: user?.id,
+                amountFrom: setBalanceAmount,
+                from: setBalanceKey,
+                to: getBalanceKey,
+            });
+
+            if (result) {
+                setStateApp({ user: result });
+                navigate('/wallet');
+            }
+            return result;
+        };
+
+        setStateApp({ foreground: <Agreement func={func} text={''} /> });
     };
 
     return (

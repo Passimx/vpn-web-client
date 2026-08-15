@@ -29,26 +29,20 @@ export const ExtendKey: FC = () => {
 
         const price = WalletHelper.formatPrice(WalletHelper.convert(tariff.price, 'rub', t('t4')));
 
-        setStateApp({
-            foreground: (
-                <Agreement
-                    text={`${t('t58')} ${price} ${t('t3')} ${t('t60')}`}
-                    func={() =>
-                        callAction<UserType>(EventsEnum.EXTEND_KEY, {
-                            keyId,
-                            tariffId: tariff.id,
-                            userId: user?.id,
-                        }).then((result) => {
-                            if (result) {
-                                setStateApp({ user: result });
-                                navigate(`/my-subscriptions/${keyId}`);
-                            }
-                            return result;
-                        })
-                    }
-                />
-            ),
-        });
+        const func = async () => {
+            const result = await callAction<UserType>(EventsEnum.EXTEND_KEY, {
+                keyId,
+                tariffId: tariff.id,
+                userId: user?.id,
+            });
+            if (result) {
+                setStateApp({ user: result });
+                navigate(`/my-subscriptions/${keyId}`);
+            }
+            return result;
+        };
+
+        setStateApp({ foreground: <Agreement text={`${t('t58')} ${price} ${t('t3')} ${t('t60')}`} func={func} /> });
     };
 
     useEffect(() => {

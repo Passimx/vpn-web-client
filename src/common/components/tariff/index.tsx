@@ -25,24 +25,16 @@ export const Tariff: FC<{ tariff: ITariff }> = ({ tariff }) => {
 
         const price = WalletHelper.formatPrice(WalletHelper.convert(tariff.price, 'rub', t('t4')));
 
-        setStateApp({
-            foreground: (
-                <Agreement
-                    text={`${t('t58')} ${price} ${t('t3')} ${t('t59')}`}
-                    func={() =>
-                        callAction<UserType>(EventsEnum.CREATE_KEY, { userId: user.id, tariffId: tariff.id }).then(
-                            (result) => {
-                                if (result) {
-                                    setStateApp({ user: result });
-                                    navigate('/my-subscriptions');
-                                }
-                                return result;
-                            },
-                        )
-                    }
-                />
-            ),
-        });
+        const func = async () => {
+            const result = await callAction<UserType>(EventsEnum.CREATE_KEY, { userId: user.id, tariffId: tariff.id });
+            if (result) {
+                setStateApp({ user: result });
+                navigate('/my-subscriptions');
+            }
+            return result;
+        };
+
+        setStateApp({ foreground: <Agreement text={`${t('t58')} ${price} ${t('t3')} ${t('t59')}`} func={func} /> });
     };
 
     return (
