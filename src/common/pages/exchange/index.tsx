@@ -178,6 +178,15 @@ export const Exchange: FC = () => {
                         </Card>
                     </div>
                 </Card>
+                <div className={styles.div21}>
+                    <div className={styles.div22}>
+                        <div>1</div>
+                        <CurrencyIcon currency={setBalanceKey} className={styles.div23} />
+                        <LuEqualApproximately />
+                        <div>{WalletHelper.formatPrice(WalletHelper.convert(1, setBalanceKey, getBalanceKey))}</div>
+                        <CurrencyIcon currency={getBalanceKey} className={styles.div23} />
+                    </div>
+                </div>
                 <Card className={`${styles.div33} ${isNoActive && styles.noActive}`} onClick={onSubmit}>
                     {t('t62')}
                 </Card>
