@@ -97,3 +97,21 @@ body,
     background-size: 300% 300% !important;
     background-position: 0% 50% !important;
 }
+
+.empty_input{
+    background: none;
+    border: none;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    min-width: 10px;
+    box-sizing: border-box;
+}
+.empty_input::-webkit-outer-spin-button,
+.empty_input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+.empty_input[type=number] {
+    -moz-appearance: textfield;
+}

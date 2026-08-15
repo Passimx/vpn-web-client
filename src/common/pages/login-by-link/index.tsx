@@ -4,20 +4,29 @@ import { Card } from '../../components/card';
 import { useTranslation } from 'react-i18next';
 import { useAppAction } from '../../store';
 import { EventsEnum } from '../../types/events/events.enum.ts';
-import { MdUploadFile } from 'react-icons/md';
 import { callAction } from '../../api/px.connect.ts';
 import { useNavigate } from 'react-router-dom';
 import { RotateLoading } from '../../components/rotate-loading';
 import { UserType } from '../../store/app/types/app-state.type.ts';
+import { FaRegPaste } from 'react-icons/fa6';
 
 export const LoginByLink: FC = () => {
     const { t } = useTranslation();
+    const idInput = 'idInput';
     const navigate = useNavigate();
     const { postMessage, setStateApp } = useAppAction();
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const pasteFromBuffer = async () => {
         const link = await navigator.clipboard.readText();
+        const element = document.getElementById(idInput) as HTMLInputElement;
+        element.value = link;
+    };
+
+    const onLogin = async () => {
+        const element = document.getElementById(idInput) as HTMLInputElement;
+        const link = element.value;
+
         const isValid = URL.canParse(link);
         if (!link.length || !isValid) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't37' });
 
@@ -32,19 +41,24 @@ export const LoginByLink: FC = () => {
 
     return (
         <div className={styles.div1}>
-            {isLoading ? (
-                <RotateLoading />
-            ) : (
-                <div className={styles.div2}>
-                    <Card>
-                        <div>{t('t38')}</div>
+            <div className={styles.div2}>
+                <Card>
+                    <div>{t('t38')}</div>
+                </Card>
+                <div className={styles.div5}>
+                    <Card className={styles.div6}>
+                        <input
+                            id={idInput}
+                            className={`empty_input ${styles.div7}`}
+                            placeholder={'Ссылка на подписку'}
+                        />
                     </Card>
-                    <Card className={styles.div3} onClick={pasteFromBuffer}>
-                        <MdUploadFile className={styles.div4} />
-                        <div className={styles.div3}>{t('t36')}</div>
-                    </Card>
+                    <FaRegPaste className={styles.div8} onClick={pasteFromBuffer} />
                 </div>
-            )}
+                <Card className={styles.div9} onClick={onLogin}>
+                    {isLoading ? <RotateLoading /> : <div>Войти</div>}
+                </Card>
+            </div>
         </div>
     );
 };

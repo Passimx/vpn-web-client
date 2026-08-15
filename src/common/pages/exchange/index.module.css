@@ -50,27 +50,10 @@
                 align-items: center;
 
                 .div52{
-                    background: none !important;
                     color: white;
-
-                    border: none;
-                    outline: none;
-                    -webkit-box-shadow: none;
-                    -moz-box-shadow: none;
                     padding: 4px;
                     font-size: 22px;
                     cursor: pointer;
-                    min-width: 10px;
-                    box-sizing: border-box;
-
-                    &::-webkit-outer-spin-button,
-                    &::-webkit-inner-spin-button {
-                        appearance: none;
-                        margin: 0;
-                    }
-                }
-                .div52[type=number] {
-                    -moz-appearance: textfield;
                 }
 
                 .div521{

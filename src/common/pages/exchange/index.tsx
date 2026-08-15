@@ -17,8 +17,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const Exchange: FC = () => {
     const { t } = useTranslation();
-    const inputSetBalanceId = 'inputSetBalanceId';
-    const inputGetBalanceKeyId = 'inputGetBalanceKeyId';
+
     const { setStateApp } = useAppAction();
     const navigate = useNavigate();
     const user = useAppSelector((state) => state.app.user);
@@ -29,76 +28,111 @@ export const Exchange: FC = () => {
     const [setBalanceKey, setSetBalanceKey] = useState<keyof BalanceAccount>(t('t4') as keyof BalanceAccount);
     const [getBalanceKey, getSetBalanceKey] = useState<keyof BalanceAccount>(otherKey);
 
-    const [setBalanceAmount, setSetBalanceAmount] = useState<number | undefined>(0);
-    const [getBalanceAmount, getSetBalanceAmount] = useState<number | undefined>(0);
+    const [setBalanceAmount, setSetBalanceAmount] = useState<string>('');
+    const [getBalanceAmount, getSetBalanceAmount] = useState<string>('');
+
+    const setAmount = Number(setBalanceAmount);
 
     const isNoActive =
-        setBalanceKey === getBalanceKey || !setBalanceAmount || setBalanceAmount > user!.balance[setBalanceKey];
+        setBalanceKey === getBalanceKey ||
+        !setBalanceAmount ||
+        Number.isNaN(setAmount) ||
+        setAmount <= 0 ||
+        setAmount > user!.balance[setBalanceKey];
 
-    const setBalanceAmountFunc = (value: number | undefined) => {
-        const element = document.getElementById(inputSetBalanceId) as HTMLInputElement;
-        if (!element) return;
-
-        element.value = `${value}`;
-        setSetBalanceAmount(value);
-    };
-
-    const getBalanceAmountFunc = (value: number | undefined) => {
-        const element = document.getElementById(inputGetBalanceKeyId) as HTMLInputElement;
-        if (!element) return;
-
-        element.value = `${value}`;
-        getSetBalanceAmount(value);
-    };
-
-    const onChangeInput = (value: string, from: string) => {
-        let getAmount: number | undefined;
-        let setAmount: number | undefined;
-
-        if (value.length) {
-            const number = Number(value);
-
-            if (number > 0) {
-                setAmount = WalletHelper.convert(Number(value), from, setBalanceKey);
-                getAmount = WalletHelper.convert(Number(value), from, getBalanceKey);
+    const onChangeInput = (value: string, from: keyof BalanceAccount) => {
+        if (value === '') {
+            if (from === setBalanceKey) {
+                setSetBalanceAmount('');
+                getSetBalanceAmount('');
+            } else {
+                getSetBalanceAmount('');
+                setSetBalanceAmount('');
             }
+
+            return;
         }
 
-        setBalanceAmountFunc(setAmount);
-        getBalanceAmountFunc(getAmount);
+        // Разрешаем только число
+        if (!/^\d*([.,]\d*)?$/.test(value)) {
+            return;
+        }
+
+        const normalizedValue = value.replace(',', '.');
+
+        if (from === setBalanceKey) {
+            setSetBalanceAmount(value);
+
+            const amount = Number(normalizedValue);
+
+            if (!Number.isNaN(amount)) {
+                const converted = WalletHelper.convert(amount, from, getBalanceKey);
+
+                getSetBalanceAmount(`${converted}`);
+            }
+        } else {
+            getSetBalanceAmount(value);
+
+            const amount = Number(normalizedValue);
+
+            if (!Number.isNaN(amount)) {
+                const converted = WalletHelper.convert(amount, from, setBalanceKey);
+
+                setSetBalanceAmount(`${converted}`);
+            }
+        }
     };
 
     const onChangeSetBalanceKey = () => {
         const onChange = (currency: keyof BalanceAccount) => {
             setSetBalanceKey(currency);
-            const getAmount = WalletHelper.convert(Number(setBalanceAmount), currency, getBalanceKey);
-            getBalanceAmountFunc(getAmount);
+
+            if (setBalanceAmount) {
+                const amount = WalletHelper.convert(Number(setBalanceAmount), currency, getBalanceKey);
+
+                getSetBalanceAmount(`${amount}`);
+            }
         };
 
-        setStateApp({ foreground: <ChangeCurrency currency={setBalanceKey} onChange={onChange} /> });
+        setStateApp({
+            foreground: <ChangeCurrency currency={setBalanceKey} onChange={onChange} />,
+        });
     };
 
     const onChangeGetBalanceKey = () => {
         const onChange = (currency: keyof BalanceAccount) => {
             getSetBalanceKey(currency);
-            const getAmount = WalletHelper.convert(Number(setBalanceAmount), setBalanceKey, currency);
-            getBalanceAmountFunc(getAmount);
+
+            if (setBalanceAmount) {
+                const amount = WalletHelper.convert(Number(setBalanceAmount), setBalanceKey, currency);
+
+                getSetBalanceAmount(`${amount}`);
+            }
         };
 
-        setStateApp({ foreground: <ChangeCurrency currency={getBalanceKey} onChange={onChange} /> });
+        setStateApp({
+            foreground: <ChangeCurrency currency={getBalanceKey} onChange={onChange} />,
+        });
     };
 
     const setBalanceKeyMax = () => {
         const amount = user!.balance[setBalanceKey];
-        setBalanceAmountFunc(Number(amount));
-        onChangeInput(`${amount}`, setBalanceKey);
+
+        const value = `${amount}`;
+
+        setSetBalanceAmount(value);
+
+        const converted = WalletHelper.convert(Number(amount), setBalanceKey, getBalanceKey);
+
+        getSetBalanceAmount(`${converted}`);
     };
 
     const onRevert = () => {
         setSetBalanceKey(getBalanceKey);
         getSetBalanceKey(setBalanceKey);
-        setBalanceAmountFunc(getBalanceAmount);
-        getBalanceAmountFunc(setBalanceAmount);
+
+        setSetBalanceAmount(getBalanceAmount);
+        getSetBalanceAmount(setBalanceAmount);
     };
 
     const onSubmit = () => {
@@ -107,7 +141,7 @@ export const Exchange: FC = () => {
         const func = async () => {
             const result = await callAction<UserType>(EventsEnum.EXCHANGE, {
                 userId: user?.id,
-                amountFrom: setBalanceAmount,
+                amountFrom: Number(setBalanceAmount),
                 from: setBalanceKey,
                 to: getBalanceKey,
             });
@@ -119,7 +153,9 @@ export const Exchange: FC = () => {
             return result;
         };
 
-        setStateApp({ foreground: <Agreement func={func} text={''} /> });
+        setStateApp({
+            foreground: <Agreement func={func} text={''} />,
+        });
     };
 
     return (
@@ -129,11 +165,13 @@ export const Exchange: FC = () => {
                 <Card className={styles.div4}>
                     <div className={styles.div5}>
                         <div>{t('t65')}</div>
-                        {(setBalanceAmount ?? 0) > user!.balance[setBalanceKey] ? (
+
+                        {Number(setBalanceAmount) > user!.balance[setBalanceKey] ? (
                             <div className={styles.div7}>{t('t67')}</div>
                         ) : (
                             <div>
-                                {t('t64')}:&#160;{WalletHelper.formatPrice(user!.balance[setBalanceKey])}
+                                {t('t64')}:&#160;
+                                {WalletHelper.formatPrice(user!.balance[setBalanceKey])}
                             </div>
                         )}
                         <div className={styles.div6} onClick={setBalanceKeyMax}>
@@ -142,10 +180,10 @@ export const Exchange: FC = () => {
                     </div>
                     <div className={styles.div51}>
                         <input
-                            id={inputSetBalanceId}
-                            className={styles.div52}
-                            type={'number'}
-                            placeholder={'0'}
+                            className={`empty_input ${styles.div52}`}
+                            type="number"
+                            placeholder="0"
+                            value={setBalanceAmount}
                             onChange={(event) => onChangeInput(event.target.value, setBalanceKey)}
                         />
                         <Card className={styles.div521} onClick={onChangeSetBalanceKey}>
@@ -166,10 +204,10 @@ export const Exchange: FC = () => {
                     <div className={styles.div512}>
                         {getBalanceAmount ? <LuEqualApproximately className={styles.div513} /> : <div></div>}
                         <input
-                            id={inputGetBalanceKeyId}
-                            className={styles.div52}
-                            type={'number'}
-                            placeholder={'0'}
+                            className={`empty_input ${styles.div52}`}
+                            type="number"
+                            placeholder="0"
+                            value={getBalanceAmount}
                             onChange={(event) => onChangeInput(event.target.value, getBalanceKey)}
                         />
                         <Card className={styles.div521} onClick={onChangeGetBalanceKey}>
@@ -187,7 +225,7 @@ export const Exchange: FC = () => {
                         <CurrencyIcon currency={getBalanceKey} className={styles.div23} />
                     </div>
                 </div>
-                <Card className={`${styles.div33} ${isNoActive && styles.noActive}`} onClick={onSubmit}>
+                <Card className={`${styles.div33} ${isNoActive ? styles.noActive : ''}`} onClick={onSubmit}>
                     {t('t62')}
                 </Card>
             </div>

@@ -25,7 +25,7 @@ export const ExtendKey: FC = () => {
     const extend = (tariff: ITariff) => {
         if (!user?.balance) return;
         const amount = WalletHelper.getTotalBalance(user?.balance, t('rub'));
-        if (amount < tariff.price) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't44' });
+        if (!amount || amount < tariff.price) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't44' });
 
         const price = WalletHelper.formatPrice(WalletHelper.convert(tariff.price, 'rub', t('t4')));
 

@@ -14,6 +14,7 @@
     .div2{
         padding: 8px;
         overflow-y: auto;
+        padding-bottom: max(var(--safe-area-inset-bottom), 8px);
     }
 
     &::before {

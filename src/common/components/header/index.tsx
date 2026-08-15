@@ -11,6 +11,7 @@ export const Header: FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const user = useAppSelector((state) => state.app.user);
+    const totalBalance = user && WalletHelper.getTotalBalance(user.balance, t('t4'));
 
     useEffect(() => {
         const element = document.getElementById(styles.div33);
@@ -29,7 +30,7 @@ export const Header: FC = () => {
                 <>
                     <div className={styles.div3}>
                         <div className={styles.div4} onClick={() => navigate('/wallet')}>
-                            <div>{WalletHelper.formatPrice(WalletHelper.getTotalBalance(user.balance, t('t4')))}</div>
+                            <div>{totalBalance ? WalletHelper.formatPrice(totalBalance) : '...'}</div>
                             <div>{t('t3')}</div>
                         </div>
                         <div className={styles.div5} onClick={() => navigate('/put-money-wallet')}>

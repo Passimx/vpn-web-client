@@ -32,7 +32,7 @@ export const MySubscription: FC = () => {
         if (!result) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't0' });
 
         setStateApp({ user: result });
-        navigate('/my-subscriptions');
+        navigate('/my-subscriptions', { replace: true });
     };
 
     useEffect(() => {

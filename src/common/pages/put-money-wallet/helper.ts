@@ -16,6 +16,7 @@ export class WalletHelper {
     }
 
     public static convert(amount: number, from: string, to: string) {
+        if (typeof amount === 'string') amount = Number(amount);
         if (!currencyPrice) return 0;
         let result = 0;
 
@@ -29,7 +30,13 @@ export class WalletHelper {
             result = amount / currencyPrice[to2][from2];
         }
 
-        return Math.floor(result * 100) / 100;
+        const fixedString = result.toFixed(12);
+        const dotIndex = fixedString.indexOf('.');
+
+        if (dotIndex === -1) return result;
+
+        const truncatedString = fixedString.substring(0, dotIndex + 6);
+        return Number(truncatedString);
     }
 
     public static getTotalBalance(balanceAccount: BalanceAccount, currency: string) {
@@ -44,6 +51,12 @@ export class WalletHelper {
             sum += converted;
         }
 
-        return Math.floor(sum * 100) / 100;
+        const fixedString = sum.toFixed(12);
+        const dotIndex = fixedString.indexOf('.');
+
+        if (dotIndex === -1) return sum;
+
+        const truncatedString = fixedString.substring(0, dotIndex + 6);
+        return Number(truncatedString);
     }
 }

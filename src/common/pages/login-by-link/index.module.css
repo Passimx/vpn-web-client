@@ -11,15 +11,29 @@
         text-align: center;
         gap: 16px;
 
-        .div3{
+        .div5{
             display: grid;
-            grid-template-columns: auto 1fr;
+            grid-template-columns: 1fr auto;
             align-items: center;
-            gap: 4px;
 
-            .div4{
-                font-size: 20px;
+            .div6{
+                .div7{
+                    width: 100%;
+                    height: 100%;
+                    color: white;
+                }
             }
+
+            .div8{
+                padding: 8px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+        .div9{
+            font-weight: 700;
+            color: black;
+            background-color: white;
         }
     }
 }
