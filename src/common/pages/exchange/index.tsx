@@ -32,6 +32,9 @@ export const Exchange: FC = () => {
     const [setBalanceAmount, setSetBalanceAmount] = useState<number | undefined>(0);
     const [getBalanceAmount, getSetBalanceAmount] = useState<number | undefined>(0);
 
+    const isNoActive =
+        setBalanceKey === getBalanceKey || !setBalanceAmount || setBalanceAmount > user!.balance[setBalanceKey];
+
     const setBalanceAmountFunc = (value: number | undefined) => {
         const element = document.getElementById(inputSetBalanceId) as HTMLInputElement;
         if (!element) return;
@@ -86,9 +89,9 @@ export const Exchange: FC = () => {
     };
 
     const setBalanceKeyMax = () => {
-        const amount = WalletHelper.formatPrice(user!.balance[setBalanceKey]).replace(',', '.');
+        const amount = user!.balance[setBalanceKey];
         setBalanceAmountFunc(Number(amount));
-        onChangeInput(amount, setBalanceKey);
+        onChangeInput(`${amount}`, setBalanceKey);
     };
 
     const onRevert = () => {
@@ -97,9 +100,6 @@ export const Exchange: FC = () => {
         setBalanceAmountFunc(getBalanceAmount);
         getBalanceAmountFunc(setBalanceAmount);
     };
-
-    const isNoActive =
-        setBalanceKey === getBalanceKey || !setBalanceAmount || setBalanceAmount > user!.balance[setBalanceKey];
 
     const onSubmit = () => {
         if (isNoActive) return;
