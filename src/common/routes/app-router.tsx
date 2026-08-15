@@ -1,19 +1,21 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
-import type { FC } from 'react';
+import { FC, lazy } from 'react';
 import { App } from '../components/app';
-import { MySubscriptions } from '../pages/my-subscriptions';
-import { PutMoneyWallet } from '../pages/put-money-wallet';
-import { Wallet } from '../pages/wallet';
-import { Instruction } from '../pages/instruction';
-import { Tariffs } from '../pages/tariffs';
-import { AppStore } from '../pages/app-store';
-import { Languages } from '../pages/languages';
-import { Login } from '../pages/login';
-import { LoginByLink } from '../pages/login-by-link';
-import { MySubscription } from '../pages/my-subscription';
 import { Menu } from '../components/menu';
-import { ExtendKey } from '../pages/extend-key';
-import { Exchange } from '../pages/exchange';
+import Lazy from '../pages/lazy';
+
+const MySubscriptions = lazy(() => import('../pages/my-subscriptions').then((m) => ({ default: m.MySubscriptions })));
+const MySubscription = lazy(() => import('../pages/my-subscription').then((m) => ({ default: m.MySubscription })));
+const Tariffs = lazy(() => import('../pages/tariffs').then((m) => ({ default: m.Tariffs })));
+const PutMoneyWallet = lazy(() => import('../pages/put-money-wallet').then((m) => ({ default: m.PutMoneyWallet })));
+const Wallet = lazy(() => import('../pages/wallet').then((m) => ({ default: m.Wallet })));
+const Instruction = lazy(() => import('../pages/instruction').then((m) => ({ default: m.Instruction })));
+const AppStore = lazy(() => import('../pages/app-store').then((m) => ({ default: m.AppStore })));
+const Languages = lazy(() => import('../pages/languages').then((m) => ({ default: m.Languages })));
+const Login = lazy(() => import('../pages/login').then((m) => ({ default: m.Login })));
+const LoginByLink = lazy(() => import('../pages/login-by-link').then((m) => ({ default: m.LoginByLink })));
+const ExtendKey = lazy(() => import('../pages/extend-key').then((m) => ({ default: m.ExtendKey })));
+const Exchange = lazy(() => import('../pages/exchange').then((m) => ({ default: m.Exchange })));
 
 const router = createBrowserRouter([
     {
@@ -29,51 +31,99 @@ const router = createBrowserRouter([
             },
             {
                 path: 'my-subscriptions',
-                element: <MySubscriptions />,
+                element: (
+                    <Lazy>
+                        <MySubscriptions />
+                    </Lazy>
+                ),
             },
             {
                 path: 'my-subscriptions/:id',
-                element: <MySubscription />,
+                element: (
+                    <Lazy>
+                        <MySubscription />
+                    </Lazy>
+                ),
             },
             {
                 path: 'tariffs',
-                element: <Tariffs />,
+                element: (
+                    <Lazy>
+                        <Tariffs />
+                    </Lazy>
+                ),
             },
             {
                 path: 'put-money-wallet',
-                element: <PutMoneyWallet />,
+                element: (
+                    <Lazy>
+                        <PutMoneyWallet />
+                    </Lazy>
+                ),
             },
             {
                 path: 'wallet',
-                element: <Wallet />,
+                element: (
+                    <Lazy>
+                        <Wallet />,
+                    </Lazy>
+                ),
             },
             {
                 path: 'instruction',
-                element: <Instruction />,
+                element: (
+                    <Lazy>
+                        <Instruction />
+                    </Lazy>
+                ),
             },
             {
                 path: 'app-store',
-                element: <AppStore />,
+                element: (
+                    <Lazy>
+                        <AppStore />,
+                    </Lazy>
+                ),
             },
             {
                 path: 'language',
-                element: <Languages />,
+                element: (
+                    <Lazy>
+                        <Languages />
+                    </Lazy>
+                ),
             },
             {
                 path: 'login',
-                element: <Login />,
+                element: (
+                    <Lazy>
+                        <Login />
+                    </Lazy>
+                ),
             },
             {
                 path: 'login-by-link',
-                element: <LoginByLink />,
+                element: (
+                    <Lazy>
+                        <LoginByLink />
+                    </Lazy>
+                ),
             },
             {
                 path: 'extend-key/:keyId',
-                element: <ExtendKey />,
+                element: (
+                    <Lazy>
+                        <ExtendKey />
+                    </Lazy>
+                ),
             },
             {
                 path: 'exchange',
-                element: <Exchange />,
+                element: (
+                    <Lazy>
+                        <Exchange />
+                    </Lazy>
+                ),
             },
         ],
     },
