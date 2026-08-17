@@ -8,7 +8,8 @@ export class WalletHelper {
         currencyPrice = payload;
     }
 
-    public static formatPrice(payload: number) {
+    public static formatPrice(payload: number | undefined) {
+        if (payload === undefined) return '...';
         return payload.toLocaleString('ru-RU', {
             minimumFractionDigits: 0,
             maximumFractionDigits: 2,
@@ -24,10 +25,14 @@ export class WalletHelper {
         const to2 = to as keyof BalanceAccount;
 
         if (from === to) result = amount;
-        else if (currencyPrice[from2]?.[to2]) {
-            result = amount * currencyPrice[from2][to2];
-        } else if (currencyPrice[to2]?.[from2]) {
-            result = amount / currencyPrice[to2][from2];
+        else if (to === 'telegramStars') {
+            result = Math.ceil((amount * currencyPrice.currency[from2]['usd']) / currencyPrice.telegramStarsRate);
+        } else if (from === 'telegramStars') {
+            result = amount * currencyPrice.telegramStarsRate * currencyPrice.currency['usd'][to2];
+        } else if (currencyPrice.currency[from2]?.[to2]) {
+            result = amount * currencyPrice.currency[from2][to2];
+        } else if (currencyPrice.currency[to2]?.[from2]) {
+            result = amount / currencyPrice.currency[to2][from2];
         }
 
         const fixedString = result.toFixed(12);
@@ -40,11 +45,11 @@ export class WalletHelper {
     }
 
     public static getTotalBalance(balanceAccount: BalanceAccount, currency: string) {
-        if (!currencyPrice) return 0;
+        if (!currencyPrice?.currency) return undefined;
         let sum = 0;
 
         for (const [key, value] of Object.entries(balanceAccount)) {
-            const isValid = Object.keys(currencyPrice).includes(key);
+            const isValid = Object.keys(currencyPrice.currency).includes(key);
             if (value === 0 || !isValid) continue;
 
             const converted = this.convert(Number(value), key as keyof BalanceAccount, currency);

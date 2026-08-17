@@ -5,6 +5,10 @@
     border-radius: 300px;
 }
 
+.icon {
+    background: none !important;
+}
+
 .cny1{
     background-color: red;
 

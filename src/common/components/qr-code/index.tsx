@@ -78,7 +78,7 @@ export const QrCode: FC<PropsType> = memo(({ url, text }) => {
                     ctx.font = 'bold 20px sans-serif';
                     ctx.fillStyle = '#0098EA';
                     ctx.textAlign = 'center';
-                    ctx.fillText(`@${text}`, size / 2, size + 8);
+                    ctx.fillText(text, size / 2, size + 8);
                 }
             };
         });

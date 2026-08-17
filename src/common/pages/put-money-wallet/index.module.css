@@ -100,16 +100,9 @@
             gap: 8px;
 
             .div12{
-                background-color: white;
-                height: 100%;
-                color: black;
+                width: 40px;
                 aspect-ratio: 1/1;
-                display: grid;
-                align-items: center;
-                justify-items: center;
-                border-radius: 100px;
                 font-size: 24px;
-                font-weight: bold;
             }
         }
     }

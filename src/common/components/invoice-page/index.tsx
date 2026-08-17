@@ -2,15 +2,15 @@ import { FC, useEffect, useState } from 'react';
 import styles from './index.module.css';
 import { PropsType } from './types/props.type.ts';
 import { QrCode } from '../qr-code';
-import { useAppAction, useAppSelector } from '../../store';
-import { Link } from '../link';
-import { shortText } from '../../hooks/short-text.ts';
+import { useAppAction } from '../../store';
 import { EventsEnum } from '../../types/events/events.enum.ts';
+import { Card } from '../card';
+import { shortText } from '../../hooks/short-text.ts';
+import { useTranslation } from 'react-i18next';
 
 export const InvoicePage: FC<PropsType> = ({ request }) => {
-    const userId = useAppSelector((state) => state.app.user?.id);
+    const { t } = useTranslation();
     const [url, setUrl] = useState<string>();
-    const shortUserId = shortText(userId);
     const { setStateApp, postMessage } = useAppAction();
 
     useEffect(() => {
@@ -30,10 +30,10 @@ export const InvoicePage: FC<PropsType> = ({ request }) => {
 
     return (
         <div className={styles.background}>
-            <QrCode url={url} text={shortUserId} />
+            <QrCode url={url} text={shortText(url)} />
             {url && (
                 <div className={styles.div1}>
-                    <Link href={url}>{url}</Link>
+                    <Card onClick={() => window.open(url)}>{t('t68')}</Card>
                 </div>
             )}
         </div>

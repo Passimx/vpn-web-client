@@ -19,7 +19,7 @@ export const Wallet: FC = () => {
         <div className={styles.background}>
             <div className={styles.div0}>
                 <div className={styles.div01}>
-                    {WalletHelper.formatPrice(WalletHelper.getTotalBalance(balanceAccount, t('t4')) ?? 0)}&#160;
+                    {WalletHelper.formatPrice(WalletHelper.getTotalBalance(balanceAccount, t('t4')))}&#160;
                     {t('t3')}
                 </div>
                 <div className={styles.div011}>

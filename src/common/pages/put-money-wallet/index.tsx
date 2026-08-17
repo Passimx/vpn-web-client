@@ -9,6 +9,7 @@ import tonhub from '../../../../public/assets/images/tonhub.png';
 import ton from '../../../../public/assets/images/ton.svg';
 import sber from '../../../../public/assets/images/sber.png';
 import wechat from '../../../../public/assets/images/wechat.png';
+import telegram from '../../../../public/assets/images/telegram-icon.png';
 
 import { Card } from '../../components/card';
 import { WalletHelper } from './helper.ts';
@@ -17,6 +18,8 @@ import { InvoicePage } from '../../components/invoice-page';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { Image } from '../../components/image';
 import { callAction } from '../../api/px.connect.ts';
+import { CurrencyIcon } from '../../components/currency-icon';
+import { BalanceAccount } from '../../store/app/types/app-state.type.ts';
 
 export const PutMoneyWallet: FC = () => {
     const id = 'id';
@@ -36,23 +39,6 @@ export const PutMoneyWallet: FC = () => {
         element?.focus();
 
         return false;
-    };
-
-    const onTon = (app: AppWalletEnum) => {
-        const result = checkBalance();
-        if (!result) return;
-
-        const amountPrice = WalletHelper.convert(amount, t('t4'), 'ton');
-        const request = callAction<string>(EventsEnum.CREATE_TON_INVOICE, {
-            userId,
-            amount: amountPrice,
-            app,
-            currency: 'ton',
-        });
-
-        setStateApp({
-            foreground: <InvoicePage request={request} />,
-        });
     };
 
     const onWechat = async () => {
@@ -77,13 +63,40 @@ export const PutMoneyWallet: FC = () => {
         setStateApp({ foreground: <InvoicePage request={request} /> });
     };
 
+    const onTelegramStars = () => {
+        const result = checkBalance();
+        if (!result) return;
+
+        const amountPrice = WalletHelper.convert(amount, t('t4'), 'telegramStars');
+        const request = callAction<string>(EventsEnum.CREATE_TELEGRAM_STARS_INVOICE, { userId, amount: amountPrice });
+
+        setStateApp({ foreground: <InvoicePage request={request} /> });
+    };
+
+    const onTon = (app: AppWalletEnum) => {
+        const result = checkBalance();
+        if (!result) return;
+
+        const amountPrice = WalletHelper.convert(amount, t('t4'), 'ton');
+        const request = callAction<string>(EventsEnum.CREATE_TON_INVOICE, {
+            userId,
+            amount: amountPrice,
+            app,
+            currency: 'ton',
+        });
+
+        setStateApp({
+            foreground: <InvoicePage request={request} />,
+        });
+    };
+
     return (
         <div className={styles.div1}>
             <div className={styles.div0}>
                 <div>
                     <div className={styles.div11}>
                         <Input id={id} placeholder={t('t5')} type={'number'} onChangeValue={onChangeValue} />
-                        <div className={styles.div12}>{t('t3')}</div>
+                        <CurrencyIcon className={styles.div12} currency={t('t4') as keyof BalanceAccount} />
                     </div>
                 </div>
                 <div className={styles.div30}>
@@ -113,7 +126,29 @@ export const PutMoneyWallet: FC = () => {
                             </div>
                         </div>
                     </Card>
-                    <Card>
+                    <Card onClick={onTelegramStars}>
+                        <div className={styles.div1_0}>
+                            <div className={styles.div2}>
+                                <Image src={telegram} className={styles.div3} />
+                            </div>
+                            <div className={styles.div6}>
+                                <div className={styles.div7}>Telegram Stars</div>
+                                <div className={styles.div8}>
+                                    {WalletHelper.convert(amount, t('t4'), 'telegramStars')}
+                                    &#160;☆&#160;≈&#160;
+                                    {WalletHelper.formatPrice(
+                                        WalletHelper.convert(
+                                            WalletHelper.convert(amount, t('t4'), 'telegramStars'),
+                                            'telegramStars',
+                                            'usd',
+                                        ),
+                                    )}
+                                    &#160;$
+                                </div>
+                            </div>
+                        </div>
+                    </Card>
+                    <Card onClick={checkBalance}>
                         <div className={styles.div1_1}>
                             <div className={styles.div4}>
                                 <Image src={ton} className={styles.div5} />

@@ -8,10 +8,10 @@ import { FaRubleSign } from 'react-icons/fa';
 import { BiDollar } from 'react-icons/bi';
 
 const CURRENCY_CONFIG = {
-    cny: { wrap: styles.cny1, icon: <Image src={cny} className={styles.cny2} /> },
-    rub: { wrap: styles.rub1, icon: <FaRubleSign className={styles.rub2} /> },
-    ton: { wrap: styles.ton1, icon: <Image src={ton} className={styles.ton2} /> },
-    usd: { wrap: styles.usd1, icon: <BiDollar className={styles.usd2} /> },
+    cny: { wrap: styles.cny1, icon: <Image src={cny} className={`${styles.cny2} ${styles.icon}`} /> },
+    rub: { wrap: styles.rub1, icon: <FaRubleSign className={`${styles.rub2} ${styles.icon}`} /> },
+    ton: { wrap: styles.ton1, icon: <Image src={ton} className={`${styles.ton2} ${styles.icon}`} /> },
+    usd: { wrap: styles.usd1, icon: <BiDollar className={`${styles.usd2} ${styles.icon}`} /> },
 } as const;
 
 export const CurrencyIcon: FC<PropsType> = ({ currency, className }) => {

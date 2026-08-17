@@ -30,7 +30,7 @@ export const Header: FC = () => {
                 <>
                     <div className={styles.div3}>
                         <div className={styles.div4} onClick={() => navigate('/wallet')}>
-                            <div>{totalBalance ? WalletHelper.formatPrice(totalBalance) : '...'}</div>
+                            <div>{WalletHelper.formatPrice(totalBalance)}</div>
                             <div>{t('t3')}</div>
                         </div>
                         <div className={styles.div5} onClick={() => navigate('/put-money-wallet')}>

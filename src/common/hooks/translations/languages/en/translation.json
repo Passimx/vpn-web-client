@@ -68,5 +68,6 @@
   "t64": "Balance",
   "t65": "Send",
   "t66": "Receive",
-  "t67": "Insufficient funds"
+  "t67": "Insufficient funds",
+  "t68": "Follow the link"
 }
