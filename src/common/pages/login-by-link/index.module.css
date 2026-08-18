@@ -4,6 +4,7 @@
     align-items: center;
     justify-items: center;
     color: white;
+    overflow: hidden;
 
     .div2{
         display: grid;
@@ -30,10 +31,17 @@
                 cursor: pointer;
             }
         }
+
         .div9{
-            font-weight: 700;
-            color: black;
-            background-color: white;
+            display: grid;
+            min-height: 40px;
+            grid-template-rows: auto 1fr;
+
+            .div10{
+                font-weight: 700;
+                color: black;
+                background-color: white;
+            }
         }
     }
 }

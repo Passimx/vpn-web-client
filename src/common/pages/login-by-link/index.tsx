@@ -55,9 +55,15 @@ export const LoginByLink: FC = () => {
                     </Card>
                     <FaRegPaste className={styles.div8} onClick={pasteFromBuffer} />
                 </div>
-                <Card className={styles.div9} onClick={onLogin}>
-                    {isLoading ? <RotateLoading /> : <div>Войти</div>}
-                </Card>
+                <div className={styles.div9}>
+                    {isLoading ? (
+                        <RotateLoading />
+                    ) : (
+                        <Card className={styles.div10} onClick={onLogin}>
+                            <div>Войти</div>
+                        </Card>
+                    )}
+                </div>
             </div>
         </div>
     );

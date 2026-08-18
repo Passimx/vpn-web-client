@@ -10,6 +10,9 @@ import { TopElements } from '../top-elements';
 import { RotateLoading } from '../rotate-loading';
 import { useRegisterServiceWorkerWorker } from '../../hooks/use-register-service-worker.hook.ts';
 import { useChangeLocation } from '../../hooks/use-change-location.hook.ts';
+import { ErrorBoundary } from 'react-error-boundary';
+import { ErrorBoundaryPage } from '../error-boundary-page';
+import { useLocation } from 'react-router-dom';
 
 export const App: FC<PropsType> = ({ children }) => {
     useIsIos();
@@ -18,23 +21,26 @@ export const App: FC<PropsType> = ({ children }) => {
     useChangeLocation();
     useRegisterServiceWorkerWorker();
     const loaded = useTranslation();
+    const location = useLocation();
 
     return (
-        <div className={styles.div1}>
-            <TopElements />
-            {loaded ? (
-                <>
-                    <Header />
-                    <div id={'root2'} className={styles.div2}>
-                        {children}
-                    </div>
-                </>
-            ) : (
-                <>
-                    <div></div>
-                    <RotateLoading />
-                </>
-            )}
-        </div>
+        <ErrorBoundary FallbackComponent={ErrorBoundaryPage} resetKeys={[location.pathname]}>
+            <div className={styles.div1}>
+                <TopElements />
+                {loaded ? (
+                    <>
+                        <Header />
+                        <div id={'root2'} className={styles.div2}>
+                            {children}
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <div></div>
+                        <RotateLoading />
+                    </>
+                )}
+            </div>
+        </ErrorBoundary>
     );
 };
