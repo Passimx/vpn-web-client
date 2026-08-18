@@ -36,7 +36,7 @@ export const LoginByLink: FC = () => {
         if (!response) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't37' });
 
         setStateApp({ user: response });
-        navigate('/');
+        navigate('/menu', { replace: true });
     };
 
     return (

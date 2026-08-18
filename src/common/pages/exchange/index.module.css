@@ -134,7 +134,7 @@
             justify-items: center;
             background-color: white;
             color: black;
-            font-size: x-large;
+            font-weight: 600;
         }
         .noActive{
             opacity: 0.5;

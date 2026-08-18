@@ -16,7 +16,7 @@ export const Header: FC = () => {
     useEffect(() => {
         const element = document.getElementById(styles.div33);
         if (!element) return;
-        element.style.transform = `scale(${['/', '/login'].includes(location.pathname) ? 0 : 1})`;
+        element.style.transform = `scale(${['/menu', '/', '/login'].includes(location.pathname) ? 0 : 1})`;
     }, [location.pathname]);
 
     return (

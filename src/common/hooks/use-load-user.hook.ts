@@ -40,7 +40,8 @@ export const useLoadUser = () => {
             const stateString = localStorage.getItem('state') || '{}';
             const state = JSON.parse(stateString) as AppStateType;
 
-            if (!state.user) navigate('/login');
+            if (!state.user) navigate('/login', { replace: true });
+            else navigate('/menu', { replace: true });
             if (!state.lang) state.lang = navigator.language.slice(0, 2);
 
             setStateApp(state);

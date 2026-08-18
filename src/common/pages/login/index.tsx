@@ -23,7 +23,7 @@ export const Login: FC = () => {
         if (!response) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't0' });
 
         setStateApp({ user: response });
-        navigate('/menu');
+        navigate('/menu', { replace: true });
     };
 
     return (

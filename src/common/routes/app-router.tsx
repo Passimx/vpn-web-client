@@ -8,6 +8,7 @@ import { PutMoneyWallet } from '../pages/put-money-wallet';
 import { Tariffs } from '../pages/tariffs';
 import { MySubscription } from '../pages/my-subscription';
 import { MySubscriptions } from '../pages/my-subscriptions';
+import Loading from '../pages/loading';
 
 const Instruction = lazy(() => import('../pages/instruction').then((m) => ({ default: m.Instruction })));
 const AppStore = lazy(() => import('../pages/app-store').then((m) => ({ default: m.AppStore })));
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '*',
+                element: <Loading />,
+            },
+            {
+                path: 'menu',
                 element: <Menu />,
             },
             {

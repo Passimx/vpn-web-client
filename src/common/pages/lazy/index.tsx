@@ -1,8 +1,8 @@
 import styles from './index.module.css';
-import { Suspense } from 'react';
+import { FC, Suspense } from 'react';
 import { RotateLoading } from '../../components/rotate-loading';
 
-const Lazy = ({ children }: { children: React.ReactNode }) => {
+const Lazy: FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
         <Suspense
             fallback={
