@@ -12,6 +12,7 @@ import { WalletHelper } from '../put-money-wallet/helper.ts';
 import { Card } from '../../components/card';
 import { Tariff } from '../../components/tariff';
 import { RotateLoading } from '../../components/rotate-loading';
+import { LuExternalLink } from 'react-icons/lu';
 
 export const ExtendKey: FC = () => {
     const { keyId } = useParams();
@@ -47,7 +48,7 @@ export const ExtendKey: FC = () => {
 
     useEffect(() => {
         const getTariffs = async () => {
-            const tariffs = await callAction<ITariffs>(EventsEnum.GET_TARIFFS);
+            const tariffs = await callAction<ITariffs>(EventsEnum.GET_TARIFFS, user?.id);
             if (!tariffs) return postMessage({ event: EventsEnum.SHOW_TEXT, data: 't0' });
 
             if (key?.kind === 'cdn') setTariffs(tariffs.cdn);
@@ -64,9 +65,9 @@ export const ExtendKey: FC = () => {
                     <Card className={`${styles.div3} ${key?.kind === 'cdn' && 'animation_1'}`}>
                         <div>{t(key?.kind === 'cdn' ? 't47' : 't46')}</div>
                         {tariffs?.map((tariff) => (
-                            <div onClick={() => extend(tariff)}>
-                                <Tariff key={tariff.id} tariff={tariff} />
-                            </div>
+                            <Tariff key={tariff.id} tariff={tariff} onClick={() => extend(tariff)}>
+                                <LuExternalLink className={'icon'} />
+                            </Tariff>
                         ))}
                     </Card>
                 ) : (

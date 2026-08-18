@@ -19,5 +19,8 @@
             }
         }
     }
+}
 
+.isMoneyNotEnough{
+    opacity: 0.6;
 }

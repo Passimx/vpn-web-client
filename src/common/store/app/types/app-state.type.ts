@@ -13,7 +13,7 @@ export type KeyType = {
     id: string;
     status: 'active' | 'expired';
     kind: TariffKind;
-    autoRenewEnabled: boolean;
+    autoExtendTariffId: string | null;
     countTrafficLimit: number;
     countTrafficUsed: number;
     createdAt: Date;

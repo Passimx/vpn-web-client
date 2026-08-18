@@ -69,5 +69,11 @@
   "t65": "Send",
   "t66": "Receive",
   "t67": "Insufficient funds",
-  "t68": "Follow the link"
+  "t68": "Follow the link",
+  "t69": "To get a free trial subscription, go to",
+  "t70": "Auto-renewal",
+  "t71": "Top up balance",
+  "t72": "Select a plan for the auto-renewal to trigger 1 day before the expiration date",
+  "t73": "Enabled",
+  "t74": "Disabled"
 }

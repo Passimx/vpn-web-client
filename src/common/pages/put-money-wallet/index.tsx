@@ -93,6 +93,7 @@ export const PutMoneyWallet: FC = () => {
     return (
         <div className={styles.div1}>
             <div className={styles.div0}>
+                <div className={styles.div01}>{t('t71')}</div>
                 <div>
                     <div className={styles.div11}>
                         <Input id={id} placeholder={t('t5')} type={'number'} onChangeValue={onChangeValue} />

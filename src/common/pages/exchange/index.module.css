@@ -1,7 +1,7 @@
 .div1{
     height: 100%;
     display: grid;
-    align-items: center;
+    align-items: start;
     justify-items: center;
     color: white;
 
@@ -134,7 +134,7 @@
             justify-items: center;
             background-color: white;
             color: black;
-            font-size: large;
+            font-size: x-large;
         }
         .noActive{
             opacity: 0.5;

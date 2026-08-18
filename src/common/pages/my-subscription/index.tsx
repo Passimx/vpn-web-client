@@ -10,9 +10,10 @@ import { LuExternalLink } from 'react-icons/lu';
 import { WalletHelper } from '../put-money-wallet/helper.ts';
 import { IoCopyOutline } from 'react-icons/io5';
 import { EventsEnum } from '../../types/events/events.enum.ts';
-import { MdDeleteOutline } from 'react-icons/md';
+import { MdDeleteOutline, MdOutlineAutorenew } from 'react-icons/md';
 import { callAction } from '../../api/px.connect.ts';
 import { UserType } from '../../store/app/types/app-state.type.ts';
+import { AutoExtendKey } from '../../components/auto-extend-key';
 
 export const MySubscription: FC = () => {
     const { t } = useTranslation();
@@ -21,6 +22,10 @@ export const MySubscription: FC = () => {
     const { postMessage, setStateApp } = useAppAction();
     const user = useAppSelector((state) => state.app.user);
     const key = id ? user?.keys?.find((k) => k.id === id) : undefined;
+
+    useEffect(() => {
+        if (!key) navigate('/my-subscriptions');
+    }, [key]);
 
     const copy = (text: string) => {
         window.navigator.clipboard.writeText(text);
@@ -35,9 +40,10 @@ export const MySubscription: FC = () => {
         navigate('/my-subscriptions', { replace: true });
     };
 
-    useEffect(() => {
-        if (!key) navigate('/my-subscriptions');
-    }, [key]);
+    const autoExtendKey = () => {
+        if (!key) return;
+        setStateApp({ foreground: <AutoExtendKey /> });
+    };
 
     return (
         <div className={styles.div1}>
@@ -60,6 +66,10 @@ export const MySubscription: FC = () => {
                             <div>{t('t49')}:</div>
                             <div>{t(key.status)}</div>
                         </div>
+                        <div className={styles.div4}>
+                            <div>{t('t70')}:</div>
+                            <div>{key.autoExtendTariffId ? t('t73') : t('t74')}</div>
+                        </div>
                         {key.status === 'active' && (
                             <div className={styles.div4}>
                                 <div>{t('t50')}:</div>
@@ -76,6 +86,10 @@ export const MySubscription: FC = () => {
                         >
                             <div>{t('t9')}</div>
                             <IoCopyOutline className={'icon'} />
+                        </Card>
+                        <Card className={styles.div5} onClick={autoExtendKey}>
+                            <div>{t('t70')}</div>
+                            <MdOutlineAutorenew className={'icon'} />
                         </Card>
                         <Card className={styles.div5} onClick={() => navigate(`/extend-key/${key.id}`)}>
                             <div>{t('t52')}</div>

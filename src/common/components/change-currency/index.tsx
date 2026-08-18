@@ -34,7 +34,7 @@ export const ChangeCurrency: FC<PropsType> = ({ currency, onChange }) => {
                             &#160;{t('t3')}
                         </div>
                     </div>
-                    {localCurrency === key && <FaCheck />}
+                    {localCurrency === key && <FaCheck className={'icon'} />}
                 </div>
             ))}
         </Card>

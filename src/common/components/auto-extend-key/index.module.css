@@ -1,0 +1,25 @@
+.div1 {
+    display: grid;
+    gap: 8px;
+    color: white;
+
+    .div2{
+        font-size: x-large;
+        font-weight: 700;
+        text-align: center;
+        padding: 4px;
+    }
+
+    .div3{
+        display: grid;
+        gap: 8px;
+
+        .div4{
+            display: grid;
+            grid-template-columns: 1fr auto;
+            min-height: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
