@@ -58,7 +58,7 @@ export const MyProfile: FC = () => {
                     <IoWalletOutline className={'icon'} />
                     <div>{t('t75')}</div>
                     <Card>
-                        {totalBalance}&#160;{t('t3')}
+                        {WalletHelper.formatPrice(totalBalance)}&#160;{t('t3')}
                     </Card>
                 </Card>
                 <Card className={styles.div3} onClick={onLanguages}>
