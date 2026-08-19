@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PassimX 隐私政策</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        :root{
+            --bg:#0f1115;
+            --panel:#141821;
+            --panel2:#0c0f15;
+            --text:#e6e6e6;
+            --muted:#a9b1c3;
+            --accent:#ff3b3b;
+            --line:#263043;
+            --link:#7cc0ff;
+            --ok:#35d07f;
+            --warn:#ffcc66;
+            --shadow: 0 10px 30px rgba(0,0,0,.35);
+        }
+        *{ box-sizing:border-box; }
+        body{
+            margin:0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: radial-gradient(1200px 800px at 20% 0%, rgba(255,59,59,.10), transparent 60%),
+            radial-gradient(900px 700px at 80% 10%, rgba(124,192,255,.10), transparent 55%),
+            var(--bg);
+            color:var(--text);
+            line-height:1.7;
+        }
+        a{ color:var(--link); text-decoration:none; }
+        a:hover{ text-decoration:underline; }
+        .wrap{
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 28px 18px 70px;
+        }
+        header{
+            background: linear-gradient(180deg, rgba(20,24,33,.9), rgba(20,24,33,.55));
+            border:1px solid var(--line);
+            border-radius: 18px;
+            padding: 22px 20px;
+            box-shadow: var(--shadow);
+        }
+        h1{
+            margin: 0 0 8px 0;
+            font-size: 26px;
+            letter-spacing: .2px;
+        }
+        .meta{
+            color: var(--muted);
+            font-size: 14px;
+            display:flex;
+            flex-wrap:wrap;
+            gap: 10px 18px;
+            margin-top: 10px;
+        }
+        .badge{
+            display:inline-flex;
+            gap:8px;
+            align-items:center;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.06);
+        }
+        .dot{
+            width:8px;height:8px;border-radius:999px;background: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255,59,59,.15);
+        }
+
+        .grid{
+            display:grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .card{
+            background: rgba(20,24,33,.72);
+            border:1px solid var(--line);
+            border-radius: 16px;
+            padding: 18px 18px;
+            box-shadow: var(--shadow);
+        }
+        .card h2{
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        .toc{
+            display:grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .toc a{
+            display:block;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.06);
+        }
+        .toc a:hover{
+            background: rgba(255,255,255,.06);
+        }
+        h3{
+            margin: 18px 0 8px 0;
+            font-size: 16px;
+        }
+        p{ margin: 10px 0; color: var(--text); }
+        ul{ margin: 8px 0 12px 22px; }
+        li{ margin: 6px 0; color: var(--text); }
+        .muted{ color: var(--muted); }
+        .note{
+            border-left: 4px solid var(--warn);
+            padding: 10px 12px;
+            margin: 12px 0;
+            background: rgba(255,204,102,.08);
+            border-radius: 12px;
+        }
+        .ok{
+            border-left: 4px solid var(--ok);
+            padding: 10px 12px;
+            margin: 12px 0;
+            background: rgba(53,208,127,.08);
+            border-radius: 12px;
+        }
+        .hr{
+            height:1px; background: var(--line); margin: 16px 0;
+            opacity:.8;
+        }
+        code{
+            background: rgba(255,255,255,.06);
+            padding: 2px 6px;
+            border-radius: 8px;
+            word-break: break-word;
+        }
+        footer{
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 13px;
+            text-align:center;
+            opacity:.95;
+        }
+        .small{
+            font-size: 13px;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <header>
+        <h1>PassimX 隐私政策</h1>
+        <div class="meta">
+            <span class="badge"><span class="dot"></span>版本：<b>19.08.2026</b></span>
+            <span class="badge">官方发布：<a href="/info/zh/privacy-policy.html">https://vpn-client.passimx.com/info/zh/privacy-policy.html</a></span>
+        </div>
+    </header>
+
+    <div class="note">
+        本隐私政策说明 PassimX 服务收集和处理哪些数据、使用这些数据的目的，
+        以及为保护数据机密性所采取的措施。
+    </div>
+
+    <div class="grid">
+        <section class="card">
+            <h2>目录</h2>
+            <div class="toc">
+                <a href="#terms">1. 术语和定义</a>
+                <a href="#subject">2. 一般规定</a>
+                <a href="#data">3. 我们处理的数据</a>
+                <a href="#traffic">4. VPN 流量数据</a>
+                <a href="#payments">5. 付款与内部余额</a>
+                <a href="#purposes">6. 数据处理目的</a>
+                <a href="#storage">7. 数据存储</a>
+                <a href="#third">8. 向第三方披露</a>
+                <a href="#security">9. 数据安全</a>
+                <a href="#rights">10. 用户权利</a>
+                <a href="#changes">11. 本政策的变更</a>
+                <a href="#final">12. 最终条款</a>
+            </div>
+            <p class="small">
+                为方便阅读，可使用本页面的搜索功能（Ctrl+F / ⌘+F）。
+            </p>
+        </section>
+
+        <section class="card" id="terms">
+            <h2>1. 术语和定义</h2>
+            <p>本隐私政策使用以下术语：</p>
+            <ul>
+                <li><b>服务</b> — PassimX 技术平台，为用户提供 VPN 服务及相关功能的访问权限。</li>
+                <li><b>运营方</b> — 负责管理和运营 PassimX 服务的个人或主体。</li>
+                <li><b>用户</b> — 使用本服务的自然人。</li>
+                <li><b>VPN 连接</b> — 用户与 PassimX 基础设施之间建立的、用于访问互联网的网络连接。</li>
+                <li><b>配置</b> — 提供给用户、用于使用 VPN 服务的技术连接参数。</li>
+                <li><b>余额</b> — 表示用户在服务内部资金的内部记账数值，不构成银行账户或电子货币。</li>
+            </ul>
+        </section>
+
+        <section class="card" id="subject">
+            <h2>2. 一般规定</h2>
+
+            <p>
+                2.1. 本隐私政策适用于运营方因用户使用本服务而接收和处理的所有数据。
+            </p>
+
+            <p>
+                2.2. 用户使用本服务，即表示其已知悉本隐私政策，并在适用法律允许的范围内同意其条款。
+            </p>
+
+            <p>
+                2.3. 运营方仅处理服务运行、安全保障、付款处理、内部余额管理以及提供技术支持所必需的数据。
+            </p>
+
+            <div class="ok">
+                运营方<b>不会保存用户访问过的网站记录</b>，
+                也不会仅因用户使用 VPN 服务而建立其访问过的特定域名或 URL 的历史记录。
+            </div>
+        </section>
+
+        <section class="card" id="data">
+            <h2>3. 我们处理的数据</h2>
+
+            <p>
+                3.1. 根据用户使用的功能，运营方可能处理以下类别的数据：
+            </p>
+
+            <ul>
+                <li>用户在系统中的标识符；</li>
+                <li><code>tg_id</code> 和 <code>username</code> — 用户使用 PassimX Telegram 机器人时产生的数据；</li>
+                <li>VPN 配置的技术标识符及参数；</li>
+                <li>用户套餐、订阅及订阅期限相关信息；</li>
+                <li>内部余额的充值记录；</li>
+                <li>与内部余额相关的所有交易记录，包括充值、扣款、入账、兑换以及其他交易；</li>
+                <li>用于验证和记录付款所必需的信息；</li>
+                <li>VPN 基础设施运行过程中处理的 VPN 流量数据；</li>
+                <li>为确保服务正常运行和安全所必需的技术事件数据。</li>
+            </ul>
+
+            <p>
+                3.2. 除非确有必要，运营方不会要求用户提供护照信息、证件照片、
+                私人通信内容或其他过度的个人数据。
+            </p>
+
+            <p>
+                3.3. 用户自行决定在联系客户支持时向运营方提供哪些额外信息。
+            </p>
+        </section>
+
+        <section class="card" id="traffic">
+            <h2>4. VPN 流量数据</h2>
+
+            <p>
+                4.1. 为提供 VPN 服务，用户的网络流量会经过 PassimX 的基础设施。
+            </p>
+
+            <p>
+                4.2. 运营方会在服务运行、安全保障、技术问题诊断以及防止滥用所必需的范围内存储 VPN 流量数据。
+            </p>
+
+            <p>
+                4.3. 同时，运营方<b>不会保存用户访问过的网站历史记录</b>。
+                具体而言，本服务不会专门建立用户通过 VPN 访问的网站、域名或 URL 的历史记录。
+            </p>
+
+            <p>
+                4.4. 不保存网站访问历史意味着，运营方不会将用户访问过的网站历史作为独立数据库或用户画像使用。
+            </p>
+
+            <div class="note">
+                VPN 服务不应被视为绝对匿名的保证。
+                用户使用第三方应用程序、网站、支付系统及其他服务时，
+                相关第三方可能会独立收集有关用户的信息。
+            </div>
+        </section>
+
+        <section class="card" id="payments">
+            <h2>5. 付款与内部余额</h2>
+
+            <p>
+                5.1. 为提供付费服务，运营方会保存用户内部余额的充值记录。
+            </p>
+
+            <p>
+                5.2. 运营方还会保存与内部余额相关的所有交易信息，包括充值、扣款、入账、退款、兑换以及余额的其他变动。
+            </p>
+
+            <p>
+                5.3. 交易记录用于正确维护余额、验证已完成的交易、向用户提供相关信息、
+                解决争议以及运行服务中的付费功能。
+            </p>
+
+            <p>
+                5.4. 当使用第三方支付服务商时，相关支付数据也可能由相应的支付服务商按照其自身的隐私政策和规则进行处理。
+            </p>
+
+            <p class="muted">
+                5.5. 如果银行卡完整信息或其他支付工具信息由第三方支付服务商直接处理，
+                运营方无需保存此类完整信息。
+            </p>
+        </section>
+
+        <section class="card" id="purposes">
+            <h2>6. 数据处理目的</h2>
+
+            <p>
+                6.1. 用户数据用于以下目的：
+            </p>
+
+            <ul>
+                <li>提供 VPN 服务访问权限；</li>
+                <li>创建和管理 VPN 配置；</li>
+                <li>管理订阅及套餐；</li>
+                <li>处理和验证付款；</li>
+                <li>管理用户的内部余额；</li>
+                <li>维护交易记录；</li>
+                <li>在服务内部进行资金兑换；</li>
+                <li>确保基础设施安全；</li>
+                <li>发现和防止滥用行为；</li>
+                <li>诊断技术问题并维护服务；</li>
+                <li>处理用户提交给客户支持的请求；</li>
+                <li>遵守适用的法律法规要求。</li>
+            </ul>
+
+            <p>
+                6.2. 运营方不会利用网站访问历史为用户建立广告画像。
+            </p>
+        </section>
+
+        <section class="card" id="storage">
+            <h2>7. 数据存储</h2>
+
+            <p>
+                7.1. 数据将在实现处理目的、运行服务、维护付款及交易记录以及遵守适用法律法规所必需的期限内进行存储。
+            </p>
+
+            <p>
+                7.2. 在用户停止使用本服务后，充值记录及内部余额交易记录仍可能被保留，
+                以便在适用法律要求的情况下核实财务交易、解决争议、维护财务记录及其他强制性记录。
+            </p>
+
+            <p>
+                7.3. 当数据不再具有保留必要性时，运营方可以删除或匿名化相关数据，
+                除非法律要求继续保留，或为了保护运营方的合法权益而确有必要继续保留。
+            </p>
+
+            <div class="ok">
+                运营方不会单独保存用户访问过的网站历史记录，
+                除非特定情况下适用的技术或法律要求明确规定需要保存此类信息。
+            </div>
+        </section>
+
+        <section class="card" id="third">
+            <h2>8. 向第三方披露</h2>
+
+            <p>
+                8.1. 运营方不会向第三方出售用户的个人数据。
+            </p>
+
+            <p>
+                8.2. 数据仅会在服务运行所必需的范围内，或适用法律要求的情况下向第三方披露。
+            </p>
+
+            <p>
+                8.3. 此类第三方可能包括：
+            </p>
+
+            <ul>
+                <li>支付服务商及收单机构 — 用于处理和验证付款；</li>
+                <li>服务器及网络基础设施提供商 — 用于运行 VPN 服务及相关系统；</li>
+                <li>软件及技术服务提供商 — 在服务正常运行所必需的范围内提供相关服务；</li>
+                <li>政府机关及其他依法授权的人员 — 在适用法律要求披露的情况下。</li>
+            </ul>
+
+            <p>
+                8.4. 在向第三方披露数据时，运营方会尽力将披露的信息范围限制在相关目的所必需的最低程度。
+            </p>
+        </section>
+
+        <section class="card" id="security">
+            <h2>9. 数据安全</h2>
+
+            <p>
+                9.1. 运营方采取合理的技术和组织措施，保护所处理的数据免受未经授权的访问、修改、披露、破坏及其他非法行为。
+            </p>
+
+            <p>
+                9.2. 数据访问权限仅提供给运行服务及执行相关功能所必需的基础设施组件和人员。
+            </p>
+
+            <p>
+                9.3. 尽管已经采取安全措施，但任何通过互联网存储或传输数据的方法都无法保证信息得到绝对保护。
+            </p>
+        </section>
+
+        <section class="card" id="rights">
+            <h2>10. 用户权利</h2>
+
+            <p>
+                10.1. 用户可以就其数据的处理问题联系客户支持，并在适用法律规定的范围内请求获取相关信息。
+            </p>
+
+            <p>
+                10.2. 用户可以要求更正不准确的数据，但前提是技术上可行，且该更正不违反适用的法律法规要求。
+            </p>
+
+            <p>
+                10.3. 如果继续保留相关数据并非履行义务、验证付款、维护交易记录、保护运营方权利或遵守适用法律所必需，
+                用户可以要求删除其数据。
+            </p>
+
+            <p>
+                10.4. 如有隐私相关请求，用户可以联系 PassimX 客服：
+                <a href="https://t.me/passimx_support">Telegram 客服</a>。
+            </p>
+
+            <div class="note">
+                如果保留某些数据对于验证财务交易、履行义务或遵守法律法规要求是必要的，
+                则相关数据可能无法被删除。
+            </div>
+        </section>
+
+        <section class="card" id="changes">
+            <h2>11. 本政策的变更</h2>
+
+            <p>
+                11.1. 由于服务功能、数据处理方式、安全要求或适用法律发生变化，
+                运营方可能会定期更新本隐私政策。
+            </p>
+
+            <p>
+                11.2. 新版本隐私政策自发布之日起生效，除非新版本另有规定。
+            </p>
+
+            <p>
+                11.3. 当前版本的日期显示在本页面顶部。
+            </p>
+        </section>
+
+        <section class="card" id="final">
+            <h2>12. 最终条款</h2>
+
+            <p>
+                12.1. 本隐私政策是 PassimX 服务使用条款中关于数据处理部分不可分割的组成部分。
+            </p>
+
+            <p>
+                12.2. 如果本政策的任何条款被认定为无效或不可执行，其余条款仍保持完全有效。
+            </p>
+
+            <p>
+                12.3. 本政策的当前版本始终可通过以下地址获取：
+                <a href="/info/zh/privacy-policy.html">https://vpn-client.passimx.com/info/zh/privacy-policy.html</a>。
+            </p>
+
+            <p>
+                12.4. 如对数据处理和隐私保护有任何疑问，用户可以联系客户支持：
+                <a href="https://t.me/passimx_support">Telegram 客服</a>。
+            </p>
+
+            <div class="hr"></div>
+
+            <p class="muted small">
+                © PassimX, 2026
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        感谢您使用 PassimX。
+        <span class="muted">如有隐私相关问题，请通过 Telegram 客服联系我们，</span>
+        我们下次见！
+    </footer>
+</div>
+</body>
+</html>

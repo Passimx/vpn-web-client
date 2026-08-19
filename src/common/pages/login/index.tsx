@@ -11,6 +11,8 @@ import { LuExternalLink } from 'react-icons/lu';
 import { GoLink } from 'react-icons/go';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 import { UserType } from '../../store/app/types/app-state.type.ts';
+import { TiDocumentText } from 'react-icons/ti';
+import { MdOutlinePrivacyTip } from 'react-icons/md';
 
 export const Login: FC = () => {
     const { t } = useTranslation();
@@ -41,6 +43,16 @@ export const Login: FC = () => {
                 <Card className={styles.div3} onClick={() => navigate('/language')}>
                     <IoLanguageOutline className={'icon'} />
                     <div>{t('t31')}</div>
+                    <LuExternalLink className={'icon'} />
+                </Card>
+                <Card className={styles.div3} onClick={() => window.open(`/info/${lang}/user-agreement.html`)}>
+                    <TiDocumentText className={'icon'} />
+                    <div>{t('t76')}</div>
+                    <LuExternalLink className={'icon'} />
+                </Card>
+                <Card className={styles.div3} onClick={() => window.open(`/info/${lang}/privacy-policy.html`)}>
+                    <MdOutlinePrivacyTip className={'icon'} />
+                    <div>{t('t77')}</div>
                     <LuExternalLink className={'icon'} />
                 </Card>
             </div>

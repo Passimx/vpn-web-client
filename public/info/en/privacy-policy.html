@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PassimX Privacy Policy</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        :root{
+            --bg:#0f1115;
+            --panel:#141821;
+            --panel2:#0c0f15;
+            --text:#e6e6e6;
+            --muted:#a9b1c3;
+            --accent:#ff3b3b;
+            --line:#263043;
+            --link:#7cc0ff;
+            --ok:#35d07f;
+            --warn:#ffcc66;
+            --shadow: 0 10px 30px rgba(0,0,0,.35);
+        }
+        *{ box-sizing:border-box; }
+        body{
+            margin:0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: radial-gradient(1200px 800px at 20% 0%, rgba(255,59,59,.10), transparent 60%),
+            radial-gradient(900px 700px at 80% 10%, rgba(124,192,255,.10), transparent 55%),
+            var(--bg);
+            color:var(--text);
+            line-height:1.7;
+        }
+        a{ color:var(--link); text-decoration:none; }
+        a:hover{ text-decoration:underline; }
+        .wrap{
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 28px 18px 70px;
+        }
+        header{
+            background: linear-gradient(180deg, rgba(20,24,33,.9), rgba(20,24,33,.55));
+            border:1px solid var(--line);
+            border-radius: 18px;
+            padding: 22px 20px;
+            box-shadow: var(--shadow);
+        }
+        h1{
+            margin: 0 0 8px 0;
+            font-size: 26px;
+            letter-spacing: .2px;
+        }
+        .meta{
+            color: var(--muted);
+            font-size: 14px;
+            display:flex;
+            flex-wrap:wrap;
+            gap: 10px 18px;
+            margin-top: 10px;
+        }
+        .badge{
+            display:inline-flex;
+            gap:8px;
+            align-items:center;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.06);
+        }
+        .dot{
+            width:8px;height:8px;border-radius:999px;background: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255,59,59,.15);
+        }
+
+        .grid{
+            display:grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .card{
+            background: rgba(20,24,33,.72);
+            border:1px solid var(--line);
+            border-radius: 16px;
+            padding: 18px 18px;
+            box-shadow: var(--shadow);
+        }
+        .card h2{
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        .toc{
+            display:grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .toc a{
+            display:block;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.06);
+        }
+        .toc a:hover{
+            background: rgba(255,255,255,.06);
+        }
+        h3{
+            margin: 18px 0 8px 0;
+            font-size: 16px;
+        }
+        p{ margin: 10px 0; color: var(--text); }
+        ul{ margin: 8px 0 12px 22px; }
+        li{ margin: 6px 0; color: var(--text); }
+        .muted{ color: var(--muted); }
+        .note{
+            border-left: 4px solid var(--warn);
+            padding: 10px 12px;
+            margin: 12px 0;
+            background: rgba(255,204,102,.08);
+            border-radius: 12px;
+        }
+        .ok{
+            border-left: 4px solid var(--ok);
+            padding: 10px 12px;
+            margin: 12px 0;
+            background: rgba(53,208,127,.08);
+            border-radius: 12px;
+        }
+        .hr{
+            height:1px; background: var(--line); margin: 16px 0;
+            opacity:.8;
+        }
+        code{
+            background: rgba(255,255,255,.06);
+            padding: 2px 6px;
+            border-radius: 8px;
+            word-break: break-word;
+        }
+        footer{
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 13px;
+            text-align:center;
+            opacity:.95;
+        }
+        .small{
+            font-size: 13px;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <header>
+        <h1>PassimX Privacy Policy</h1>
+        <div class="meta">
+            <span class="badge"><span class="dot"></span>Edition: <b>19.08.2026</b></span>
+            <span class="badge">Official publication: <a href="/info/en/privacy-policy.html">https://vpn-client.passimx.com/info/en/privacy-policy.html</a></span>
+        </div>
+    </header>
+
+    <div class="note">
+        This Privacy Policy describes what data is collected and processed by the PassimX service,
+        the purposes for which such data is used, and the measures taken to protect its confidentiality.
+    </div>
+
+    <div class="grid">
+        <section class="card">
+            <h2>Contents</h2>
+            <div class="toc">
+                <a href="#terms">1. Terms and Definitions</a>
+                <a href="#subject">2. General Provisions</a>
+                <a href="#data">3. Data We Process</a>
+                <a href="#traffic">4. VPN Traffic Data</a>
+                <a href="#payments">5. Payments and Internal Balance</a>
+                <a href="#purposes">6. Purposes of Data Processing</a>
+                <a href="#storage">7. Data Storage</a>
+                <a href="#third">8. Disclosure to Third Parties</a>
+                <a href="#security">9. Data Security</a>
+                <a href="#rights">10. User Rights</a>
+                <a href="#changes">11. Changes to this Policy</a>
+                <a href="#final">12. Final Provisions</a>
+            </div>
+            <p class="small">
+                For convenience, use the search function on this page (Ctrl+F / ⌘+F).
+            </p>
+        </section>
+
+        <section class="card" id="terms">
+            <h2>1. Terms and Definitions</h2>
+            <p>The following terms are used in this Privacy Policy:</p>
+            <ul>
+                <li><b>Service</b> — the PassimX technology platform providing the User with access to the VPN service and related functionality.</li>
+                <li><b>Operator</b> — the person or entity administering and managing the PassimX Service.</li>
+                <li><b>User</b> — an individual using the Service.</li>
+                <li><b>VPN Connection</b> — a network connection between the User and PassimX infrastructure used to access the Internet.</li>
+                <li><b>Configuration</b> — technical connection parameters provided to the User for using the VPN service.</li>
+                <li><b>Balance</b> — an internal accounting value representing the User's funds within the Service and not constituting a bank account or electronic money.</li>
+            </ul>
+        </section>
+
+        <section class="card" id="subject">
+            <h2>2. General Provisions</h2>
+
+            <p>
+                2.1. This Privacy Policy applies to all data that the Operator receives and processes
+                in connection with the User's use of the Service.
+            </p>
+
+            <p>
+                2.2. By using the Service, the User acknowledges this Privacy Policy and agrees to its terms
+                to the extent provided for by applicable law.
+            </p>
+
+            <p>
+                2.3. The Operator aims to process only the data necessary for the operation of the Service,
+                security, payment processing, management of the internal balance, and provision of technical support.
+            </p>
+
+            <div class="ok">
+                The Operator <b>does not maintain a log of the websites visited by the User</b>
+                and does not create a history of specific domains or URLs visited by the User
+                solely on the basis of their use of the VPN service.
+            </div>
+        </section>
+
+        <section class="card" id="data">
+            <h2>3. Data We Process</h2>
+
+            <p>
+                3.1. Depending on the functionality used, the Operator may process the following categories of data:
+            </p>
+
+            <ul>
+                <li>User identifier within the system;</li>
+                <li><code>tg_id</code> and <code>username</code> — when using the PassimX Telegram bot;</li>
+                <li>technical identifiers and parameters of the VPN Configuration;</li>
+                <li>information about the User's plan, subscription, and subscription period;</li>
+                <li>history of deposits to the internal Balance;</li>
+                <li>history of transactions associated with the internal Balance, including deposits, deductions, credits, conversions, and other transactions;</li>
+                <li>information necessary to verify and account for payments;</li>
+                <li>VPN traffic data processed as part of the operation of the VPN infrastructure;</li>
+                <li>technical events necessary to ensure the operation and security of the Service.</li>
+            </ul>
+
+            <p>
+                3.2. The Operator does not request passport details, document photographs,
+                private correspondence, or other excessive personal data unless necessary.
+            </p>
+
+            <p>
+                3.3. The User independently determines what additional information to provide
+                to the Operator when contacting customer support.
+            </p>
+        </section>
+
+        <section class="card" id="traffic">
+            <h2>4. VPN Traffic Data</h2>
+
+            <p>
+                4.1. In order to provide the VPN service, User network traffic passes through
+                the PassimX infrastructure.
+            </p>
+
+            <p>
+                4.2. The Operator stores VPN traffic data to the extent necessary for the operation
+                of the Service, ensuring its security, diagnosing technical issues, and preventing abuse.
+            </p>
+
+            <p>
+                4.3. At the same time, the Operator <b>does not maintain a history of websites visited</b>.
+                In particular, the Service does not create a dedicated history of the websites,
+                domains, or URLs accessed by the User through the VPN.
+            </p>
+
+            <p>
+                4.4. The absence of a website browsing history means that the Operator does not use
+                a history of visited websites as a separate database or User profile.
+            </p>
+
+            <div class="note">
+                A VPN service should not be considered a guarantee of absolute anonymity.
+                The use of third-party applications, websites, payment systems, and other services
+                may result in such parties independently collecting information about the User.
+            </div>
+        </section>
+
+        <section class="card" id="payments">
+            <h2>5. Payments and Internal Balance</h2>
+
+            <p>
+                5.1. In order to provide paid services, the Operator stores the history of deposits
+                to the User's internal Balance.
+            </p>
+
+            <p>
+                5.2. The Operator also stores information about all transactions associated with
+                the internal Balance, including deposits, deductions, credits, refunds, conversions,
+                and other changes to the Balance.
+            </p>
+
+            <p>
+                5.3. Transaction history is used to correctly maintain the Balance, verify completed
+                transactions, provide information to the User, resolve disputes, and operate paid features of the Service.
+            </p>
+
+            <p>
+                5.4. When a third-party payment provider is used, payment data may also be processed
+                by the respective payment provider in accordance with its own privacy policy and rules.
+            </p>
+
+            <p class="muted">
+                5.5. The Operator is not required to store full bank card details or other payment
+                instrument information if such data is processed directly by a third-party payment provider.
+            </p>
+        </section>
+
+        <section class="card" id="purposes">
+            <h2>6. Purposes of Data Processing</h2>
+
+            <p>
+                6.1. User data is processed for the following purposes:
+            </p>
+
+            <ul>
+                <li>providing access to the VPN service;</li>
+                <li>creating and managing VPN Configurations;</li>
+                <li>managing subscriptions and plans;</li>
+                <li>processing and verifying payments;</li>
+                <li>managing the User's internal Balance;</li>
+                <li>maintaining transaction history;</li>
+                <li>converting funds within the Service;</li>
+                <li>ensuring infrastructure security;</li>
+                <li>detecting and preventing abuse;</li>
+                <li>diagnosing technical issues and maintaining the Service;</li>
+                <li>processing User requests submitted to customer support;</li>
+                <li>complying with applicable legal requirements.</li>
+            </ul>
+
+            <p>
+                6.2. The Operator does not use website browsing history to create
+                advertising profiles of Users.
+            </p>
+        </section>
+
+        <section class="card" id="storage">
+            <h2>7. Data Storage</h2>
+
+            <p>
+                7.1. Data is stored for the period necessary to achieve the purposes of processing,
+                operate the Service, maintain payment and transaction history, and comply with applicable
+                legal requirements.
+            </p>
+
+            <p>
+                7.2. Deposit and internal Balance transaction history may be retained after the User
+                stops using the Service for the period necessary to verify financial transactions,
+                resolve disputes, maintain accounting and other mandatory records, if such retention
+                is required by applicable law.
+            </p>
+
+            <p>
+                7.3. Data may be deleted or anonymized once it is no longer necessary to retain it,
+                unless further retention is required by law or necessary to protect the Operator's legitimate interests.
+            </p>
+
+            <div class="ok">
+                The Operator does not store a separate history of websites visited by the User,
+                unless otherwise expressly required by technical or legal requirements applicable
+                to a particular situation.
+            </div>
+        </section>
+
+        <section class="card" id="third">
+            <h2>8. Disclosure to Third Parties</h2>
+
+            <p>
+                8.1. The Operator does not sell Users' personal data to third parties.
+            </p>
+
+            <p>
+                8.2. Data may be disclosed to third parties only to the extent necessary
+                for the operation of the Service or where required by applicable law.
+            </p>
+
+            <p>
+                8.3. Such third parties may include:
+            </p>
+
+            <ul>
+                <li>payment providers and acquiring organizations — for processing and verifying payments;</li>
+                <li>server and network infrastructure providers — for operating the VPN service and related systems;</li>
+                <li>software and technical service providers — to the extent necessary for the operation of the Service;</li>
+                <li>government authorities and other authorized persons — where disclosure is required by applicable law.</li>
+            </ul>
+
+            <p>
+                8.4. When disclosing data, the Operator seeks to limit the amount of information
+                to what is necessary for the relevant purpose.
+            </p>
+        </section>
+
+        <section class="card" id="security">
+            <h2>9. Data Security</h2>
+
+            <p>
+                9.1. The Operator takes reasonable technical and organizational measures to protect
+                processed data against unauthorized access, alteration, disclosure, destruction,
+                and other unlawful actions.
+            </p>
+
+            <p>
+                9.2. Access to data is provided only to the infrastructure components and persons
+                who require such access to operate the Service and perform the relevant functions.
+            </p>
+
+            <p>
+                9.3. Despite the security measures implemented, no method of storing or transmitting
+                data over the Internet can guarantee absolute protection of information.
+            </p>
+        </section>
+
+        <section class="card" id="rights">
+            <h2>10. User Rights</h2>
+
+            <p>
+                10.1. The User may contact customer support regarding the processing of their data
+                and request information to the extent provided by applicable law.
+            </p>
+
+            <p>
+                10.2. The User may request correction of inaccurate data, where technically possible
+                and provided that such correction does not conflict with applicable legal requirements.
+            </p>
+
+            <p>
+                10.3. The User may request deletion of their data if its further retention is not required
+                for the performance of obligations, verification of payments, maintenance of transaction history,
+                protection of the Operator's rights, or compliance with applicable law.
+            </p>
+
+            <p>
+                10.4. For privacy-related requests, the User may contact PassimX support:
+                <a href="https://t.me/passimx_support">Telegram Support</a>.
+            </p>
+
+            <div class="note">
+                Deletion of certain data may not be possible if its retention is necessary
+                to verify financial transactions, fulfill obligations, or comply with legal requirements.
+            </div>
+        </section>
+
+        <section class="card" id="changes">
+            <h2>11. Changes to this Policy</h2>
+
+            <p>
+                11.1. The Operator may periodically update this Privacy Policy in connection
+                with changes to the Service functionality, data processing methods, security requirements,
+                or applicable law.
+            </p>
+
+            <p>
+                11.2. The new version of the Privacy Policy becomes effective upon publication,
+                unless otherwise stated in the new version.
+            </p>
+
+            <p>
+                11.3. The date of the current version is indicated at the top of this page.
+            </p>
+        </section>
+
+        <section class="card" id="final">
+            <h2>12. Final Provisions</h2>
+
+            <p>
+                12.1. This Privacy Policy forms an integral part of the terms governing the use
+                of the PassimX Service with respect to the processing of data.
+            </p>
+
+            <p>
+                12.2. If any provision of this Policy is found to be invalid or unenforceable,
+                the remaining provisions shall remain in full force and effect.
+            </p>
+
+            <p>
+                12.3. The current version of this Policy is always available at:
+                <a href="/info/en/privacy-policy.html">https://vpn-client.passimx.com/info/en/privacy-policy.html</a>.
+            </p>
+
+            <p>
+                12.4. For questions regarding data processing and privacy, the User may contact support:
+                <a href="https://t.me/passimx_support">Telegram Support</a>.
+            </p>
+
+            <div class="hr"></div>
+
+            <p class="muted small">
+                © PassimX, 2026
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        Thank you for using PassimX.
+        <span class="muted">For privacy-related questions — contact us via Telegram Support,</span>
+        see you!
+    </footer>
+</div>
+</body>
+</html>

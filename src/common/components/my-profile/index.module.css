@@ -1,0 +1,30 @@
+.div1{
+    display: grid;
+    gap: 8px;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    padding: 8px;
+    min-width: 400px;
+
+    .div4{
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 8px;
+        min-width: 300px;
+    }
+
+    .div2{
+        display: grid;
+        gap: 8px;
+        min-width: 300px;
+
+        .div3{
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 8px;
+        }
+    }
+}

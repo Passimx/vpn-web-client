@@ -49,7 +49,7 @@
   "t45": "You currently have no subscriptions",
   "t46": "Basic plan. Suitable for most cases",
   "t47": "Premium plan. Designed to bypass Roskomnadzor blocks in Russia",
-  "t48": "Data balance",
+  "t48": "Traffic usage",
   "t49": "Status",
   "t50": "Active until",
   "t51": "Creation date",
@@ -75,5 +75,8 @@
   "t71": "Top up balance",
   "t72": "Select a plan for the auto-renewal to trigger 1 day before the expiration date",
   "t73": "Enabled",
-  "t74": "Disabled"
+  "t74": "Disabled",
+  "t75": "Wallet",
+  "t76": "User Agreement",
+  "t77": "Privacy Policy"
 }

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PassimX 服务用户协议</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        :root{
+            --bg:#0f1115;
+            --panel:#141821;
+            --panel2:#0c0f15;
+            --text:#e6e6e6;
+            --muted:#a9b1c3;
+            --accent:#ff3b3b;
+            --line:#263043;
+            --link:#7cc0ff;
+            --ok:#35d07f;
+            --warn:#ffcc66;
+            --shadow: 0 10px 30px rgba(0,0,0,.35);
+        }
+        *{ box-sizing:border-box; }
+        body{
+            margin:0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: radial-gradient(1200px 800px at 20% 0%, rgba(255,59,59,.10), transparent 60%),
+            radial-gradient(900px 700px at 80% 10%, rgba(124,192,255,.10), transparent 55%),
+            var(--bg);
+            color:var(--text);
+            line-height:1.7;
+        }
+        a{ color:var(--link); text-decoration:none; }
+        a:hover{ text-decoration:underline; }
+        .wrap{
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 28px 18px 70px;
+        }
+        header{
+            background: linear-gradient(180deg, rgba(20,24,33,.9), rgba(20,24,33,.55));
+            border:1px solid var(--line);
+            border-radius: 18px;
+            padding: 22px 20px;
+            box-shadow: var(--shadow);
+        }
+        h1{
+            margin: 0 0 8px 0;
+            font-size: 26px;
+            letter-spacing: .2px;
+        }
+        .meta{
+            color: var(--muted);
+            font-size: 14px;
+            display:flex;
+            flex-wrap:wrap;
+            gap: 10px 18px;
+            margin-top: 10px;
+        }
+        .badge{
+            display:inline-flex;
+            gap:8px;
+            align-items:center;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.06);
+        }
+        .dot{
+            width:8px;height:8px;border-radius:999px;background: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255,59,59,.15);
+        }
+
+        .grid{
+            display:grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .card{
+            background: rgba(20,24,33,.72);
+            border:1px solid var(--line);
+            border-radius: 16px;
+            padding: 18px 18px;
+            box-shadow: var(--shadow);
+        }
+        .card h2{
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        .toc{
+            display:grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .toc a{
+            display:block;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.06);
+        }
+        .toc a:hover{
+            background: rgba(255,255,255,.06);
+        }
+        h3{
+            margin: 18px 0 8px 0;
+            font-size: 16px;
+        }
+        p{ margin: 10px 0; color: var(--text); }
+        ul{ margin: 8px 0 12px 22px; }
+        li{ margin: 6px 0; color: var(--text); }
+        .muted{ color: var(--muted); }
+        .note{
+            border-left: 4px solid var(--warn);
+            padding: 10px 12px;
+            margin: 12px 0;
+            background: rgba(255,204,102,.08);
+            border-radius: 12px;
+        }
+        .ok{
+            border-left: 4px solid var(--ok);
+            padding: 10px 12px;
+            margin: 12px 0;
+            background: rgba(53,208,127,.08);
+            border-radius: 12px;
+        }
+        .hr{
+            height:1px; background: var(--line); margin: 16px 0;
+            opacity:.8;
+        }
+        code{
+            background: rgba(255,255,255,.06);
+            padding: 2px 6px;
+            border-radius: 8px;
+            word-break: break-word;
+        }
+        footer{
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 13px;
+            text-align:center;
+            opacity:.95;
+        }
+        .small{
+            font-size: 13px;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <header>
+        <h1>PassimX 服务用户协议</h1>
+        <div class="meta">
+            <span class="badge"><span class="dot"></span>版本：<b>13.02.2026</b></span>
+            <span class="badge">官方发布：<a href="/info/zh/user-agreement.html">https://vpn-client.passimx.com/info/zh/user-agreement.html</a></span>
+        </div>
+    </header>
+
+    <div class="note">
+        使用 PassimX Telegram 机器人和/或服务的任何功能，即表示用户
+        <b>完全且无条件地同意</b>本协议的条款。
+        如果您不同意，请<b>立即停止使用</b>本服务。
+    </div>
+
+    <div class="grid">
+        <section class="card">
+            <h2>目录</h2>
+            <div class="toc">
+                <a href="#terms">1. 术语和定义</a>
+                <a href="#subject">2. 协议标的</a>
+                <a href="#accept">3. 接受、年龄和用户身份</a>
+                <a href="#rules">4. 使用规则和禁止事项</a>
+                <a href="#operator">5. 运营方的权利和义务</a>
+                <a href="#payments">6. 付款、订阅和退款</a>
+                <a href="#privacy">7. 数据和隐私</a>
+                <a href="#liability">8. 责任限制</a>
+                <a href="#force">9. 不可抗力</a>
+                <a href="#law">10. 适用法律和争议解决</a>
+                <a href="#final">11. 最终条款</a>
+            </div>
+            <p class="small">
+                为方便使用，请使用页面搜索功能（Ctrl+F / ⌘+F）。
+            </p>
+        </section>
+
+        <section class="card" id="terms">
+            <h2>1. 术语和定义</h2>
+            <p>本协议使用以下术语：</p>
+            <ul>
+                <li><b>服务</b> — PassimX 技术平台，通过 Telegram 机器人及相关网页向用户提供相关功能。</li>
+                <li><b>机器人</b> — PassimX Telegram 机器人，用户通过该机器人与服务进行交互。</li>
+                <li><b>运营方</b> — 负责管理和运营 PassimX 服务的主体。</li>
+                <li><b>用户</b> — 使用机器人和/或服务功能的自然人。</li>
+                <li><b>订阅</b> — 用户付费获得服务功能访问权限的期间。</li>
+                <li><b>配置</b> — 提供给用户、用于在其设备上使用的技术连接参数。</li>
+                <li><b>余额</b> — 机器人内部用于记录充值的计账指标，<b>不属于</b>银行账户、支付账户或电子货币。</li>
+            </ul>
+        </section>
+
+        <section class="card" id="subject">
+            <h2>2. 协议标的</h2>
+            <p>
+                2.1. 运营方向用户授予有限的、非独占且不可转让的权利，
+                用于使用服务功能、管理订阅并获取配置。
+            </p>
+            <p>
+                2.2. 本服务属于技术平台。运营方不保证互联网、Telegram 和/或用户设备上的第三方服务/应用程序
+                始终绝对可用或持续可用。
+            </p>
+            <p>
+                2.3. 用户应自行确保拥有使用本服务所需的设备、互联网接入、
+                兼容的软件（包括 Hiddify 应用程序或类似软件）以及其他必要条件。
+            </p>
+
+            <div class="ok">
+                运营方<b>不会分析用户流量的内容</b>，也不以存储或处理
+                用户个人消息为目的。
+            </div>
+        </section>
+
+        <section class="card" id="accept">
+            <h2>3. 接受、年龄和用户身份</h2>
+            <p>3.1. 用户必须是具有完全民事行为能力且年满<b>18周岁</b>的自然人。</p>
+            <p>3.2. 用户首次与机器人进行任何交互（包括点击菜单按钮）即视为接受本协议。</p>
+            <p>3.3. 用户确认其在开始使用服务之前已阅读并了解本协议的条款。</p>
+        </section>
+
+        <section class="card" id="rules">
+            <h2>4. 使用规则和禁止事项</h2>
+            <p>4.1. 用户承诺<b>仅出于合法目的</b>使用本服务，并遵守其所在国家/地区适用的法律法规。</p>
+
+            <h3>4.2. 用户不得：</h3>
+            <ul>
+                <li>从事违法活动（包括但不限于：欺诈、黑客攻击、传播被禁止的内容、侵犯版权）；</li>
+                <li>侵犯第三方的权利，包括知识产权；</li>
+                <li>传播恶意软件、实施网络钓鱼、垃圾邮件、DDoS 攻击或其他滥用行为；</li>
+                <li>尝试未经授权访问服务基础设施、绕过限制或干扰机器人/服务器的运行；</li>
+                <li>在未经运营方书面同意的情况下，将访问权限转让给第三方，出售、出租或转售配置和订阅。</li>
+            </ul>
+
+            <p>4.3. 用户对通过其设备、Telegram 账户以及所获得的配置实施的行为承担全部责任。</p>
+            <p>4.4. 用户保证所使用支付资金来源合法，并不存在妨碍付款的限制。</p>
+        </section>
+
+        <section class="card" id="operator">
+            <h2>5. 运营方的权利和义务</h2>
+            <p>5.1. 运营方将采取合理措施，尽力确保服务稳定运行并为用户提供支持。</p>
+
+            <h3>5.2. 运营方有权：</h3>
+            <ul>
+                <li>修改服务功能、界面、资费以及访问条件；</li>
+                <li>暂时停止服务（包括进行更新/维护）；</li>
+                <li>在怀疑用户违反本协议或适用法律时，暂停或限制用户访问服务；</li>
+                <li>通过在发布地址公布最新版本，在不事先通知的情况下修改本协议。</li>
+            </ul>
+
+            <p>5.3. 运营方可以要求用户提供支持服务所必需的信息（例如 Telegram 标识符）。用户有权不提供此类数据，但应理解这可能会限制支持服务的能力。</p>
+        </section>
+
+        <section class="card" id="payments">
+            <h2>6. 付款、订阅和退款</h2>
+
+            <p>6.1. 付款通过机器人中提供的方式进行（SBP、TON、YooMoney 以及其他支付服务商/收单服务）。</p>
+            <p>6.2. 订阅<b>仅在确认付款成功后</b>激活。</p>
+            <p>6.3. 订阅期限、资费方案以及可用的续订方式显示在机器人中。</p>
+
+            <h3>6.4. 退款</h3>
+            <p>
+                已支付订阅费用的退款<b>仅</b>在能够证明由于<b>运营方原因</b>导致服务在技术上无法提供，
+                且用户在合理期限内联系支持并说明问题的情况下提供。
+            </p>
+            <p class="muted">
+                以下情况不构成退款理由：服务商/平台实施的封锁或限制、用户设备问题、软件不兼容、
+                Telegram 限制、互联网中断以及其他超出运营方控制范围的因素。
+            </p>
+        </section>
+
+        <section class="card" id="privacy">
+            <h2>7. 数据和隐私</h2>
+            <p>
+                7.1. 运营方仅处理服务运行所必需的最少数据：
+                <code>tg_id</code>、<code>username</code>（如有）、订阅参数（期限/资费方案）、配置技术标识符，
+                以及技术事件（例如付款成功/续订）。
+            </p>
+            <p>
+                7.2. 运营方<b>不会分析</b>用户流量、个人消息和所传输数据的内容。
+                但是，为了安全和诊断目的，系统日志可能会记录流量技术路由这一连接事实。
+            </p>
+            <p>
+                7.3. 数据仅可在以下情况下向第三方提供：
+                (a) 适用法律规定的情况；
+                (b) 向支付服务商提供处理付款所必需的数据；
+                (c) 向承包商/基础设施服务商提供服务运行所必需的数据。
+            </p>
+            <p>
+                7.4. 用户承诺不向支持服务/机器人提供过多的个人数据。除非绝对必要，运营方不会要求提供护照信息、证件照片等资料。
+            </p>
+        </section>
+
+        <section class="card" id="liability">
+            <h2>8. 责任限制</h2>
+            <p>8.1. 本服务按<b>“现状”</b>及<b>“可用状态”</b>提供。</p>
+            <p>8.2. 运营方不对以下事项承担责任：</p>
+            <ul>
+                <li>受服务商、路由、网络负载以及用户设备影响的连接速度和质量；</li>
+                <li>Telegram 故障、封锁、限制以及第三方应用程序和服务的更新；</li>
+                <li>违反法律或本协议条款的用户行为；</li>
+                <li>任何间接损害、利润损失、数据丢失、声誉损失以及其他损失。</li>
+            </ul>
+            <p>
+                8.3. 对于与本服务有关的任何索赔，运营方承担的最高累计责任
+                以用户在发生争议的最后一个已付费期间实际支付的订阅费用为限，
+                除非适用法律的强制性规定另有要求。
+            </p>
+
+            <div class="note">
+                用户理解并接受，不同国家/地区对互联网资源访问的规则可能有所不同，
+                用户本人负责遵守当地的相关要求。
+            </div>
+        </section>
+
+        <section class="card" id="force">
+            <h2>9. 不可抗力</h2>
+            <p>
+                如果因不可抗力导致未能履行义务，双方免于承担相应责任，
+                不可抗力包括但不限于：战争、自然灾害、事故、服务商/数据中心故障、政府机构决定、
+                大规模网络基础设施封锁/限制以及第三方平台故障。
+            </p>
+        </section>
+
+        <section class="card" id="law">
+            <h2>10. 适用法律和争议解决</h2>
+            <p>
+                10.1. 本协议受根据运营方所在地和/或服务使用条款所确定的适用法律管辖，
+                除非用户居住国法律的强制性规定另有要求。
+            </p>
+            <p>
+                10.2. 在向法院提起诉讼之前，用户应向支持服务提交投诉：
+                <a href="https://t.me/passimx_support">Telegram 支持</a>。双方应努力通过协商解决争议。
+            </p>
+
+            <p class="muted">
+                如果本协议的个别条款被认定无效，其余条款仍然有效。
+            </p>
+        </section>
+
+        <section class="card" id="final">
+            <h2>11. 最终条款</h2>
+            <p>11.1. 本协议构成公开要约。</p>
+            <p>11.2. 最新版本始终可通过以下地址获取：<a href="/info/zh/user-agreement.html">https://vpn-client.passimx.com/info/zh/user-agreement.html</a>。</p>
+            <p>11.3. 协议修改后继续使用本服务，即表示用户同意新版本协议。</p>
+            <p>11.4. 支持联系方式：<a href="https://t.me/passimx_support">Telegram 支持</a>。</p>
+
+            <div class="hr"></div>
+            <p class="muted small">
+                © PassimX, 2026
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        感谢您使用 PassimX。
+        <span class="muted">如有其他问题，请联系 Telegram 支持，</span>
+        我们下次见！
+    </footer>
+</div>
+</body>
+</html>

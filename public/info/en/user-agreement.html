@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User agreement PassimX</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+        :root{
+            --bg:#0f1115;
+            --panel:#141821;
+            --panel2:#0c0f15;
+            --text:#e6e6e6;
+            --muted:#a9b1c3;
+            --accent:#ff3b3b;
+            --line:#263043;
+            --link:#7cc0ff;
+            --ok:#35d07f;
+            --warn:#ffcc66;
+            --shadow: 0 10px 30px rgba(0,0,0,.35);
+        }
+        *{ box-sizing:border-box; }
+        body{
+            margin:0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: radial-gradient(1200px 800px at 20% 0%, rgba(255,59,59,.10), transparent 60%),
+            radial-gradient(900px 700px at 80% 10%, rgba(124,192,255,.10), transparent 55%),
+            var(--bg);
+            color:var(--text);
+            line-height:1.7;
+        }
+        a{ color:var(--link); text-decoration:none; }
+        a:hover{ text-decoration:underline; }
+        .wrap{
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 28px 18px 70px;
+        }
+        header{
+            background: linear-gradient(180deg, rgba(20,24,33,.9), rgba(20,24,33,.55));
+            border:1px solid var(--line);
+            border-radius: 18px;
+            padding: 22px 20px;
+            box-shadow: var(--shadow);
+        }
+        h1{
+            margin: 0 0 8px 0;
+            font-size: 26px;
+            letter-spacing: .2px;
+        }
+        .meta{
+            color: var(--muted);
+            font-size: 14px;
+            display:flex;
+            flex-wrap:wrap;
+            gap: 10px 18px;
+            margin-top: 10px;
+        }
+        .badge{
+            display:inline-flex;
+            gap:8px;
+            align-items:center;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.06);
+        }
+        .dot{
+            width:8px;height:8px;border-radius:999px;background: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255,59,59,.15);
+        }
+
+        .grid{
+            display:grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .card{
+            background: rgba(20,24,33,.72);
+            border:1px solid var(--line);
+            border-radius: 16px;
+            padding: 18px 18px;
+            box-shadow: var(--shadow);
+        }
+        .card h2{
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+        .toc{
+            display:grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .toc a{
+            display:block;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.06);
+        }
+        .toc a:hover{
+            background: rgba(255,255,255,.06);
+        }
+        h3{
+            margin: 18px 0 8px 0;
+            font-size: 16px;
+        }
+        p{ margin: 10px 0; color: var(--text); }
+        ul{ margin: 8px 0 12px 22px; }
+        li{ margin: 6px 0; color: var(--text); }
+        .muted{ color: var(--muted); }
+        .note{
+            border-left: 4px solid var(--warn);
+            padding: 10px 12px;
+            margin: 12px 0;
+            background: rgba(255,204,102,.08);
+            border-radius: 12px;
+        }
+        .ok{
+            border-left: 4px solid var(--ok);
+            padding: 10px 12px;
+            margin: 12px 0;
+            background: rgba(53,208,127,.08);
+            border-radius: 12px;
+        }
+        .hr{
+            height:1px; background: var(--line); margin: 16px 0;
+            opacity:.8;
+        }
+        code{
+            background: rgba(255,255,255,.06);
+            padding: 2px 6px;
+            border-radius: 8px;
+            word-break: break-word;
+        }
+        footer{
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 13px;
+            text-align:center;
+            opacity:.95;
+        }
+        .small{
+            font-size: 13px;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <header>
+        <h1>PassimX Service User Agreement</h1>
+        <div class="meta">
+            <span class="badge"><span class="dot"></span>Version: <b>13.02.2026</b></span>
+            <span class="badge">Official publication: <a href="/info/en/user-agreement.html">https://vpn-client.passimx.com/info/en/user-agreement.html</a></span>
+        </div>
+    </header>
+
+    <div class="note">
+        Use of the PassimX Telegram Bot and/or any Service features means
+        <b>full and unconditional acceptance</b> of the terms of this Agreement.
+        If you do not agree — <b>immediately stop using</b> the Service.
+    </div>
+
+    <div class="grid">
+        <section class="card">
+            <h2>Contents</h2>
+            <div class="toc">
+                <a href="#terms">1. Terms and Definitions</a>
+                <a href="#subject">2. Subject of the Agreement</a>
+                <a href="#accept">3. Acceptance, Age and User Status</a>
+                <a href="#rules">4. Rules of Use and Prohibitions</a>
+                <a href="#operator">5. Operator's Rights and Obligations</a>
+                <a href="#payments">6. Payment, Subscription, Refunds</a>
+                <a href="#privacy">7. Data and Privacy</a>
+                <a href="#liability">8. Limitation of Liability</a>
+                <a href="#force">9. Force Majeure</a>
+                <a href="#law">10. Governing Law and Dispute Resolution</a>
+                <a href="#final">11. Final Provisions</a>
+            </div>
+            <p class="small">
+                For convenience, use the page search (Ctrl+F / ⌘+F).
+            </p>
+        </section>
+
+        <section class="card" id="terms">
+            <h2>1. Terms and Definitions</h2>
+            <p>The following terms are used in this Agreement:</p>
+            <ul>
+                <li><b>Service</b> — the PassimX technology platform providing the User with access to functionality through the Telegram Bot and related web pages.</li>
+                <li><b>Bot</b> — the PassimX Telegram Bot through which the User interacts with the Service.</li>
+                <li><b>Operator</b> — the person administering and managing the PassimX Service.</li>
+                <li><b>User</b> — an individual using the Bot and/or the Service functionality.</li>
+                <li><b>Subscription</b> — a paid period of access to the Service features.</li>
+                <li><b>Configuration</b> — technical connection parameters provided to the User for use on their device.</li>
+                <li><b>Balance</b> — an internal accounting indicator for top-ups in the Bot, <b>not being</b> a bank/payment account or electronic money.</li>
+            </ul>
+        </section>
+
+        <section class="card" id="subject">
+            <h2>2. Subject of the Agreement</h2>
+            <p>
+                2.1. The Operator grants the User a limited, non-exclusive, non-transferable right
+                to use the Service functionality to manage the Subscription and obtain a Configuration.
+            </p>
+            <p>
+                2.2. The Service is a technology platform. The Operator does not guarantee absolute or continuous
+                availability of the Internet, Telegram and/or third-party services/applications on the User's device.
+            </p>
+            <p>
+                2.3. The User is independently responsible for ensuring the availability of equipment, Internet access,
+                compatible software (including the Hiddify application or equivalents), and other conditions necessary to use the Service.
+            </p>
+
+            <div class="ok">
+                The Operator <b>does not analyze the content of User traffic</b> and does not aim to store/process
+                the User's personal messages.
+            </div>
+        </section>
+
+        <section class="card" id="accept">
+            <h2>3. Acceptance, Age and User Status</h2>
+            <p>3.1. The User may only be a legally capable individual who has reached the age of <b>18</b>.</p>
+            <p>3.2. Any first interaction with the Bot (including pressing menu buttons) constitutes acceptance of this Agreement.</p>
+            <p>3.3. The User confirms that they have read the terms of the Agreement before beginning to use the Service.</p>
+        </section>
+
+        <section class="card" id="rules">
+            <h2>4. Rules of Use and Prohibitions</h2>
+            <p>4.1. The User undertakes to use the Service <b>exclusively for lawful purposes</b> and in compliance with the applicable laws of their country/region.</p>
+
+            <h3>4.2. The User is prohibited from:</h3>
+            <ul>
+                <li>engaging in unlawful activities (including, but not limited to: fraud, hacking, distribution of prohibited content, and copyright infringement);</li>
+                <li>violating the rights of third parties, including intellectual property rights;</li>
+                <li>distributing malware, conducting phishing, spam, DDoS attacks, or other abuses;</li>
+                <li>attempting unauthorized access to the Service infrastructure, bypassing restrictions, or interfering with the operation of the Bot/servers;</li>
+                <li>transferring access to third parties, selling/renting/reselling Configurations or Subscriptions without the Operator's written consent.</li>
+            </ul>
+
+            <p>4.3. The User bears full responsibility for actions performed using their devices, Telegram account, and issued Configuration.</p>
+            <p>4.4. The User guarantees the lawful origin of the payment funds used and the absence of restrictions preventing payments from being made.</p>
+        </section>
+
+        <section class="card" id="operator">
+            <h2>5. Operator's Rights and Obligations</h2>
+            <p>5.1. The Operator makes reasonable efforts to ensure stable operation of the Service and provide User support.</p>
+
+            <h3>5.2. The Operator has the right to:</h3>
+            <ul>
+                <li>change the functionality, interface, pricing plans, and terms of access;</li>
+                <li>temporarily suspend the Service (including for updates/maintenance);</li>
+                <li>suspend or restrict the User's access in case of suspected violations of this Agreement or applicable law;</li>
+                <li>make changes to the Agreement without prior notice by publishing the current version at the publication address.</li>
+            </ul>
+
+            <p>5.3. The Operator may request information from the User necessary for support (for example, a Telegram identifier). The User has the right not to provide such data, understanding that this may limit support capabilities.</p>
+        </section>
+
+        <section class="card" id="payments">
+            <h2>6. Payment, Subscription, Refunds</h2>
+
+            <p>6.1. Payment is made using the methods available in the Bot (SBP, TON, YooMoney, and other payment providers/acquiring services).</p>
+            <p>6.2. The Subscription is activated <b>only after confirmation of successful payment</b>.</p>
+            <p>6.3. The Subscription period, pricing plans, and available renewal options are displayed in the Bot.</p>
+
+            <h3>6.4. Refunds</h3>
+            <p>
+                Refunds for paid Subscriptions are possible <b>exclusively</b> in the event of a demonstrable technical inability
+                to provide the service <b>due to the Operator's fault</b> and provided that the User contacts support within a reasonable period with a description of the problem.
+            </p>
+            <p class="muted">
+                The following are not grounds for a refund: blocking/restrictions imposed by providers/platforms,
+                problems with the User's device, software incompatibility, Telegram restrictions, Internet outages, and other factors
+                beyond the Operator's control.
+            </p>
+        </section>
+
+        <section class="card" id="privacy">
+            <h2>7. Data and Privacy</h2>
+            <p>
+                7.1. The Operator processes the minimum amount of data necessary for the operation of the Service:
+                <code>tg_id</code>, <code>username</code> (if available), Subscription parameters (period/plan), technical Configuration identifiers,
+                as well as technical events (for example, successful payment/renewal).
+            </p>
+            <p>
+                7.2. The Operator <b>does not analyze the content</b> of User traffic, personal messages, or transmitted data.
+                However, technical traffic routing as a fact of connection may be recorded in system logs for security and diagnostic purposes.
+            </p>
+            <p>
+                7.3. Data may be transferred to third parties only:
+                (a) in cases provided for by applicable law;
+                (b) to payment providers — to the extent necessary to process payments;
+                (c) to contractors/infrastructure providers — to the extent necessary for the operation of the Service.
+            </p>
+            <p>
+                7.4. The User undertakes not to provide excessive personal data to support/the Bot. The Operator does not request passport details, document photos, etc. unless strictly necessary.
+            </p>
+        </section>
+
+        <section class="card" id="liability">
+            <h2>8. Limitation of Liability</h2>
+            <p>8.1. The Service is provided on an <b>"as is"</b> and <b>"as available"</b> basis.</p>
+            <p>8.2. The Operator is not responsible for:</p>
+            <ul>
+                <li>connection speed and quality depending on the provider, routing, network load, and the User's device;</li>
+                <li>Telegram failures, blocking, restrictions, updates to third-party applications and services;</li>
+                <li>User actions that violate applicable law or the terms of this Agreement;</li>
+                <li>any indirect damage, lost profits, data loss, reputational damage, or other losses.</li>
+            </ul>
+            <p>
+                8.3. The Operator's maximum aggregate liability for any claims related to the Service
+                is limited to the amount actually paid by the User for the Subscription during the last paid period
+                to which the dispute relates, unless otherwise required by mandatory applicable law.
+            </p>
+
+            <div class="note">
+                The User understands and accepts that rules governing access to Internet resources may differ by country/region,
+                and the User is responsible for complying with local requirements.
+            </div>
+        </section>
+
+        <section class="card" id="force">
+            <h2>9. Force Majeure</h2>
+            <p>
+                The parties are released from liability for failure to perform their obligations if such failure is caused by force majeure,
+                including but not limited to: wars, natural disasters, accidents, outages at providers/data centers, decisions of government authorities,
+                mass blocking/restrictions of network infrastructure, and failures of third-party platforms.
+            </p>
+        </section>
+
+        <section class="card" id="law">
+            <h2>10. Governing Law and Dispute Resolution</h2>
+            <p>
+                10.1. This Agreement is governed by the applicable law determined by the Operator's place of residence and/or the terms of use of the Service,
+                unless otherwise provided by mandatory provisions of the law of the User's country of residence.
+            </p>
+            <p>
+                10.2. Before filing a claim in court, the User undertakes to submit a complaint to support:
+                <a href="https://t.me/passimx_support">Telegram Support</a>. The parties shall seek to resolve the dispute through negotiations.
+            </p>
+
+            <p class="muted">
+                If individual provisions of the Agreement are held invalid, the remaining provisions shall remain in force.
+            </p>
+        </section>
+
+        <section class="card" id="final">
+            <h2>11. Final Provisions</h2>
+            <p>11.1. This Agreement constitutes a public offer.</p>
+            <p>11.2. The current version is always available at: <a href="/info/en/user-agreement.html">https://vpn-client.passimx.com/info/en/user-agreement.html</a>.</p>
+            <p>11.3. Continued use of the Service after the Agreement has been changed constitutes acceptance of the new version.</p>
+            <p>11.4. Support contact: <a href="https://t.me/passimx_support">Telegram Support</a>.</p>
+
+            <div class="hr"></div>
+            <p class="muted small">
+                © PassimX, 2026
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        Thank you for using PassimX.
+        <span class="muted">For any other questions — contact Telegram Support,</span>
+        see you!
+    </footer>
+</div>
+</body>
+</html>

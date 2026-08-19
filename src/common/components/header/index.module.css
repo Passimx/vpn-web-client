@@ -53,7 +53,7 @@
         }
 
         .div5{
-            height: 100%;
+            padding: 4px;
             display: grid;
             align-items: center;
             justify-items: center;
