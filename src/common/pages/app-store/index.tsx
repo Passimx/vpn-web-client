@@ -17,6 +17,7 @@ export const AppStore: FC = () => {
     return (
         <div className={styles.div1}>
             <div className={styles.div0}>
+                <div className={styles.div01}>{t('t2')}</div>
                 <Card className={styles.div2}>
                     <Trans i18nKey="t19" t={t} />
                 </Card>

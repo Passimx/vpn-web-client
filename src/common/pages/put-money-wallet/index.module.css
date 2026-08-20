@@ -7,11 +7,10 @@
 
     .div0{
         .div01{
-            display: grid;
-            align-items: start;
-            justify-items: center;
             font-size: x-large;
             font-weight: 700;
+            text-align: center;
+            padding: 8px;
         }
 
         display: grid;
@@ -99,7 +98,6 @@
             }
 
         }
-
 
         .div11{
             display: grid;

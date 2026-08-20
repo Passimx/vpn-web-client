@@ -31,6 +31,7 @@ export const Instruction: FC = () => {
     return (
         <div className={styles.div1}>
             <div className={styles.div5}>
+                <div className={styles.div51}>{t('t2')}</div>
                 <Card className={styles.div2}>
                     <div>1)&#160;{t('t14')}</div>
                     {apps ? (

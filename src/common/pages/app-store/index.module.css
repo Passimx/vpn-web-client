@@ -9,6 +9,13 @@
         max-width: 400px;
         gap: 8px;
 
+        .div01{
+            font-size: x-large;
+            font-weight: 700;
+            text-align: center;
+            padding: 8px;
+        }
+
         .div2{
             white-space: pre-wrap;
             word-break: break-word;

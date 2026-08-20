@@ -3,7 +3,7 @@
   "expired": "Expired",
   "t0": "Error",
   "t1": "My subscriptions",
-  "t2": "How to connect",
+  "t2": "Connection instructions",
   "t3": "$",
   "t4": "usd",
   "t5": "Amount",
@@ -83,5 +83,6 @@
   "t79": "Message on Telegram",
   "t80": "Message on Max",
   "t81": "Message on WeChat",
-  "t82": "Message on WhatsApp"
+  "t82": "Message on WhatsApp",
+  "t83": "Menu"
 }

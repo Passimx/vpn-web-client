@@ -16,6 +16,7 @@ export const MySubscriptions: FC = () => {
     return (
         <div className={styles.div1}>
             <div className={styles.div2}>
+                <div className={styles.div21}>{t('t1')}</div>
                 {!keys?.length ? (
                     <Card className={styles.div3}>
                         <LuSearchX className={'icon'} />

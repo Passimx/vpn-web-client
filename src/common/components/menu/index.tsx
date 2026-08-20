@@ -27,6 +27,7 @@ export const Menu: FC = () => {
     return (
         <div className={styles.div1}>
             <div className={styles.div2}>
+                <div className={styles.div21}>{t('t83')}</div>
                 <Card className={styles.div3} onClick={() => navigate('/my-subscriptions')}>
                     <IoListOutline className={'icon'} />
                     <div>{t('t1')}</div>

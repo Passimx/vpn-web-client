@@ -12,11 +12,9 @@
         gap: 8px;
 
         .div3{
-            display: grid;
-            align-items: center;
-            justify-items: center;
             font-size: x-large;
             font-weight: 700;
+            text-align: center;
             padding: 8px;
         }
 

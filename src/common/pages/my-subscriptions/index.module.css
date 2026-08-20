@@ -9,6 +9,13 @@
         display: grid;
         gap: 16px;
 
+        .div21{
+            font-size: x-large;
+            font-weight: 700;
+            text-align: center;
+            padding: 8px;
+        }
+
         .div3{
             display: grid;
             grid-template-columns: auto 1fr auto;
