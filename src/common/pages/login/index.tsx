@@ -19,6 +19,7 @@ export const Login: FC = () => {
     const navigate = useNavigate();
     const { setStateApp, postMessage } = useAppAction();
     const lang = useAppSelector((state) => state.app.lang);
+    const isPhone = useAppSelector((state) => state.app.isPhone);
 
     const createAccount = async () => {
         const response = await callAction<UserType>(EventsEnum.CREATE_ACCOUNT, { languageCode: lang });
@@ -26,6 +27,12 @@ export const Login: FC = () => {
 
         setStateApp({ user: response });
         navigate('/menu', { replace: true });
+    };
+
+    const onOpenIframe = (url: string) => {
+        if (isPhone)
+            setStateApp({ foreground: <iframe className={`${styles.iframe} empty_input`} src={url}></iframe> });
+        else window.open(url);
     };
 
     return (
@@ -45,12 +52,12 @@ export const Login: FC = () => {
                     <div>{t('t31')}</div>
                     <LuExternalLink className={'icon'} />
                 </Card>
-                <Card className={styles.div3} onClick={() => window.open(`/info/${lang}/user-agreement.html`)}>
+                <Card className={styles.div3} onClick={() => onOpenIframe(`/info/${lang}/user-agreement.html`)}>
                     <TiDocumentText className={'icon'} />
                     <div>{t('t76')}</div>
                     <LuExternalLink className={'icon'} />
                 </Card>
-                <Card className={styles.div3} onClick={() => window.open(`/info/${lang}/privacy-policy.html`)}>
+                <Card className={styles.div3} onClick={() => onOpenIframe(`/info/${lang}/privacy-policy.html`)}>
                     <MdOutlinePrivacyTip className={'icon'} />
                     <div>{t('t77')}</div>
                     <LuExternalLink className={'icon'} />
