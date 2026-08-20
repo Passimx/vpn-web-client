@@ -1,15 +1,22 @@
 .div1{
     color: white;
     display: grid;
-    gap: 8px;
+    align-items: center;
+    justify-items: center;
 
-    .div2{
-        white-space: pre-wrap;
-        word-break: break-word;
-    }
-
-    .div3{
+    .div0{
         display: grid;
-        grid-template-columns:1fr auto;
+        max-width: 400px;
+        gap: 8px;
+
+        .div2{
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .div3{
+            display: grid;
+            grid-template-columns:1fr auto;
+        }
     }
 }

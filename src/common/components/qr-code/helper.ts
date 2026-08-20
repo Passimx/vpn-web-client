@@ -41,3 +41,20 @@ const DownloadFileOnDevice = async (file: File, blob: Blob): Promise<Blob | unde
 
     return blob;
 };
+
+export function setupHiDPICanvas(canvas: HTMLCanvasElement, width: number, height: number) {
+    const ratio = 3;
+
+    canvas.width = width * ratio;
+    canvas.height = height * ratio;
+
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return ctx;
+
+    ctx.scale(ratio, ratio);
+
+    return ctx;
+}

@@ -30,7 +30,7 @@ export const InvoicePage: FC<PropsType> = ({ request }) => {
 
     return (
         <div className={styles.background}>
-            <QrCode url={url} text={shortText(url)} />
+            <QrCode url={url} text={shortText(url, 10)} />
             {url && (
                 <div className={styles.div1}>
                     <Card onClick={() => window.open(url)}>{t('t68')}</Card>

@@ -17,6 +17,7 @@ const Login = lazy(() => import('../pages/login').then((m) => ({ default: m.Logi
 const LoginByLink = lazy(() => import('../pages/login-by-link').then((m) => ({ default: m.LoginByLink })));
 const ExtendKey = lazy(() => import('../pages/extend-key').then((m) => ({ default: m.ExtendKey })));
 const Exchange = lazy(() => import('../pages/exchange').then((m) => ({ default: m.Exchange })));
+const Support = lazy(() => import('../pages/support').then((m) => ({ default: m.Support })));
 
 const router = createBrowserRouter([
     {
@@ -107,6 +108,14 @@ const router = createBrowserRouter([
                 element: (
                     <Lazy>
                         <Exchange />
+                    </Lazy>
+                ),
+            },
+            {
+                path: 'support',
+                element: (
+                    <Lazy>
+                        <Support />
                     </Lazy>
                 ),
             },

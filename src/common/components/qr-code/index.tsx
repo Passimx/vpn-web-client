@@ -9,24 +9,7 @@ import { useAppAction } from '../../store';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { LoadingQrCode } from './components/loading-qr-code';
 import { MimetypeEnum } from '../../types/files/types.ts';
-import { shareFile } from './helper.ts';
-
-function setupHiDPICanvas(canvas: HTMLCanvasElement, width: number, height: number) {
-    const ratio = 3;
-
-    canvas.width = width * ratio;
-    canvas.height = height * ratio;
-
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return ctx;
-
-    ctx.scale(ratio, ratio);
-
-    return ctx;
-}
+import { setupHiDPICanvas, shareFile } from './helper.ts';
 
 export const QrCode: FC<PropsType> = memo(({ url, text }) => {
     const textAreaHeight = 20;

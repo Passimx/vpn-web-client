@@ -101,6 +101,10 @@ export const MySubscription: FC = () => {
                                 <MdDeleteOutline className={`icon ${styles.div6}`} />
                             </Card>
                         )}
+                        <Card className={styles.div5} onClick={() => navigate('/instruction')}>
+                            <div>{t('t2')}</div>
+                            <LuExternalLink className={'icon'} />
+                        </Card>
                     </Card>
                 ) : (
                     <RotateLoading />
