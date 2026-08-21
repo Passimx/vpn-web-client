@@ -7,6 +7,7 @@ import { WalletHelper } from '../put-money-wallet/helper.ts';
 import { useNavigate } from 'react-router-dom';
 import { RiArrowDownLongLine, RiArrowUpDownLine } from 'react-icons/ri';
 import { CurrencyIcon } from '../../components/currency-icon';
+import { TransactionsHistory } from '../../components/transactions-history';
 
 export const Wallet: FC = () => {
     const { t } = useTranslation();
@@ -133,6 +134,8 @@ export const Wallet: FC = () => {
                         </div>
                     </div>
                 </Card>
+                <div className={styles.div001}>{t('t84')}</div>
+                <TransactionsHistory />
             </div>
         </div>
     );

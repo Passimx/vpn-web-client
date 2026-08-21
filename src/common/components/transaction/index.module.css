@@ -1,0 +1,85 @@
+.div1{
+    --height: 60px;
+    content-visibility: auto;
+    height: var(--height);
+    contain-intrinsic-size: 0 var(--height);
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px;
+
+    .div2{
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        width: 40px;
+
+        .div21{
+            font-size: 28px;
+        }
+    }
+
+    .div3{
+        display: grid;
+        grid-template-rows: auto 1fr;
+
+        .div31{
+            display: grid;
+            grid-template-columns: 1fr auto;
+
+            .div311{
+                display: grid;
+                grid-template-rows: auto 1fr;
+
+                .div3111{
+                    font-size: 18px;
+                    font-weight: 400;
+                }
+
+                .div3112{
+                    opacity: 0.8;
+                    font-weight: 200;
+                }
+            }
+
+            .div312{
+                display: grid;
+                gap: 4px;
+                grid-template-rows: auto auto;
+
+                .div3121{
+                    display: grid;
+                    grid-template-columns: auto auto auto;
+                    gap: 4px;
+                    align-items: center;
+
+                    .div31211{
+                        font-size: 18px;
+                        font-weight: 700;
+                        display: grid;
+                    }
+
+                    .Debit{
+                        color: #00b386;
+                    }
+
+                    .div31212{
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+
+                .div3122{
+                    text-align: end;
+                    opacity: 0.8;
+                    font-weight: 200;
+                }
+            }
+        }
+    }
+}
+
+.div1wait{
+    background-color: rgb(255, 0, 0, 0.2);
+    opacity: 0.7;
+}

@@ -11,6 +11,13 @@
         width: 100%;
         max-width: 400px;
 
+        .div001{
+            font-size: x-large;
+            font-weight: 700;
+            text-align: center;
+            padding: 8px;
+        }
+
         .div011{
             display: grid;
             align-items: center;

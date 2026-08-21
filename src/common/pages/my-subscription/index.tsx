@@ -73,12 +73,12 @@ export const MySubscription: FC = () => {
                         {key.status === 'active' && (
                             <div className={styles.div4}>
                                 <div>{t('t50')}:</div>
-                                <div>{moment(key.expiresAt).format('L')}</div>
+                                <div>{moment(key.expiresAt).format('DD.MM.YYYY')}</div>
                             </div>
                         )}
                         <div className={styles.div4}>
                             <div>{t('t51')}:</div>
-                            <div>{moment(key.createdAt).format('L')}</div>
+                            <div>{moment(key.createdAt).format('DD.MM.YYYY')}</div>
                         </div>
                         <Card
                             className={styles.div5}

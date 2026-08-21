@@ -20,10 +20,32 @@ export type KeyType = {
     expiresAt: Date;
 };
 
+type TransactionMeta = {
+    paymentId?: string;
+    place: 'ton' | 'yookassa' | 'wechat' | 'telegram';
+};
+
+type PaymentMeta = {
+    tariffId: string;
+    vpnKeyId: string;
+};
+
+export type TransactionType = {
+    id: string;
+    amount: number;
+    currency: keyof BalanceAccount;
+    type: 'Credit' | 'Debit';
+    kind: 'Transfer' | 'Payment' | 'Deposit' | 'Exchange';
+    completed: boolean;
+    meta: TransactionMeta | PaymentMeta;
+    createdAt: Date;
+};
+
 export type UserType = {
     id: string;
     balance: BalanceAccount;
     keys: KeyType[];
+    transactions: TransactionType[];
 };
 export type AppStateType = Partial<{
     isIos: boolean;
