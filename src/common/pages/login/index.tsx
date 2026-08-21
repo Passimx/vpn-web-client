@@ -14,6 +14,7 @@ import { UserType } from '../../store/app/types/app-state.type.ts';
 import { TiDocumentText } from 'react-icons/ti';
 import { MdOutlinePrivacyTip } from 'react-icons/md';
 import { BiSupport } from 'react-icons/bi';
+import { Languages } from '../languages';
 
 export const Login: FC = () => {
     const { t } = useTranslation();
@@ -36,6 +37,10 @@ export const Login: FC = () => {
         else window.open(url);
     };
 
+    const onLanguages = () => {
+        setStateApp({ foreground: <Languages /> });
+    };
+
     return (
         <div className={styles.div1}>
             <div className={styles.div2}>
@@ -48,7 +53,7 @@ export const Login: FC = () => {
                     <div>{t('t35')}</div>
                     <LuExternalLink className={'icon'} />
                 </Card>
-                <Card className={styles.div3} onClick={() => navigate('/language')}>
+                <Card className={styles.div3} onClick={onLanguages}>
                     <IoLanguageOutline className={'icon'} />
                     <div>{t('t31')}</div>
                     <LuExternalLink className={'icon'} />

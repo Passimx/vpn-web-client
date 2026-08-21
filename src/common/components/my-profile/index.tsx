@@ -11,6 +11,7 @@ import { WalletHelper } from '../../pages/put-money-wallet/helper.ts';
 import { shortText } from '../../hooks/short-text.ts';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { PiIdentificationBadge } from 'react-icons/pi';
+import { Languages } from '../../pages/languages';
 
 export const MyProfile: FC = () => {
     const { t } = useTranslation();
@@ -30,8 +31,7 @@ export const MyProfile: FC = () => {
     };
 
     const onLanguages = () => {
-        navigate('/language');
-        setStateApp({ foreground: undefined });
+        setStateApp({ foreground: <Languages /> });
     };
 
     const onWallet = () => {

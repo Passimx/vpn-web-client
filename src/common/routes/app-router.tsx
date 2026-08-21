@@ -12,7 +12,6 @@ import Loading from '../pages/loading';
 
 const Instruction = lazy(() => import('../pages/instruction').then((m) => ({ default: m.Instruction })));
 const AppStore = lazy(() => import('../pages/app-store').then((m) => ({ default: m.AppStore })));
-const Languages = lazy(() => import('../pages/languages').then((m) => ({ default: m.Languages })));
 const Login = lazy(() => import('../pages/login').then((m) => ({ default: m.Login })));
 const LoginByLink = lazy(() => import('../pages/login-by-link').then((m) => ({ default: m.LoginByLink })));
 const ExtendKey = lazy(() => import('../pages/extend-key').then((m) => ({ default: m.ExtendKey })));
@@ -68,14 +67,6 @@ const router = createBrowserRouter([
                 element: (
                     <Lazy>
                         <AppStore />,
-                    </Lazy>
-                ),
-            },
-            {
-                path: 'language',
-                element: (
-                    <Lazy>
-                        <Languages />
                     </Lazy>
                 ),
             },
