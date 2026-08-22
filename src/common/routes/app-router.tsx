@@ -17,6 +17,7 @@ const LoginByLink = lazy(() => import('../pages/login-by-link').then((m) => ({ d
 const ExtendKey = lazy(() => import('../pages/extend-key').then((m) => ({ default: m.ExtendKey })));
 const Exchange = lazy(() => import('../pages/exchange').then((m) => ({ default: m.Exchange })));
 const Support = lazy(() => import('../pages/support').then((m) => ({ default: m.Support })));
+const Transfer = lazy(() => import('../pages/transfer').then((m) => ({ default: m.Transfer })));
 
 const router = createBrowserRouter([
     {
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
                 element: <Tariffs />,
             },
             {
-                path: 'put-money-wallet',
+                path: 'deposit',
                 element: <PutMoneyWallet />,
             },
             {
@@ -107,6 +108,14 @@ const router = createBrowserRouter([
                 element: (
                     <Lazy>
                         <Support />
+                    </Lazy>
+                ),
+            },
+            {
+                path: 'transfer',
+                element: (
+                    <Lazy>
+                        <Transfer />
                     </Lazy>
                 ),
             },

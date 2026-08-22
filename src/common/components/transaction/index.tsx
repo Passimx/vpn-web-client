@@ -5,17 +5,17 @@ import { Card } from '../card';
 import { WalletHelper } from '../../pages/put-money-wallet/helper.ts';
 import { PropsType } from './types/props.type.ts';
 import { CurrencyIcon } from '../currency-icon';
-import moment from 'moment';
 import { TbClockRecord } from 'react-icons/tb';
 import { MdOutlinePayment, MdOutlinePublishedWithChanges } from 'react-icons/md';
 import { BsArrowDownCircle, BsReply } from 'react-icons/bs';
 import { shortText } from '../../hooks/short-text.ts';
 import { EventsEnum } from '../../types/events/events.enum.ts';
-import { useAppAction } from '../../store';
+import { useAppAction, useAppSelector } from '../../store';
 
 export const Transaction: FC<PropsType> = ({ transaction }) => {
     const { t } = useTranslation();
     const { postMessage } = useAppAction();
+    const lang = useAppSelector((state) => state.app.lang);
 
     const onClick = () => {
         window.navigator.clipboard.writeText(transaction.id);
@@ -58,7 +58,12 @@ export const Transaction: FC<PropsType> = ({ transaction }) => {
                             </div>
                             <CurrencyIcon currency={transaction.currency} className={styles.div31212} />
                         </div>
-                        <div className={styles.div3122}>{moment(transaction.createdAt).format('HH:MM')}</div>
+                        <div className={styles.div3122}>
+                            {new Date(transaction.createdAt).toLocaleTimeString(lang, {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                            })}
+                        </div>
                     </div>
                 </div>
                 <div></div>

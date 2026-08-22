@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { resources } from '../../hooks/translations/use-translation.ts';
 import { useAppAction, useAppSelector } from '../../store';
 import styles from './index.module.css';
+import { FaCheck } from 'react-icons/fa';
 
 export const Languages: FC = () => {
     const { t } = useTranslation();
@@ -16,19 +17,17 @@ export const Languages: FC = () => {
     };
 
     return (
-        <div className={styles.div1}>
-            <div className={styles.div2}>
-                {languages.map((language) => (
-                    <div key={language}>
-                        <Card
-                            onClick={() => onChangeLang(language)}
-                            className={`${lang === language && styles.active}`}
-                        >
-                            {t('t33', { lng: language })} {t('t32', { lng: language })}
-                        </Card>
+        <Card className={styles.div1}>
+            {languages.map((language) => (
+                <div key={language} className={styles.div2} onClick={() => onChangeLang(language)}>
+                    <div className={styles.div3}>{t('t33', { lng: language })}</div>
+                    <div className={styles.div4}>
+                        <div className={styles.div5}>{t(language)}</div>
+                        <div className={styles.div6}>{t('t32', { lng: language })}</div>
                     </div>
-                ))}
-            </div>
-        </div>
+                    {lang === language && <FaCheck className={'icon'} />}
+                </div>
+            ))}
+        </Card>
     );
 };

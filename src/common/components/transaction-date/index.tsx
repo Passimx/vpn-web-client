@@ -6,7 +6,7 @@ import { useAppSelector } from '../../store';
 export const TransactionDate: FC<PropsType> = ({ transactionBefore, transactionCurrent }) => {
     const lang = useAppSelector((state) => state.app.lang);
 
-    const currentCreatedAt = new Date(transactionCurrent.createdAt).toLocaleDateString('ru-RU', {
+    const currentCreatedAt = new Date(transactionCurrent.createdAt).toLocaleDateString(lang, {
         day: 'numeric',
         month: 'numeric',
         year: 'numeric',
@@ -14,7 +14,7 @@ export const TransactionDate: FC<PropsType> = ({ transactionBefore, transactionC
 
     const beforeCreatedAt =
         transactionBefore &&
-        new Date(transactionBefore.createdAt).toLocaleDateString('ru-RU', {
+        new Date(transactionBefore.createdAt).toLocaleDateString(lang, {
             day: 'numeric',
             month: 'numeric',
             year: 'numeric',
@@ -28,7 +28,7 @@ export const TransactionDate: FC<PropsType> = ({ transactionBefore, transactionC
 
         const isToday =
             currentCreatedAt ===
-            now.toLocaleDateString('ru-RU', {
+            now.toLocaleDateString(lang, {
                 day: 'numeric',
                 month: 'numeric',
                 year: 'numeric',

@@ -2,10 +2,6 @@ import { FC, useState } from 'react';
 import styles from './index.module.css';
 import { useTranslation } from 'react-i18next';
 import Input from '../../components/input';
-import { AppWalletEnum } from './types/app-wallet.enum.ts';
-import tonkeeper from '../../../../public/assets/images/tonkeeper.png';
-import mytonwallet from '../../../../public/assets/images/mytonwallet.png';
-import tonhub from '../../../../public/assets/images/tonhub.png';
 import ton from '../../../../public/assets/images/ton.svg';
 import sber from '../../../../public/assets/images/sber.png';
 import wechat from '../../../../public/assets/images/wechat.png';
@@ -20,12 +16,17 @@ import { Image } from '../../components/image';
 import { callAction } from '../../api/px.connect.ts';
 import { CurrencyIcon } from '../../components/currency-icon';
 import { BalanceAccount } from '../../store/app/types/app-state.type.ts';
+import { currencyWord } from '../exchange/consts/currency-word.ts';
+import { SelectTonApp } from '../../components/select-ton-app';
+import { AppWalletEnum } from '../../types/api/app-wallet.enum.ts';
+import { ChangeTonCurrency } from '../../components/change-ton-currency';
 
 export const PutMoneyWallet: FC = () => {
     const id = 'id';
     const { t } = useTranslation();
     const { setStateApp, postMessage } = useAppAction();
     const [amount, setAmount] = useState<number>(0);
+    const [tonCurrency, setTonCurrency] = useState<keyof BalanceAccount>('ton');
     const userId = useAppSelector((state) => state.app.user?.id);
 
     const onChangeValue = (value: string) => setAmount(Number(value));
@@ -73,20 +74,34 @@ export const PutMoneyWallet: FC = () => {
         setStateApp({ foreground: <InvoicePage request={request} /> });
     };
 
-    const onTon = (app: AppWalletEnum) => {
+    const onTon = () => {
         const result = checkBalance();
         if (!result) return;
 
-        const amountPrice = WalletHelper.convert(amount, t('t4'), 'ton');
-        const request = callAction<string>(EventsEnum.CREATE_TON_INVOICE, {
-            userId,
-            amount: amountPrice,
-            app,
-            currency: 'ton',
-        });
+        const onChange = (app: AppWalletEnum) => {
+            const amountPrice = WalletHelper.convert(amount, t('t4'), tonCurrency);
+            const request = callAction<string>(EventsEnum.CREATE_TON_INVOICE, {
+                userId,
+                amount: amountPrice,
+                app,
+                currency: tonCurrency,
+            });
+
+            setStateApp({
+                foreground: <InvoicePage request={request} />,
+            });
+        };
+
+        setStateApp({ foreground: <SelectTonApp onChange={onChange} /> });
+    };
+
+    const onChangeTonCurrency = () => {
+        const onChange = (currency: keyof BalanceAccount) => {
+            setTonCurrency(currency);
+        };
 
         setStateApp({
-            foreground: <InvoicePage request={request} />,
+            foreground: <ChangeTonCurrency currency={tonCurrency} onChange={onChange} />,
         });
     };
 
@@ -149,7 +164,7 @@ export const PutMoneyWallet: FC = () => {
                             </div>
                         </div>
                     </Card>
-                    <Card onClick={checkBalance}>
+                    <Card onClick={onTon}>
                         <div className={styles.div1_1}>
                             <div className={styles.div4}>
                                 <Image src={ton} className={styles.div5} />
@@ -157,25 +172,22 @@ export const PutMoneyWallet: FC = () => {
                             <div className={styles.div6}>
                                 <div className={styles.div7}>TON</div>
                                 <div className={styles.div8}>
-                                    {WalletHelper.formatPrice(WalletHelper.convert(amount, t('t4'), 'ton'))}&#160;TON
+                                    {WalletHelper.formatPrice(WalletHelper.convert(amount, t('t4'), tonCurrency))}
+                                    &#160;{t(currencyWord[tonCurrency])}
                                 </div>
                             </div>
                             <div className={styles.div1_2}>
-                                <Image
-                                    src={tonkeeper}
-                                    className={styles.div3}
-                                    onClick={() => onTon(AppWalletEnum.TON_KEEPER)}
-                                />
-                                <Image
-                                    src={mytonwallet}
-                                    className={styles.div3}
-                                    onClick={() => onTon(AppWalletEnum.MY_TON_WALLET)}
-                                />
-                                <Image
-                                    src={tonhub}
-                                    className={styles.div3}
-                                    onClick={() => onTon(AppWalletEnum.TON_HUB)}
-                                />
+                                <Card
+                                    className={styles.div521}
+                                    onClick={(e) => {
+                                        e?.stopPropagation();
+                                        e?.preventDefault();
+                                        onChangeTonCurrency();
+                                    }}
+                                >
+                                    <CurrencyIcon currency={tonCurrency} className={styles.div522} />
+                                    <div className={styles.div523}>{t(currencyWord[tonCurrency])}</div>
+                                </Card>
                             </div>
                         </div>
                     </Card>

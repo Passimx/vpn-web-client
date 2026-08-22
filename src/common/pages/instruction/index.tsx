@@ -55,7 +55,7 @@ export const Instruction: FC = () => {
                         <LuExternalLink className={'icon'} />
                     </Card>
                 </Card>
-                <Card className={styles.div4} onClick={() => navigate('/put-money-wallet')}>
+                <Card className={styles.div4} onClick={() => navigate('/deposit')}>
                     <div>2)&#160;{t('t15')}</div>
                     <LuExternalLink className={'icon'} />
                 </Card>

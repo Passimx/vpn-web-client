@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import moment from 'moment';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import CH from './languages/zh/translation.json';
@@ -30,9 +29,6 @@ export const useTranslation = () => {
             el.style.animation = 'none';
             el.style.filter = 'blur(4px)';
         });
-
-        if (lang === 'zh') moment.locale('zh-cn');
-        else moment.locale(lang);
 
         i18n.use(initReactI18next)
             .init({

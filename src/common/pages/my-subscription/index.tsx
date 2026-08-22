@@ -5,7 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAppAction, useAppSelector } from '../../store';
 import { RotateLoading } from '../../components/rotate-loading';
 import { Card } from '../../components/card';
-import moment from 'moment';
 import { LuExternalLink } from 'react-icons/lu';
 import { WalletHelper } from '../put-money-wallet/helper.ts';
 import { IoCopyOutline } from 'react-icons/io5';
@@ -22,6 +21,7 @@ export const MySubscription: FC = () => {
     const { postMessage, setStateApp } = useAppAction();
     const user = useAppSelector((state) => state.app.user);
     const key = id ? user?.keys?.find((k) => k.id === id) : undefined;
+    const lang = useAppSelector((state) => state.app.lang);
 
     useEffect(() => {
         if (!key) navigate('/my-subscriptions');
@@ -73,12 +73,24 @@ export const MySubscription: FC = () => {
                         {key.status === 'active' && (
                             <div className={styles.div4}>
                                 <div>{t('t50')}:</div>
-                                <div>{moment(key.expiresAt).format('DD.MM.YYYY')}</div>
+                                <div>
+                                    {new Date(key.expiresAt).toLocaleDateString(lang, {
+                                        day: 'numeric',
+                                        month: 'numeric',
+                                        year: 'numeric',
+                                    })}
+                                </div>
                             </div>
                         )}
                         <div className={styles.div4}>
                             <div>{t('t51')}:</div>
-                            <div>{moment(key.createdAt).format('DD.MM.YYYY')}</div>
+                            <div>
+                                {new Date(key.createdAt).toLocaleDateString(lang, {
+                                    day: 'numeric',
+                                    month: 'numeric',
+                                    year: 'numeric',
+                                })}
+                            </div>
                         </div>
                         <Card
                             className={styles.div5}

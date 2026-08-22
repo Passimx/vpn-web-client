@@ -5,6 +5,7 @@ export enum EventsEnum {
 
     // api
     EXCHANGE = 'exchange',
+    TRANSFER = 'transfer',
     GET_APPS = 'get_apps',
     CREATE_KEY = 'create_key',
     REMOVE_KEY = 'remove_key',
@@ -15,6 +16,7 @@ export enum EventsEnum {
     LOGIN_BY_URL = 'login_by_url',
     CREATE_ACCOUNT = 'create_account',
     CREATE_TON_INVOICE = 'create_ton_invoice',
+    GET_IS_EXISTS_USER = 'get_is_exists_user',
     CREATE_SBER_INVOICE = 'create_sber_invoice',
     CREATE_WECHAT_INVOICE = 'create_wechat_invoice',
     CHANGE_EXTEND_TARIFF_ID = 'change_extend_tariff_id',

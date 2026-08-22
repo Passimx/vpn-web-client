@@ -5,7 +5,7 @@ import { useAppSelector } from '../../store';
 import { useTranslation } from 'react-i18next';
 import { WalletHelper } from '../put-money-wallet/helper.ts';
 import { useNavigate } from 'react-router-dom';
-import { RiArrowDownLongLine, RiArrowUpDownLine } from 'react-icons/ri';
+import { RiArrowDownLongLine, RiArrowUpDownLine, RiArrowUpLongLine } from 'react-icons/ri';
 import { CurrencyIcon } from '../../components/currency-icon';
 import { TransactionsHistory } from '../../components/transactions-history';
 
@@ -24,17 +24,23 @@ export const Wallet: FC = () => {
                     {t('t3')}
                 </div>
                 <div className={styles.div011}>
-                    <div className={styles.div012} onClick={() => navigate('/put-money-wallet')}>
+                    <div className={styles.div012} onClick={() => navigate('/deposit')}>
                         <Card className={styles.div013}>
                             <RiArrowDownLongLine className={styles.div014} />
                         </Card>
                         <div>{t('t12')}</div>
                     </div>
+                    <div className={styles.div012} onClick={() => navigate('/transfer')}>
+                        <Card className={styles.div013}>
+                            <RiArrowUpLongLine className={styles.div014} />
+                        </Card>
+                        <div>{t('t89')}</div>
+                    </div>
                     <div className={styles.div012} onClick={() => navigate('/exchange')}>
                         <Card className={styles.div013}>
                             <RiArrowUpDownLine className={styles.div014} />
                         </Card>
-                        <div>{t('t62')}</div>
+                        <div>{t('t90')}</div>
                     </div>
                 </div>
                 <Card>
