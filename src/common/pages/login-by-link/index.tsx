@@ -60,7 +60,7 @@ export const LoginByLink: FC = () => {
                         <RotateLoading />
                     ) : (
                         <Card className={styles.div10} onClick={onLogin}>
-                            <div>Войти</div>
+                            <div>{t('t96')}</div>
                         </Card>
                     )}
                 </div>

@@ -32,7 +32,9 @@ export const Transaction: FC<PropsType> = ({ transaction }) => {
                 {transaction.completed && transaction.kind === 'Payment' && (
                     <MdOutlinePayment className={styles.div21} />
                 )}
-                {transaction.completed && transaction.kind === 'Transfer' && <BsReply className={styles.div21} />}
+                {transaction.completed && transaction.kind === 'Transfer' && (
+                    <BsReply className={`${styles.div21} ${transaction.type === 'Credit' && styles.div22}`} />
+                )}
                 {transaction.completed && transaction.kind === 'Deposit' && (
                     <BsArrowDownCircle className={styles.div21} />
                 )}
@@ -46,7 +48,18 @@ export const Transaction: FC<PropsType> = ({ transaction }) => {
                             {transaction.kind === 'Transfer' && t('t86')}
                             {transaction.kind === 'Exchange' && t('t63')}
                         </div>
-                        <div className={styles.div3112}>ID&#160;{shortText(transaction.id, 4)}</div>
+                        <div className={styles.div3112}>
+                            <div className={styles.div31121}>ID&#160;{shortText(transaction.id, 4)}</div>
+                            {(transaction.meta?.comment && (
+                                <div className={styles.div31122}>{transaction.meta?.comment}</div>
+                            )) ||
+                                (transaction.meta?.place && (
+                                    <div className={styles.div31122}>{transaction.meta?.place}</div>
+                                )) ||
+                                (transaction.meta?.vpnKeyId && (
+                                    <div className={styles.div31122}>{transaction.meta?.vpnKeyId}</div>
+                                ))}
+                        </div>
                     </div>
                     <div className={styles.div312}>
                         <div className={styles.div3121}>
@@ -66,7 +79,6 @@ export const Transaction: FC<PropsType> = ({ transaction }) => {
                         </div>
                     </div>
                 </div>
-                <div></div>
             </div>
         </Card>
     );

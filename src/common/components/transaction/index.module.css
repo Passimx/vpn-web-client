@@ -17,15 +17,19 @@
         .div21{
             font-size: 28px;
         }
+        .div22{
+            transform: scaleX(-1);
+        }
     }
 
     .div3{
         display: grid;
-        grid-template-rows: auto 1fr;
+        grid-template-rows: auto;
 
         .div31{
             display: grid;
             grid-template-columns: 1fr auto;
+            min-width: 0;
 
             .div311{
                 display: grid;
@@ -37,8 +41,21 @@
                 }
 
                 .div3112{
-                    opacity: 0.8;
-                    font-weight: 200;
+                    min-width: 0;
+
+                    .div31121{
+                        opacity: 0.8;
+                        font-weight: 200;
+                    }
+
+                    .div31122{
+                        background-color: rgb(255, 255, 255, 0.2);
+                        border-radius: 8px;
+                        padding: 4px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
                 }
             }
 
