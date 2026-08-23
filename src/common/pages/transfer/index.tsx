@@ -115,6 +115,8 @@ export const Transfer: FC = () => {
         const element = document.getElementById(recipientInputId) as HTMLInputElement | null;
         const focusout = async () => {
             const userId = element?.value;
+
+            if (recipient === userId) return;
             if (userId === user?.id) return setRecipient(null);
 
             if (!userId?.length) {

@@ -8,7 +8,6 @@ import { CurrencyIcon } from '../currency-icon';
 import { TbClockRecord } from 'react-icons/tb';
 import { MdOutlinePayment, MdOutlinePublishedWithChanges } from 'react-icons/md';
 import { BsArrowDownCircle, BsReply } from 'react-icons/bs';
-import { shortText } from '../../hooks/short-text.ts';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { useAppAction, useAppSelector } from '../../store';
 
@@ -49,7 +48,6 @@ export const Transaction: FC<PropsType> = ({ transaction }) => {
                             {transaction.kind === 'Exchange' && t('t63')}
                         </div>
                         <div className={styles.div3112}>
-                            <div className={styles.div31121}>ID&#160;{shortText(transaction.id, 4)}</div>
                             {(transaction.meta?.comment && (
                                 <div className={styles.div31122}>{transaction.meta?.comment}</div>
                             )) ||

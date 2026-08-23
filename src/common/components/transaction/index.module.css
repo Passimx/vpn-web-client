@@ -41,6 +41,8 @@
                 }
 
                 .div3112{
+                    display: grid;
+                    align-items: center;
                     min-width: 0;
 
                     .div31121{
