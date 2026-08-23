@@ -54,7 +54,7 @@ export type TransactionType = BaseTransaction &
 
 export type UserType = {
     id: string;
-    balance: BalanceAccount;
+    balance: BalanceAccount & { seqno: number };
     keys: KeyType[];
     transactions: TransactionType[];
 };

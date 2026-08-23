@@ -41,7 +41,11 @@ export const Tariffs: FC = () => {
         const price = WalletHelper.formatPrice(WalletHelper.convert(tariff.price, 'rub', t('t4')));
 
         const func = async () => {
-            const result = await callAction<UserType>(EventsEnum.CREATE_KEY, { userId: user.id, tariffId: tariff.id });
+            const result = await callAction<UserType>(EventsEnum.CREATE_KEY, {
+                userId: user.id,
+                tariffId: tariff.id,
+                seqno: user.balance.seqno,
+            });
             if (result) {
                 setStateApp({ user: result });
                 navigate('/my-subscriptions');

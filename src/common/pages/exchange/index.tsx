@@ -144,6 +144,7 @@ export const Exchange: FC = () => {
                 amountFrom: Number(setBalanceAmount),
                 from: setBalanceKey,
                 to: getBalanceKey,
+                seqno: user?.balance.seqno,
             });
 
             if (result) {

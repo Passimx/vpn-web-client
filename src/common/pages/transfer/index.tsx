@@ -96,6 +96,7 @@ export const Transfer: FC = () => {
                 currency,
                 recipient,
                 comment,
+                seqno: user?.balance?.seqno,
             });
 
             if (result) {
@@ -114,14 +115,13 @@ export const Transfer: FC = () => {
         const element = document.getElementById(recipientInputId) as HTMLInputElement | null;
         const focusout = async () => {
             const userId = element?.value;
+            if (userId === user?.id) return setRecipient(null);
 
             if (!userId?.length) {
                 setLoading(false);
                 setRecipient(undefined);
                 return;
             }
-
-            if (userId === recipient) return;
 
             setLoading(true);
             const response = await callAction(EventsEnum.GET_IS_EXISTS_USER, userId);
@@ -131,7 +131,7 @@ export const Transfer: FC = () => {
 
         element?.addEventListener('focusout', focusout);
         return () => element?.removeEventListener('focusout', focusout);
-    }, [recipient]);
+    }, [recipient, user?.id]);
 
     return (
         <div className={styles.div1}>

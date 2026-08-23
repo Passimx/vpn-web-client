@@ -35,6 +35,7 @@ export const ExtendKey: FC = () => {
                 keyId,
                 tariffId: tariff.id,
                 userId: user?.id,
+                seqno: user.balance.seqno,
             });
             if (result) {
                 setStateApp({ user: result });
