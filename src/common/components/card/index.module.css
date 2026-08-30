@@ -6,6 +6,6 @@
     cursor: pointer;
 
     &:active:not(:has(.background:active)) {
-        opacity: 0.7;
+        opacity: 0.7 !important;
     }
 }

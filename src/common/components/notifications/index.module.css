@@ -1,0 +1,38 @@
+.div1{
+    --width: 90%;
+
+    @media(width > 600px){
+        --width: 300px;
+    }
+
+    position: absolute;
+    z-index: 2000;
+    left: calc(50% - (var(--width) / 2) - 8px);
+    -webkit-user-select: none;
+    user-select: none;
+    width: var(--width);
+    display: grid;
+    gap: 8px;
+    padding: 8px;
+    grid-template-columns: 1fr;
+    align-items: center;
+
+    .div2{
+        background-color: rgb(0, 0, 0, 0.8);
+        border-radius: 100px;
+        color: white;
+        grid-template-columns: 1fr auto;
+        padding: 8px;
+        display: grid;
+        align-items: center;
+
+        .div21{
+            font-size: large;
+        }
+
+        .div22{
+            font-size: 32px;
+            cursor: pointer;
+        }
+    }
+}

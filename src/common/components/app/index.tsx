@@ -13,11 +13,13 @@ import { useChangeLocation } from '../../hooks/use-change-location.hook.ts';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorBoundaryPage } from '../error-boundary-page';
 import { useLocation } from 'react-router-dom';
+import { useDownloadApp } from '../../hooks/use-download-app.hook.tsx';
 
 export const App: FC<PropsType> = ({ children }) => {
     useIsIos();
     useIsPhone();
     useLoadUser();
+    useDownloadApp();
     useChangeLocation();
     useRegisterServiceWorkerWorker();
     const loaded = useTranslation();

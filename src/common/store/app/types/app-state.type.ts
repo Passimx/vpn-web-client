@@ -9,6 +9,13 @@ export type BalanceAccount = {
 
 export type TariffKind = 'base' | 'cascade' | 'cdn';
 
+export type NotificationType = {
+    id: string;
+    title: string;
+    description: string;
+    onclick?: () => void;
+};
+
 export type KeyType = {
     id: string;
     status: 'active' | 'expired';
@@ -62,6 +69,7 @@ export type AppStateType = Partial<{
     isIos: boolean;
     isPhone: boolean;
     foreground: JSX.Element;
+    notifications: NotificationType[];
 
     lang: string;
     user: UserType;

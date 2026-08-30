@@ -18,6 +18,7 @@ const ExtendKey = lazy(() => import('../pages/extend-key').then((m) => ({ defaul
 const Exchange = lazy(() => import('../pages/exchange').then((m) => ({ default: m.Exchange })));
 const Support = lazy(() => import('../pages/support').then((m) => ({ default: m.Support })));
 const Transfer = lazy(() => import('../pages/transfer').then((m) => ({ default: m.Transfer })));
+const DownloadPwa = lazy(() => import('../pages/download-pwa').then((m) => ({ default: m.DownloadPwa })));
 
 const router = createBrowserRouter([
     {
@@ -116,6 +117,14 @@ const router = createBrowserRouter([
                 element: (
                     <Lazy>
                         <Transfer />
+                    </Lazy>
+                ),
+            },
+            {
+                path: 'download-pwa',
+                element: (
+                    <Lazy>
+                        <DownloadPwa />
                     </Lazy>
                 ),
             },

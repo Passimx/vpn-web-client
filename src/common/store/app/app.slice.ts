@@ -1,8 +1,10 @@
 import { createSlice, type PayloadAction, current } from '@reduxjs/toolkit';
-import { type AppStateType } from './types/app-state.type.ts';
+import { type AppStateType, NotificationType } from './types/app-state.type.ts';
 import type { EventsType } from '../../types/events/event-data.type.ts';
 
-const initialState: AppStateType = {};
+const initialState: AppStateType = {
+    notifications: [],
+};
 
 const AppSlice = createSlice({
     name: 'app',
@@ -10,6 +12,17 @@ const AppSlice = createSlice({
     reducers: {
         postMessage(_state, { payload }: PayloadAction<EventsType>) {
             window.postMessage(payload, window.origin);
+        },
+
+        pushNotification(state, { payload }: PayloadAction<NotificationType>) {
+            if (!state.notifications) state.notifications = [];
+            state.notifications.unshift(payload);
+        },
+
+        removeNotification(state, { payload }: PayloadAction<string>) {
+            const index = state.notifications?.findIndex((item) => item.id === payload);
+            if (index === undefined || index < 0) return;
+            state.notifications?.splice(index, 1);
         },
 
         setStateApp(state, { payload }: PayloadAction<Partial<AppStateType>>) {
