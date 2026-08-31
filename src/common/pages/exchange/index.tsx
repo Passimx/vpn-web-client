@@ -59,11 +59,10 @@ export const Exchange: FC = () => {
         }
 
         const normalizedValue = value.replace(',', '.');
+        const amount = Number(normalizedValue) + 10 ** -scale;
 
         if (from === setBalanceKey) {
             setSetBalanceAmount(value);
-
-            const amount = Number(normalizedValue);
 
             if (!Number.isNaN(amount)) {
                 const converted = WalletHelper.convert(amount, from, getBalanceKey);
@@ -72,8 +71,6 @@ export const Exchange: FC = () => {
             }
         } else {
             getSetBalanceAmount(value);
-
-            const amount = Number(normalizedValue);
 
             if (!Number.isNaN(amount)) {
                 const converted = WalletHelper.convert(amount, from, setBalanceKey);
