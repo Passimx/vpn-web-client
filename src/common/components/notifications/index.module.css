@@ -18,7 +18,7 @@
     align-items: center;
 
     .div2{
-        background-color: rgb(0, 0, 0, 0.8);
+        background-color: black;
         border-radius: 100px;
         color: white;
         grid-template-columns: 1fr auto;

@@ -93,6 +93,29 @@ export const Wallet: FC = () => {
                             </div>
                         </div>
                         <div className={styles.div1}>
+                            <CurrencyIcon currency={'usd'} className={styles.div2} />
+                            <div className={styles.div4}>
+                                <div className={styles.div5}>
+                                    <div className={styles.div6}>USD</div>
+                                    <div className={`${styles.div6} ${styles.div8}`}>
+                                        {WalletHelper.formatPrice(balanceAccount.usd)}
+                                    </div>
+                                </div>
+                                <div className={styles.div5}>
+                                    <div className={styles.div7}>
+                                        {WalletHelper.formatPrice(WalletHelper.convert(1, 'usd', t('t4')))}&#160;
+                                        {t('t3')}
+                                    </div>
+                                    <div className={`${styles.div7} ${styles.div8}`}>
+                                        {WalletHelper.formatPrice(
+                                            WalletHelper.convert(balanceAccount.usd, 'usd', t('t4')),
+                                        )}
+                                        &#160;{t('t3')}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.div1}>
                             <CurrencyIcon currency={'ton'} className={styles.div2} />
                             <div className={styles.div4}>
                                 <div className={styles.div5}>
@@ -116,22 +139,45 @@ export const Wallet: FC = () => {
                             </div>
                         </div>
                         <div className={styles.div1}>
-                            <CurrencyIcon currency={'usd'} className={styles.div2} />
+                            <CurrencyIcon currency={'ethereum'} className={styles.div2} />
                             <div className={styles.div4}>
                                 <div className={styles.div5}>
-                                    <div className={styles.div6}>USD</div>
+                                    <div className={styles.div6}>ETHEREUM</div>
                                     <div className={`${styles.div6} ${styles.div8}`}>
-                                        {WalletHelper.formatPrice(balanceAccount.usd)}
+                                        {WalletHelper.formatPrice(balanceAccount.ethereum)}
                                     </div>
                                 </div>
                                 <div className={styles.div5}>
                                     <div className={styles.div7}>
-                                        {WalletHelper.formatPrice(WalletHelper.convert(1, 'usd', t('t4')))}&#160;
-                                        {t('t3')}
+                                        {WalletHelper.formatPrice(WalletHelper.convert(1, 'ethereum', t('t4')))}
+                                        &#160;{t('t3')}
                                     </div>
                                     <div className={`${styles.div7} ${styles.div8}`}>
                                         {WalletHelper.formatPrice(
-                                            WalletHelper.convert(balanceAccount.usd, 'usd', t('t4')),
+                                            WalletHelper.convert(balanceAccount.ethereum, 'ethereum', t('t4')),
+                                        )}
+                                        &#160;{t('t3')}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.div1}>
+                            <CurrencyIcon currency={'bitcoin'} className={styles.div2} />
+                            <div className={styles.div4}>
+                                <div className={styles.div5}>
+                                    <div className={styles.div6}>BITCOIN</div>
+                                    <div className={`${styles.div6} ${styles.div8}`}>
+                                        {WalletHelper.formatPrice(balanceAccount.bitcoin)}
+                                    </div>
+                                </div>
+                                <div className={styles.div5}>
+                                    <div className={styles.div7}>
+                                        {WalletHelper.formatPrice(WalletHelper.convert(1, 'bitcoin', t('t4')))}
+                                        &#160;{t('t3')}
+                                    </div>
+                                    <div className={`${styles.div7} ${styles.div8}`}>
+                                        {WalletHelper.formatPrice(
+                                            WalletHelper.convert(balanceAccount.bitcoin, 'bitcoin', t('t4')),
                                         )}
                                         &#160;{t('t3')}
                                     </div>

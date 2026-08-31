@@ -1,4 +1,4 @@
-.cny1, .rub1, .ton1, .usd1{
+.cny1, .rub1, .usd1, .ton1, .ethereum1, .bitcoin1{
     display: grid;
     justify-items: center;
     align-items: center;
@@ -42,5 +42,23 @@
     .usd2{
         width: 60%;
         height: 60%;
+    }
+}
+
+.ethereum1{
+    background-color: cornflowerblue;
+
+    .ethereum2{
+        width: 50%;
+        height: 50%;
+    }
+}
+
+.bitcoin1{
+    background-color: orange;
+
+    .bitcoin2{
+        width: 50%;
+        height: 50%;
     }
 }

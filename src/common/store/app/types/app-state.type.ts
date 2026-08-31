@@ -3,8 +3,10 @@ import { JSX } from 'react';
 export type BalanceAccount = {
     rub: number;
     cny: number;
-    ton: number;
     usd: number;
+    ton: number;
+    ethereum: number;
+    bitcoin: number;
 };
 
 export type TariffKind = 'base' | 'cascade' | 'cdn';

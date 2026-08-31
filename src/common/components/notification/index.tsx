@@ -6,14 +6,11 @@ import { PropsType } from './props.type.ts';
 import { Card } from '../card';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 
-let handler: NodeJS.Timeout | undefined;
 export const Notification: FC<PropsType> = ({ notification }) => {
     const { t } = useTranslation();
-    const hideInterval = 10000;
     const { removeNotification } = useAppAction();
 
     const hide = () => {
-        clearTimeout(handler);
         const element = document.getElementById(String(notification.id))!;
         element.classList.add(styles.hidden);
     };
@@ -33,11 +30,6 @@ export const Notification: FC<PropsType> = ({ notification }) => {
         );
         observer.observe(element);
     }, []);
-
-    useEffect(() => {
-        handler = setTimeout(hide, hideInterval);
-        return () => clearTimeout(handler);
-    }, [notification.id]);
 
     const onClick = () => {
         if (notification.onclick) notification.onclick();

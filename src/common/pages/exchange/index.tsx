@@ -9,7 +9,7 @@ import { currencyWord } from './consts/currency-word.ts';
 import { RiArrowUpDownLine } from 'react-icons/ri';
 import { LuEqualApproximately } from 'react-icons/lu';
 import { ChangeCurrency } from '../../components/change-currency';
-import { WalletHelper } from '../put-money-wallet/helper.ts';
+import { scale, WalletHelper } from '../put-money-wallet/helper.ts';
 import { Agreement } from '../../components/agreement';
 import { callAction } from '../../api/px.connect.ts';
 import { EventsEnum } from '../../types/events/events.enum.ts';
@@ -222,8 +222,11 @@ export const Exchange: FC = () => {
                         <div>1</div>
                         <CurrencyIcon currency={setBalanceKey} className={styles.div23} />
                         <LuEqualApproximately />
-                        <div>{WalletHelper.formatPrice(WalletHelper.convert(1, setBalanceKey, getBalanceKey))}</div>
+                        <div>
+                            {WalletHelper.convert(1, setBalanceKey, getBalanceKey)}&#160;±&#160;0.1^{scale}
+                        </div>
                         <CurrencyIcon currency={getBalanceKey} className={styles.div23} />
+                        <div></div>
                     </div>
                 </div>
                 <Card className={`${styles.div33} ${isNoActive ? styles.noActive : ''}`} onClick={onSubmit}>

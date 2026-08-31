@@ -5,7 +5,6 @@ import { Card } from '../../components/card';
 import { BalanceAccount, UserType } from '../../store/app/types/app-state.type.ts';
 import { useAppAction, useAppSelector } from '../../store';
 import { CurrencyIcon } from '../../components/currency-icon';
-import { currencyWord } from './consts/currency-word.ts';
 import { ChangeCurrency } from '../../components/change-currency';
 import { WalletHelper } from '../put-money-wallet/helper.ts';
 import { Agreement } from '../../components/agreement';
@@ -13,6 +12,7 @@ import { callAction } from '../../api/px.connect.ts';
 import { EventsEnum } from '../../types/events/events.enum.ts';
 import { useNavigate } from 'react-router-dom';
 import { RotateLoading } from '../../components/rotate-loading';
+import { currencyWord } from '../exchange/consts/currency-word.ts';
 
 export const Transfer: FC = () => {
     const { t } = useTranslation();
